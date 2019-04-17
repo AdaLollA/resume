@@ -8,9 +8,11 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import {PersonalInfoComponent} from './components/personal-info/personal-info.component';
+import {LinkFooterComponent} from './components/link-footer/link-footer.component';
 
 @NgModule({
-  declarations: [AppComponent],
+    declarations: [AppComponent, PersonalInfoComponent, LinkFooterComponent],
   entryComponents: [],
   imports: [
     BrowserModule,
@@ -18,8 +20,6 @@ import { AppRoutingModule } from './app-routing.module';
     AppRoutingModule
   ],
   providers: [
-    StatusBar,
-    SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
