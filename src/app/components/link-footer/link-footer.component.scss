@@ -1,8 +1,9 @@
 .logo {
   font-size: 30px;
   transition: all 0.2s linear;
+  color: var(--ion-color-primary);
 }
 
 .logo:hover {
-  color: grey;
+  color: var(--ion-color-secondary);
 }
