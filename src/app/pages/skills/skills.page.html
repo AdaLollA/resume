@@ -1,2 +1,19 @@
 <ion-menu-button class="menu-button"></ion-menu-button>
 
+<ion-row class="full-size">
+    <ion-row class="full-width">
+        <ion-row class="full-width">
+            <ion-row class="full-width">soft</ion-row>
+            <ion-row justify-content-around class="full-width">
+                <app-skill *ngFor="let skill of softSkills" size="6" size-md="3" [skill]="skill"></app-skill>
+            </ion-row>
+        </ion-row>
+
+        <ion-row class="full-width">
+            <ion-row class="full-width">hard</ion-row>
+            <ion-row>
+                <app-skill *ngFor="let skill of hardSkills" size="6" size-md="3" [skill]="skill"></app-skill>
+            </ion-row>
+        </ion-row>
+    </ion-row>
+</ion-row>
