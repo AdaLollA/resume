@@ -1,3 +1,15 @@
+.container {
+
+}
+
+.content {
+  margin-top: -330px !important;
+  margin-left: -150px !important;
+  box-shadow: none !important;
+  width: 850px;
+  height: 1337px;
+}
+
 @-moz-keyframes left-brace-intro {
   0% {
     -moz-transform: translateX(220px);
