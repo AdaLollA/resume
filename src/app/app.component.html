@@ -1,6 +1,6 @@
 <ion-app>
     <ion-split-pane>
-        <ion-menu class="menu">
+        <ion-menu class="menu" type="reveal">
             <ion-header>
                 <!-- todo personal data -->
                 <app-personal-info padding></app-personal-info>
@@ -19,7 +19,7 @@
             </ion-content>
             <app-link-footer></app-link-footer>
         </ion-menu>
-        <ion-router-outlet main></ion-router-outlet>
+        <ion-router-outlet class="router" main></ion-router-outlet>
     </ion-split-pane>
 </ion-app>
 
