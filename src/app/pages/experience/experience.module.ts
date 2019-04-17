@@ -6,7 +6,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { ExperiencePage } from './experience.page';
-import {TimelineComponent} from '../../components/timeline/timeline.component';
+import {WorkTimelineComponent} from '../../components/work-timeline/work-timeline.component';
+import {EducationTimelineComponent} from '../../components/education-timeline/education-timeline.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,6 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [ExperiencePage, TimelineComponent]
+  declarations: [ExperiencePage, WorkTimelineComponent, EducationTimelineComponent]
 })
 export class ExperiencePageModule {}
