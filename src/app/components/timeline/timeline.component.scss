@@ -1,13 +1,11 @@
 .container {
-
+  width: 750px;
 }
 
 .content {
   margin-top: -330px !important;
   margin-left: -150px !important;
   box-shadow: none !important;
-  width: 850px;
-  height: 1337px;
 }
 
 @-moz-keyframes left-brace-intro {
@@ -433,8 +431,6 @@
 
 #stage {
   background-color: #fff;
-  width: 1024px;
-  height: 1386px;
   margin: auto;
   -webkit-box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 10px;
   -moz-box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 10px;
