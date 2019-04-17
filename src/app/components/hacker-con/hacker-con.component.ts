@@ -7,15 +7,20 @@ import {Component, OnInit, ViewEncapsulation} from '@angular/core';
   encapsulation: ViewEncapsulation.None
 })
 export class HackerConComponent implements OnInit {
+  private loaderOpacity = 1;
 
   constructor() { }
 
   ngOnInit() {
     const loader = document.getElementById('loader');
-    window.addEventListener("load", function(event) {
-      loader.classList.remove('loading');
-      loader.classList.add('loaded');
-      document.body.classList.add('imgloaded');
+    window.addEventListener("load", (event) => {
+      this.loaderOpacity = 0;
+      setTimeout(() => {
+        loader.classList.remove('loading');
+        loader.classList.add('loaded');
+        document.body.classList.add('imgloaded');
+        console.log('removing');
+      }, 500);
     });
   }
 
