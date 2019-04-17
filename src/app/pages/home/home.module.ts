@@ -5,6 +5,8 @@ import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
 
 import { HomePage } from './home.page';
+import {FancyCanvasComponent} from '../../components/fancy-canvas/fancy-canvas.component';
+import {ScrollingMouseComponent} from '../../components/scrolling-mouse/scrolling-mouse.component';
 
 @NgModule({
   imports: [
@@ -18,6 +20,6 @@ import { HomePage } from './home.page';
       }
     ])
   ],
-  declarations: [HomePage]
+  declarations: [HomePage, FancyCanvasComponent, ScrollingMouseComponent]
 })
 export class HomePageModule {}
