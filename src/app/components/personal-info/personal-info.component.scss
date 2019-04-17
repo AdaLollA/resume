@@ -1,5 +1,5 @@
 BODY {
-  background: url(http://placekitten.com/600/600);
+  background: url(../../../assets/img/me.png);
 }
 
 .hexagon {
@@ -10,7 +10,6 @@ BODY {
   -ms-transform: rotate(120deg);
   -o-transform: rotate(120deg);
   transform: rotate(120deg);
-  cursor: pointer;
 }
 
 .hexagon-in1 {
@@ -29,13 +28,14 @@ BODY {
   height: 100%;
   background-repeat: no-repeat;
   background-position: 50%;
-  background-image: url(http://placekitten.com/240/240);
+  background-image: url(../../../assets/img/me.png);
   visibility: visible;
   -webkit-transform: rotate(-60deg);
   -moz-transform: rotate(-60deg);
   -ms-transform: rotate(-60deg);
   -o-transform: rotate(-60deg);
   transform: rotate(-60deg);
+  background-size: 120px;
 }
 
 /*
@@ -49,11 +49,13 @@ BODY {
   height: 100px;
   margin: 0 0 0 -80px;
 }
+
 .hexagon2 {
   width: 100px;
   height: 200px;
   margin: -80px 0 0 20px;
 }
+
 .dodecagon {
   width: 200px;
   height: 200px;
