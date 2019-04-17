@@ -19,7 +19,6 @@ export class HackerConComponent implements OnInit {
         loader.classList.remove('loading');
         loader.classList.add('loaded');
         document.body.classList.add('imgloaded');
-        console.log('removing');
       }, 500);
     });
   }

@@ -50,6 +50,10 @@ export class AppComponent {
         this.platform.ready().then(() => {
             this.initMouseWheelListener();
             this.initSwipeListener();
+            if (this.isLocal()) {
+                console.log('running locally - hiding intro')
+                this.introVisibility = 'hidden';
+            }
         });
     }
 
@@ -78,5 +82,11 @@ export class AppComponent {
                 this.dismissIntro();
             }
         });
+    }
+
+    isLocal(): boolean {
+        if (location.hostname === "localhost" || location.hostname === "127.0.0.1")
+            return true;
+        return false;
     }
 }
