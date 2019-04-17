@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./portfolio.page.scss'],
 })
 export class PortfolioPage implements OnInit {
+  cards = [
+      'a', 'b', 'c', 'd', 'e'
+  ];
 
   constructor() { }
 

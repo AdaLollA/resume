@@ -12,7 +12,9 @@ const routes: Routes = [
         loadChildren: './pages/home/home.module#HomePageModule'
     },
     {path: 'experience', loadChildren: './pages/experience/experience.module#ExperiencePageModule'},
-    {path: 'portfolio', loadChildren: './pages/portfolio/portfolio.module#PortfolioPageModule'}
+    {path: 'portfolio', loadChildren: './pages/portfolio/portfolio.module#PortfolioPageModule'},
+  { path: 'skills', loadChildren: './pages/skills/skills.module#SkillsPageModule' },
+  { path: 'team', loadChildren: './pages/team/team.module#TeamPageModule' }
 ];
 
 @NgModule({

@@ -14,6 +14,11 @@ export class AppComponent {
       icon: 'home'
     },
     {
+      title: 'Skills',
+      url: '/skills',
+      icon: 'fitness'
+    },
+    {
       title: 'Portfolio',
       url: '/portfolio',
       icon: 'filing'
@@ -22,6 +27,11 @@ export class AppComponent {
       title: 'Experience',
       url: '/experience',
       icon: 'flask'
+    },
+    {
+      title: 'Team',
+      url: '/team',
+      icon: 'people'
     }
   ];
 
