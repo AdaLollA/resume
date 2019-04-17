@@ -15,7 +15,7 @@ export interface IProject {
   styleUrls: ['./project-card.component.scss'],
 })
 export class ProjectCardComponent implements OnInit {
-  private project: IProject;
+  public project: IProject;
 
   constructor() { }
 

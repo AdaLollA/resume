@@ -9,8 +9,8 @@ import SwipeListener from 'swipe-listener';
     templateUrl: 'app.component.html'
 })
 export class AppComponent {
-    private introMarginTop = '0vh';
-    private introVisibility = 'visible';
+    public introMarginTop = '0vh';
+    public introVisibility = 'visible';
 
     public appPages = [
         {

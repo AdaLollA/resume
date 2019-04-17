@@ -7,7 +7,7 @@ import {Component, OnInit, ViewEncapsulation} from '@angular/core';
   encapsulation: ViewEncapsulation.None
 })
 export class HackerConComponent implements OnInit {
-  private loaderOpacity = 1;
+  public loaderOpacity = 1;
 
   constructor() { }
 

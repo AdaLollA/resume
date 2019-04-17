@@ -7,7 +7,7 @@ import {ISkill} from '../../components/skill/skill.component';
   styleUrls: ['./skills.page.scss'],
 })
 export class SkillsPage implements OnInit {
-  private softSkills: ISkill[] = [
+  public softSkills: ISkill[] = [
     {
       image: 'calendar',
       text: 'organize'
@@ -25,7 +25,7 @@ export class SkillsPage implements OnInit {
       text: 'analyse'
     }
   ];
-  private hardSkills: ISkill[] = [
+  public hardSkills: ISkill[] = [
     {
       image: 'phone-portrait',
       text: 'native'
