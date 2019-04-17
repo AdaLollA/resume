@@ -1,3 +1,22 @@
 <ion-menu-button class="menu-button"></ion-menu-button>
 
-<app-work-timeline></app-work-timeline>
+<ion-row class="full-size" align-items-center margin-top padding-top>
+    <ion-col size="6">
+        <ion-row justify-content-center>
+            <h1 class="work-text">Work</h1>
+        </ion-row>
+        <ion-row>
+            <app-work-timeline class="work"></app-work-timeline>
+        </ion-row>
+    </ion-col>
+    <ion-col size="6">
+        <ion-row justify-content-center>
+            <h1 class="edu-text">Education</h1>
+        </ion-row>
+        <ion-row>
+            <app-education-timeline class="edu"></app-education-timeline>
+        </ion-row>
+    </ion-col>
+</ion-row>
+
+
