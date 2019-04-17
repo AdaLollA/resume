@@ -1,10 +1,18 @@
 <ion-card class="welcome-card">
-  <ion-img src="/assets/shapes.svg"></ion-img>
-  <ion-card-header>
-    <ion-card-subtitle>Get Started</ion-card-subtitle>
-    <ion-card-title>Welcome to Ionic</ion-card-title>
-  </ion-card-header>
-  <ion-card-content>
-    <p>Now that your app has been created, you'll want to start building out features and components. Check out some of the resources below for next steps.</p>
-  </ion-card-content>
+    <ion-img src="/assets/shapes.svg"></ion-img>
+    <ion-card-header>
+        <ion-card-subtitle>
+            <ion-col *ngFor="let technology of project.technologies" no-padding>{{technology}}&nbsp;&nbsp;</ion-col>
+        </ion-card-subtitle>
+        <ion-card-title>{{ project.title }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+        <p>{{ project.description }}</p>
+    </ion-card-content>
+    <ion-row justify-content-end padding-bottom
+             *ngIf="project.sourceCodeUrl || project.moreInfoUrl || project.liveDemoUrl">
+        <ion-button padding-end *ngIf="project.moreInfoUrl" color="primary" (click)="openUrl(project.moreInfoUrl)"> More Info </ion-button>
+        <ion-button padding-end *ngIf="project.sourceCodeUrl" color="secondary" (click)="openUrl(project.sourceCodeUrl)">Source Code</ion-button>
+        <ion-button padding-end *ngIf="project.liveDemoUrl" color="tertiary" (click)="openUrl(project.liveDemoUrl)">Live Demo</ion-button>
+    </ion-row>
 </ion-card>
