@@ -1,14 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 
 @Component({
-  selector: 'app-scrolling-mouse',
-  templateUrl: './scrolling-mouse.component.html',
-  styleUrls: ['./scrolling-mouse.component.scss'],
+    selector: 'app-scrolling-mouse',
+    templateUrl: './scrolling-mouse.component.html',
+    styleUrls: ['./scrolling-mouse.component.scss'],
 })
-export class ScrollingMouseComponent implements OnInit {
+export class ScrollingMouseComponent {
+    @Output('scroll')
+    scrollEmitter: EventEmitter<void> = new EventEmitter();
 
-  constructor() { }
-
-  ngOnInit() {}
+    emitScrollEvent() {
+        this.scrollEmitter.emit();
+    }
 
 }
