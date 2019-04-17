@@ -21,7 +21,7 @@ export class AppComponent {
     {
       title: 'Portfolio',
       url: '/portfolio',
-      icon: 'filing'
+      icon: 'book'
     },
     {
       title: 'Experience',
