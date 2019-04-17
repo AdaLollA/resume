@@ -9,38 +9,38 @@ import {ISkill} from '../../components/skill/skill.component';
 export class SkillsPage implements OnInit {
   private softSkills: ISkill[] = [
     {
-      image: 'cloud',
-      text: ' cuberino'
+      image: 'calendar',
+      text: 'organize'
     },
     {
-      image: 'cloud',
-      text: ' cuberino'
+      image: 'ios-people',
+      text: 'lead'
     },
     {
-      image: 'cloud',
-      text: ' cuberino'
+      image: 'bulb',
+      text: 'understand'
     },
     {
-      image: 'cloud',
-      text: ' cuberino'
+      image: 'flask',
+      text: 'analyse'
     }
   ];
   private hardSkills: ISkill[] = [
     {
-      image: 'cube',
-      text: ' cuberino'
+      image: 'phone-portrait',
+      text: 'native'
     },
     {
-      image: 'cube',
-      text: ' cuberino'
+      image: 'cloud-outline',
+      text: 'web'
     },
     {
-      image: 'cube',
-      text: ' cuberino'
+      image: 'cog',
+      text: 'engineer'
     },
     {
-      image: 'cube',
-      text: ' cuberino'
+      image: 'brush',
+      text: 'design'
     }
   ];
 
