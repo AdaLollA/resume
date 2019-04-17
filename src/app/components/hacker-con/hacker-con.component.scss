@@ -8,9 +8,8 @@ body {
   margin: 0;
   padding: 0;
 }
-html {
-  background: #1d2121;
-}
+
+
 body {
   font-family: "Segoe UI", Helvetica, Arial, sans-serif;
   min-height: 100vh;
@@ -21,9 +20,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
 body {
-  --color-text: #fff;
-  --color-bg: #000;
   --color-link: #555;
   --color-link-hover: #98fadf;
   --color-info: #f7cfb9;
@@ -145,6 +143,7 @@ body {
   font-size: 12vw;
   font-family: 'Playfair Display', serif;
   animation-delay: calc(var(--delay-anim) + var(--time-anim) * 0.2);
+  color: white;
 }
 .contentTitle span {
   color: var(--color-link-hover);
@@ -157,6 +156,7 @@ body {
   width: 100%;
   font-weight: 400;
   animation-delay: calc(var(--delay-anim) + var(--time-anim) * 0.25);
+  color: white;
 }
 @media screen and (max-width: 55em) {
   .contentFixed {

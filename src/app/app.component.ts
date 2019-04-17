@@ -55,6 +55,9 @@ export class AppComponent {
 
     dismissIntro() {
         this.introMarginTop = '-100vh';
+        setTimeout(() => {
+            this.introVisibility = 'hidden';
+        }, 500);
     }
 
     initMouseWheelListener() {
