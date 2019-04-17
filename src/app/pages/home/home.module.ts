@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { HomePage } from './home.page';
 import {FancyCanvasComponent} from '../../components/fancy-canvas/fancy-canvas.component';
 import {ScrollingMouseComponent} from '../../components/scrolling-mouse/scrolling-mouse.component';
+import {HackerConComponent} from '../../components/hacker-con/hacker-con.component';
 
 @NgModule({
   imports: [
@@ -20,6 +21,6 @@ import {ScrollingMouseComponent} from '../../components/scrolling-mouse/scrollin
       }
     ])
   ],
-  declarations: [HomePage, FancyCanvasComponent, ScrollingMouseComponent]
+  declarations: [HomePage, FancyCanvasComponent, ScrollingMouseComponent, HackerConComponent]
 })
 export class HomePageModule {}
