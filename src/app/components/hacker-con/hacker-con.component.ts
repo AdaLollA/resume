@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 
 @Component({
   selector: 'app-hacker-con',
   templateUrl: './hacker-con.component.html',
   styleUrls: ['./hacker-con.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class HackerConComponent implements OnInit {
 
