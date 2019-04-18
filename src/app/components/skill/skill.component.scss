@@ -5,4 +5,12 @@
 
 .icon {
   font-size: 100px;
+  padding: 30px;
+  // color: var(--ion-color-tertiary);
+}
+
+.hexagon {
+  background-image: url("../../../assets/forms/hexagon.svg");
+  background-repeat: no-repeat;
+  background-position: center;
 }
