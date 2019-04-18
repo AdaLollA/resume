@@ -3,6 +3,7 @@ import {Component} from '@angular/core';
 import {Platform} from '@ionic/angular';
 
 import {SwipeScrollDirection, SwipeScrollListener, SwipeScrollListenService} from './services/swipe-scroll-listen.service';
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'app-root',
@@ -42,7 +43,8 @@ export class AppComponent implements SwipeScrollListener {
 
     constructor(
         private platform: Platform,
-        public swipeScrollListener: SwipeScrollListenService
+        public swipeScrollListener: SwipeScrollListenService,
+        public router: Router
     ) {
         this.initializeApp();
     }
@@ -51,29 +53,38 @@ export class AppComponent implements SwipeScrollListener {
         this.platform.ready().then(() => {
             this.swipeScrollListener.init('container');
             this.swipeScrollListener.subscribe(this);
-            if (AppComponent.isLocal()) {
+            if (this.isLocal()) {
                 console.log('running locally - hiding intro');
                 this.introVisibility = 'hidden';
             }
         });
     }
 
-    public dismissIntro() {
+    private dismissIntro() {
         this.introMarginTop = '-100vh';
         setTimeout(() => {
             this.introVisibility = 'hidden';
         }, 500);
     }
 
-    private static isLocal(): boolean {
-        if (location.hostname === "localhost" || location.hostname === "127.0.0.1")
-            return false; // todo switch
+    private showIntro() {
+        this.introVisibility = 'visible';
+        this.introMarginTop = '0vh';
+    }
+
+    private isLocal(): boolean {
+        if (location.hostname === "localhost" || location.hostname === "127.0.0.1"){
+            this.introMarginTop = '-100vh';
+            return true;
+        }
         return false;
     }
 
     swipeScrollEvent(direction: SwipeScrollDirection) {
         if (direction == SwipeScrollDirection.Up && this.introVisibility != 'hidden') {
             this.dismissIntro();
+        } else if (direction == SwipeScrollDirection.Down && this.introVisibility == 'hidden' && this.router.url == '/home') {
+            this.showIntro();
         }
     }
 }
