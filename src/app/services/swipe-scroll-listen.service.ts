@@ -60,7 +60,6 @@ export class SwipeScrollListenService {
     }
 
     public notify(direction: SwipeScrollDirection) {
-        console.log(direction);
         this.listeners.forEach((listener) => {
             listener.swipeScrollEvent(direction);
         })
