@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 
 import {Platform} from '@ionic/angular';
 
@@ -12,6 +12,7 @@ import {Router} from '@angular/router';
 export class AppComponent implements SwipeScrollListener {
     public introMarginTop = '0vh';
     public introVisibility = 'visible';
+    public brightMode: boolean;
 
     public appPages = [
         {
@@ -58,6 +59,12 @@ export class AppComponent implements SwipeScrollListener {
                 this.introVisibility = 'hidden';
             }
         });
+    }
+
+    public toggleMode(event) {
+        // todo
+        console.log(event);
+        this.brightMode = event.value;
     }
 
     private dismissIntro() {

@@ -13,16 +13,18 @@ import {LinkFooterComponent} from './components/link-footer/link-footer.componen
 import {HomePageModule} from './pages/home/home.module';
 import {HackerConComponent} from './components/hacker-con/hacker-con.component';
 import {ScrollingMouseComponent} from './components/scrolling-mouse/scrolling-mouse.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
     declarations: [AppComponent, PersonalInfoComponent, LinkFooterComponent, HackerConComponent, ScrollingMouseComponent],
   entryComponents: [],
-  imports: [
-    BrowserModule,
-    IonicModule.forRoot(),
-    AppRoutingModule,
-    HomePageModule
-  ],
+    imports: [
+        BrowserModule,
+        IonicModule.forRoot(),
+        AppRoutingModule,
+        HomePageModule,
+        FormsModule
+    ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
