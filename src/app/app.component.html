@@ -1,28 +1,30 @@
-<ion-app>
-    <ion-split-pane>
-        <ion-menu class="menu" type="reveal">
-            <ion-header>
-                <!-- todo personal data -->
-                <app-personal-info padding></app-personal-info>
-            </ion-header>
-            <ion-content [scrollY]="false">
-                <ion-list>
-                    <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
-                        <ion-item [routerDirection]="'root'" [routerLink]="[p.url]">
-                            <ion-icon slot="start" [name]="p.icon"></ion-icon>
-                            <ion-label>
-                                {{p.title}}
-                            </ion-label>
-                        </ion-item>
-                    </ion-menu-toggle>
-                </ion-list>
-            </ion-content>
-            <app-link-footer></app-link-footer>
-        </ion-menu>
-        <ion-router-outlet class="router" main></ion-router-outlet>
-    </ion-split-pane>
-</ion-app>
+<body id="container">
+    <ion-app>
+        <ion-split-pane>
+            <ion-menu class="menu" type="reveal">
+                <ion-header>
+                    <!-- todo personal data -->
+                    <app-personal-info padding></app-personal-info>
+                </ion-header>
+                <ion-content [scrollY]="false">
+                    <ion-list>
+                        <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
+                            <ion-item [routerDirection]="'root'" [routerLink]="[p.url]">
+                                <ion-icon slot="start" [name]="p.icon"></ion-icon>
+                                <ion-label>
+                                    {{p.title}}
+                                </ion-label>
+                            </ion-item>
+                        </ion-menu-toggle>
+                    </ion-list>
+                </ion-content>
+                <app-link-footer></app-link-footer>
+            </ion-menu>
+            <ion-router-outlet class="router" main></ion-router-outlet>
+        </ion-split-pane>
+    </ion-app>
 
-<div id="container" class="animate-all" [ngStyle]="{'margin-top': introMarginTop, 'visibility': introVisibility}">
-    <app-hacker-con class="overlay"></app-hacker-con>
-</div>
+    <div class="animate-all" [ngStyle]="{'margin-top': introMarginTop, 'visibility': introVisibility}">
+        <app-hacker-con class="overlay"></app-hacker-con>
+    </div>
+</body>

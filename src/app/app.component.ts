@@ -2,13 +2,13 @@ import {Component} from '@angular/core';
 
 import {Platform} from '@ionic/angular';
 
-import SwipeListener from 'swipe-listener';
+import {SwipeScrollDirection, SwipeScrollListener, SwipeScrollListenService} from './services/swipe-scroll-listen.service';
 
 @Component({
     selector: 'app-root',
     templateUrl: 'app.component.html'
 })
-export class AppComponent {
+export class AppComponent implements SwipeScrollListener {
     public introMarginTop = '0vh';
     public introVisibility = 'visible';
 
@@ -42,51 +42,38 @@ export class AppComponent {
 
     constructor(
         private platform: Platform,
+        public swipeScrollListener: SwipeScrollListenService
     ) {
         this.initializeApp();
     }
 
-    initializeApp() {
+    private initializeApp() {
         this.platform.ready().then(() => {
-            this.initMouseWheelListener();
-            this.initSwipeListener();
-            if (this.isLocal()) {
-                console.log('running locally - hiding intro')
+            this.swipeScrollListener.init('container');
+            this.swipeScrollListener.subscribe(this);
+            if (AppComponent.isLocal()) {
+                console.log('running locally - hiding intro');
                 this.introVisibility = 'hidden';
             }
         });
     }
 
-    dismissIntro() {
+    public dismissIntro() {
         this.introMarginTop = '-100vh';
         setTimeout(() => {
             this.introVisibility = 'hidden';
         }, 500);
     }
 
-    initMouseWheelListener() {
-        // IE9, Chrome, Safari, Opera
-        document.body.addEventListener('mousewheel', () => this.dismissIntro(), false);
-        // Firefox
-        document.body.addEventListener('DOMMouseScroll', () => this.dismissIntro(), false);
-    }
-
-    initSwipeListener() {
-        var container = document.getElementById('container');
-        var listener = SwipeListener(container);
-        container.addEventListener('swipe', (e: any) => {
-            var directions = e.detail.directions;
-            var x = e.detail.x;
-            var y = e.detail.y;
-            if (directions.top) {
-                this.dismissIntro();
-            }
-        });
-    }
-
-    isLocal(): boolean {
+    private static isLocal(): boolean {
         if (location.hostname === "localhost" || location.hostname === "127.0.0.1")
-            return true;
+            return false; // todo switch
         return false;
+    }
+
+    swipeScrollEvent(direction: SwipeScrollDirection) {
+        if (direction == SwipeScrollDirection.Up && this.introVisibility != 'hidden') {
+            this.dismissIntro();
+        }
     }
 }
