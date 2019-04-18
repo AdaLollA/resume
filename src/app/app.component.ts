@@ -73,7 +73,7 @@ export class AppComponent implements SwipeScrollListener {
     }
 
     private isLocal(): boolean {
-        if (location.hostname === "localhost" || location.hostname === "127.0.0.1"){
+        if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
             this.introMarginTop = '-100vh';
             return true;
         }
@@ -83,11 +83,13 @@ export class AppComponent implements SwipeScrollListener {
     swipeScrollEvent(direction: SwipeScrollDirection) {
         if (direction == SwipeScrollDirection.Up && this.introVisibility != 'hidden') {
             this.dismissIntro();
-        }
-        // --- home page ---
-        else if (direction == SwipeScrollDirection.Down && this.introVisibility == 'hidden' && this.router.url == '/home') {
+        }else if (direction == SwipeScrollDirection.Down && this.introVisibility == 'hidden' && this.router.url == '/home') {
             this.showIntro();
-        } else if (direction == SwipeScrollDirection.Up && this.introVisibility == 'hidden' && this.router.url == '/home') {
+        }
+        /*
+        todo bad user experience in portfolio page
+        // --- home page ---
+        else if (direction == SwipeScrollDirection.Up && this.introVisibility == 'hidden' && this.router.url == '/home') {
             this.router.navigateByUrl('/skills');
         }
         // --- skills page ---
@@ -96,12 +98,7 @@ export class AppComponent implements SwipeScrollListener {
         } else if (direction == SwipeScrollDirection.Up && this.router.url == '/skills') {
             this.router.navigateByUrl('/portfolio');
         }
-        // --- portfolio page ---
-        else if (direction == SwipeScrollDirection.Down && this.router.url == '/portfolio') {
-            this.router.navigateByUrl('/skills');
-        } else if (direction == SwipeScrollDirection.Up && this.router.url == '/portfolio') {
-            this.router.navigateByUrl('/experience');
-        }
+        // --- portfolio page handles scrolling itself ---
         // --- experience page ---
         else if (direction == SwipeScrollDirection.Down && this.router.url == '/experience') {
             this.router.navigateByUrl('/portfolio');
@@ -112,5 +109,6 @@ export class AppComponent implements SwipeScrollListener {
         else if (direction == SwipeScrollDirection.Down && this.router.url == '/team') {
             this.router.navigateByUrl('/experience');
         }
+         */
     }
 }
