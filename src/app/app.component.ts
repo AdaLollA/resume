@@ -83,8 +83,34 @@ export class AppComponent implements SwipeScrollListener {
     swipeScrollEvent(direction: SwipeScrollDirection) {
         if (direction == SwipeScrollDirection.Up && this.introVisibility != 'hidden') {
             this.dismissIntro();
-        } else if (direction == SwipeScrollDirection.Down && this.introVisibility == 'hidden' && this.router.url == '/home') {
+        }
+        // --- home page ---
+        else if (direction == SwipeScrollDirection.Down && this.introVisibility == 'hidden' && this.router.url == '/home') {
             this.showIntro();
+        } else if (direction == SwipeScrollDirection.Up && this.introVisibility == 'hidden' && this.router.url == '/home') {
+            this.router.navigateByUrl('/skills');
+        }
+        // --- skills page ---
+        else if (direction == SwipeScrollDirection.Down && this.router.url == '/skills') {
+            this.router.navigateByUrl('/home');
+        } else if (direction == SwipeScrollDirection.Up && this.router.url == '/skills') {
+            this.router.navigateByUrl('/portfolio');
+        }
+        // --- portfolio page ---
+        else if (direction == SwipeScrollDirection.Down && this.router.url == '/portfolio') {
+            this.router.navigateByUrl('/skills');
+        } else if (direction == SwipeScrollDirection.Up && this.router.url == '/portfolio') {
+            this.router.navigateByUrl('/experience');
+        }
+        // --- experience page ---
+        else if (direction == SwipeScrollDirection.Down && this.router.url == '/experience') {
+            this.router.navigateByUrl('/portfolio');
+        } else if (direction == SwipeScrollDirection.Up && this.router.url == '/experience') {
+            this.router.navigateByUrl('/team');
+        }
+        // --- team page ---
+        else if (direction == SwipeScrollDirection.Down && this.router.url == '/team') {
+            this.router.navigateByUrl('/experience');
         }
     }
 }
