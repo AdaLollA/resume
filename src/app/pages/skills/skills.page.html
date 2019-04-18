@@ -1,27 +1,35 @@
 <ion-menu-button class="menu-button"></ion-menu-button>
 
-<ion-row class="full-size">
-    <ion-row class="full-width">
-        <ion-row class="full-width">
-            <ion-row class="full-width">soft</ion-row>
-            <ion-row justify-content-around class="full-width">
-                <ion-col *ngFor="let skill of softSkills" size="6" size-lg="3">
-                    <ion-row justify-content-center align-items-center class="full-size">
-                        <app-skill class="full-size skill" [skill]="skill"></app-skill>
+<ion-row class="full-size" justify-content-center align-items-center>
+    <div class="wrapper">
+        <ion-row class="full-width" margin-bottom padding-bottom>
+            <ion-row class="full-width" justify-content-center align-items-end>
+                <p class="skill-title">Soft Skills</p>
+            </ion-row>
+            <ion-row justify-content-around class="full-width" align-items-start>
+                <ion-col *ngFor="let skill of softSkills" size="6" size-lg="3" class="skill-col">
+                    <ion-row justify-content-center align-items-center class="full-width">
+                        <app-skill class="full-width" [skill]="skill"></app-skill>
                     </ion-row>
                 </ion-col>
             </ion-row>
         </ion-row>
 
-        <ion-row class="full-width">
-            <ion-row class="full-width">hard</ion-row>
-            <ion-row justify-content-around class="full-width">
-                <ion-col *ngFor="let skill of hardSkills" size="6" size-lg="3">
-                    <ion-row justify-content-center align-items-center class="full-size">
-                        <app-skill class="full-size skill" [skill]="skill"></app-skill>
+        <ion-row class="full-width" justify-content-center>
+            <div class="divider"></div>
+        </ion-row>
+
+        <ion-row class="full-width" margin-top padding-top>
+            <ion-row class="full-width" justify-content-center align-items-end>
+                <p class="skill-title">Hard Skills</p>
+            </ion-row>
+            <ion-row justify-content-around class="full-width" align-items-start>
+                <ion-col *ngFor="let skill of hardSkills" size="6" size-lg="3" class="skill-col">
+                    <ion-row justify-content-center align-items-center class="full-width">
+                        <app-skill class="full-width" [skill]="skill"></app-skill>
                     </ion-row>
                 </ion-col>
             </ion-row>
         </ion-row>
-    </ion-row>
+    </div>
 </ion-row>

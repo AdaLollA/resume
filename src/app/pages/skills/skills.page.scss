@@ -2,6 +2,22 @@
   position: absolute;
 }
 
-.skill {
+.skill-title {
+  font-size: 30px;
+  margin: 0;
+  font-weight: bold;
+}
 
+.skill-col {
+  height: 175px;
+}
+
+.divider {
+  width: 80%;
+  background: var(--ion-color-light-shade);
+  height: 1px;
+}
+
+.wrapper {
+  width: 85%;
 }
