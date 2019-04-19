@@ -10,8 +10,8 @@ export class ExperiencePage implements OnInit {
     public education: TimelineObject[] = [
         {
             year: '2018+',
-            title: 'scondary technical college',
-            content: 'informatics and electronics'
+            title: 'Msc: University of Applied Sciences ',
+            content: 'Management | Engineering | Innovation'
         }, {
             year: '2018',
             title: 'BSc: University of Applied Sciences ',
@@ -31,7 +31,7 @@ export class ExperiencePage implements OnInit {
         }, {
             year: '2014 - 2018',
             title: 'SBS Software Ges.m.b.H',
-            content: 'Mobile | Web-App | Prototyping'
+            content: 'Mobile | Web | Prototyping'
         }, {
             year: '2013',
             title: 'PALFINGER Group',
@@ -41,13 +41,13 @@ export class ExperiencePage implements OnInit {
 
     public awards: TimelineObject[] = [
         {
-            year: '2014',
-            title: 'Research and Development Talent',
-            content: 'Austrian Ministry for Transport, Innovation and Technology'
-        }, {
             year: '2017',
             title: '2nd Place',
             content: 'Coding Contest'
+        }, {
+            year: '2014',
+            title: 'Research and Development Talent',
+            content: 'Austrian Ministry for Transport, Innovation and Technology'
         }
     ];
 

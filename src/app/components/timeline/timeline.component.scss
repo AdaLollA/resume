@@ -1,17 +1,25 @@
 .year {
-
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 0;
+  margin-top: 5px;
+  color: var(--ion-color-medium-shade);
 }
 
 .title {
-
+  font-size: 24px;
+  margin: 10px 0 10px 0;
 }
 
 .text {
-
+  font-size: 14px;
+  margin-top: 0;
+  margin-bottom: 5px;
+  color: var(--ion-color-medium-tint);
 }
 
 .line-title {
-
+  text-decoration: underline;
 }
 
 .line {
