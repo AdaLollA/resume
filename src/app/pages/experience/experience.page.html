@@ -1,22 +1,17 @@
 <ion-menu-button class="menu-button"></ion-menu-button>
 
-<ion-row class="full-size" align-items-center margin-top padding-top>
-    <ion-col size="6">
-        <ion-row justify-content-center>
-            <h1 class="work-text">Work</h1>
-        </ion-row>
-        <ion-row>
-            <app-work-timeline class="work"></app-work-timeline>
-        </ion-row>
-    </ion-col>
-    <ion-col size="6">
-        <ion-row justify-content-center>
-            <h1 class="edu-text">Education</h1>
-        </ion-row>
-        <ion-row>
-            <app-education-timeline class="edu"></app-education-timeline>
-        </ion-row>
-    </ion-col>
+<ion-row align-items-center class="full-size" justify-content-center>
+    <ion-row align-items-start>
+        <ion-col size="12" size-lg="4">
+            <app-timeline [timeline-objects]="education" title="Education"></app-timeline>
+        </ion-col>
+        <ion-col size="12" size-lg="4">
+            <app-timeline [timeline-objects]="experience" title="Experience"></app-timeline>
+        </ion-col>
+        <ion-col size="12" size-lg="4">
+            <app-timeline [timeline-objects]="awards" title="Awards"></app-timeline>
+        </ion-col>
+    </ion-row>
 </ion-row>
 
 

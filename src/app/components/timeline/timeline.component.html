@@ -1,0 +1,8 @@
+<ion-row justify-content-center>
+  <p class="line-title">{{ title }}</p>
+  <ion-col size="12" *ngFor="let object of objects">
+    <p class="year">{{ object.year }}</p>
+    <p class="title">{{ object.title }}</p>
+    <p class="text">{{ object.content }}</p>
+  </ion-col>
+</ion-row>
