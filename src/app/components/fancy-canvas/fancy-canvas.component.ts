@@ -86,7 +86,7 @@ export class FancyCanvasComponent implements OnInit {
         });
 
         this.space.bindMouse();
-        this.space.play().then(/*do nothing*/);
+        this.space.play();
     }
 
     /*
