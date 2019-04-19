@@ -24,7 +24,6 @@ export class MenuStateService {
         this.menuCtrl.get().then((menu) => {
             menu.isActive().then((active) => {
                 this.showMenu = !active;
-                console.log(this.showMenu);
             });
         });
     }
