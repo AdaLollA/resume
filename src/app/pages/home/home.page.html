@@ -1,4 +1,13 @@
-<ion-menu-button class="menu-button"></ion-menu-button>
+<ion-header [hidden]="menu.showMenu">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>
+            Home
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
 
 <ion-row class="full-size container" justify-content-center align-items-center>
     <ion-row size="12">
