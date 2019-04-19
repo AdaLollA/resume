@@ -1,4 +1,4 @@
-import {HostListener, Injectable} from '@angular/core';
+import {HostListener, Injectable, OnInit} from '@angular/core';
 import {MenuController} from '@ionic/angular';
 import {EventManager} from '@angular/platform-browser';
 
@@ -8,15 +8,23 @@ import {EventManager} from '@angular/platform-browser';
 export class MenuStateService {
     public showMenu: boolean;
 
-    constructor(private menuCtrl: MenuController,
-                private eventManager: EventManager) {
-        console.log('hello menu service');
+    constructor(public menuCtrl: MenuController,
+                public eventManager: EventManager) {
+        this.init();
+        this.checkSize();
+    }
 
+    public init(): void {
         this.eventManager.addGlobalEventListener('window', 'resize', () => {
-            this.menuCtrl.get().then((menu) => {
-                menu.isActive().then((active) => {
-                    this.showMenu = !active;
-                });
+            this.checkSize();
+        });
+    }
+
+    private checkSize() {
+        this.menuCtrl.get().then((menu) => {
+            menu.isActive().then((active) => {
+                this.showMenu = !active;
+                console.log(this.showMenu);
             });
         });
     }
