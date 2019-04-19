@@ -13,30 +13,28 @@ export class FancyCanvasComponent implements OnInit {
         this.floatySpace();
     }
 
-
     floatySpace() {
-        var colors = [
+        const colors = [
             '#FF3F8E', '#04C2C9', '#2E55C1'
         ];
 
-
         this.space = new CanvasSpace('canvas', '#252934').display();
-        var form = new Form(this.space);
+        let form = new Form(this.space);
 
         // Elements
-        var pts = [];
-        var center = this.space.size.$divide(1.8);
-        var angle = -(window.innerWidth * 0.5);
-        var count = window.innerWidth * 0.05;
+        const pts = [];
+        const center = this.space.size.$divide(1.8);
+        const angle = -(window.innerWidth * 0.5);
+        let count = window.innerWidth * 0.05;
         if (count > 150) {
             count = 150;
         }
-        var line = new Line(0, angle).to(this.space.size.x, 0);
-        var mouse = center.clone();
+        let line = new Line(0, angle).to(this.space.size.x, 0);
+        let mouse = center.clone();
 
-        var r = Math.min(this.space.size.x, this.space.size.y) * 1;
-        for (var i = 0; i < count; i++) {
-            var p = new Vector(Math.random() * r - Math.random() * r, Math.random() * r - Math.random() * r);
+        let r = Math.min(this.space.size.x, this.space.size.y);
+        for (let i = 0; i < count; i++) {
+            let p = new Vector(Math.random() * r - Math.random() * r, Math.random() * r - Math.random() * r);
             p.moveBy(center).rotate2D(i * Math.PI / count, center);
             p.brightness = 0.1;
             pts.push(p);
@@ -44,21 +42,20 @@ export class FancyCanvasComponent implements OnInit {
 
         // Canvas
         this.space.add({
-            animate: function (time, fps, context) {
+            animate: () => {
 
-                for (var i = 0; i < pts.length; i++) {
+                for (let i = 0; i < pts.length; i++) {
                     // rotate the points slowly
-                    var pt = pts[i];
+                    let pt = pts[i];
 
                     pt.rotate2D(Const.one_degree / 20, center);
                     form.stroke(false).fill(colors[i % 3]).point(pt, 1);
 
                     // get line from pt to the mouse line
-                    var ln = new Line(pt).to(line.getPerpendicularFromPoint(pt));
+                    let ln = new Line(pt).to(line.getPerpendicularFromPoint(pt));
 
                     // opacity of line derived from distance to the line
-                    var opacity = Math.min(0.8, 1 - Math.abs(line.getDistanceFromPoint(pt)) / r);
-                    var distFromMouse = Math.abs(ln.getDistanceFromPoint(mouse));
+                    let distFromMouse = Math.abs(ln.getDistanceFromPoint(mouse));
 
                     if (distFromMouse < 50) {
                         if (pts[i].brightness < 0.3) {
@@ -70,12 +67,13 @@ export class FancyCanvasComponent implements OnInit {
                         }
                     }
 
-                    var color = 'rgba(255,255,255,' + pts[i].brightness + ')';
+                    let color = 'rgba(255,255,255,' + pts[i].brightness + ')';
                     form.stroke(color).fill(true).line(ln);
                 }
             },
 
-            onMouseAction: function (type, x, y, evt) {
+            /*
+            onMouseAction: (type, x, y, evt) => {
                 if (type == 'move') {
                     mouse.set(x, y);
                 }
@@ -84,14 +82,17 @@ export class FancyCanvasComponent implements OnInit {
             onTouchAction: function (type, x, y, evt) {
                 this.onMouseAction(type, x, y);
             }
+             */
         });
 
         this.space.bindMouse();
-        this.space.play();
+        this.space.play().then(/*do nothing*/);
     }
 
+    /*
     handleResize() {
         this.space.removeAll();
         this.floatySpace();
     }
+     */
 }
