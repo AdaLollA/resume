@@ -28,8 +28,8 @@ body {
   --glitch-height: 100vh;
   --gap-horizontal: 10px;
   --gap-vertical: 5px;
-  --time-anim: 5s;
-  --delay-anim: 5s;
+  --time-anim: 4s;
+  --delay-anim: 2s;
   --blend-mode-1: none;
   --blend-mode-2: overlay;
   --blend-mode-3: none;
@@ -133,12 +133,12 @@ body {
   animation-iteration-count: infinite;
 }
 .contentSection {
-  margin: 10vh 0 0 0;
+  margin: 0;
   position: relative;
 }
 .contentTitle {
   height: 50vh;
-  line-height: 160px;
+  line-height: 12vw;
   font-size: 12vw;
   font-family: 'Playfair Display', serif;
   animation-delay: calc(var(--delay-anim) + var(--time-anim) * 0.2);
@@ -149,9 +149,10 @@ body {
 }
 .contentText {
   font-family: 'IM Fell English', serif;
-  margin: 7vh 0 0;
+  margin: 0;
   font-size: 1.5em;
-  // max-width: 600px;
+  position: absolute;
+  bottom: 100px;//
   width: 100%;
   font-weight: 400;
   animation-delay: calc(var(--delay-anim) + var(--time-anim) * 0.25);
