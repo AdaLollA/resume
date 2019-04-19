@@ -1,6 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {Line} from 'tslint/lib/verify/lines';
-import {Form} from '@angular/forms';
+import {Vector, Line, Form, Const, CanvasSpace} from 'ptjs';
 
 @Component({
     selector: 'app-fancy-canvas',
@@ -19,8 +18,7 @@ export class FancyCanvasComponent implements OnInit {
     }
 
     private floatySpace() {
-        /*
-        this.space = this.canvas.nativeElement;
+        this.space = new CanvasSpace('canvas', '#252934').display();
         const form = new Form(this.space);
 
         // Elements
@@ -44,7 +42,7 @@ export class FancyCanvasComponent implements OnInit {
 
         // Canvas
         this.space.add({
-            animate: function (time, fps, context) {
+            animate: (time, fps, context) => {
 
                 for (let i = 0; i < pts.length; i++) {
                     // rotate the points slowly
@@ -75,7 +73,7 @@ export class FancyCanvasComponent implements OnInit {
                 }
             },
 
-            onMouseAction: function (type, x, y, evt) {
+            onMouseAction: (type, x, y, evt) => {
                 if (type === 'move') {
                     mouse.set(x, y);
                 }
@@ -88,7 +86,6 @@ export class FancyCanvasComponent implements OnInit {
 
         this.space.bindMouse();
         this.space.play();
-        */
     }
 
     handleResize() {
