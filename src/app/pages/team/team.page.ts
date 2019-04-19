@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {MenuStateService} from '../../services/menu-state.service';
 
 @Component({
   selector: 'app-team',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TeamPage implements OnInit {
 
-  constructor() { }
+  constructor(public menu: MenuStateService) { }
 
   ngOnInit() {
   }

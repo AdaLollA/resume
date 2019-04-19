@@ -2,6 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {SwipeScrollDirection, SwipeScrollListener, SwipeScrollListenService} from '../../services/swipe-scroll-listen.service';
 import {Router} from '@angular/router';
 import {IonContent} from '@ionic/angular';
+import {MenuStateService} from '../../services/menu-state.service';
 
 @Component({
     selector: 'app-portfolio',
@@ -18,9 +19,8 @@ export class PortfolioPage implements OnInit {
     ];
 
     constructor(
-        private swipeScrollListener: SwipeScrollListenService,
+        public menu: MenuStateService,
         public router: Router) {
-        // this.swipeScrollListener.subscribe(this);
     }
 
     ngOnInit(): void {

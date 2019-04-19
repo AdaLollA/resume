@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ISkill} from '../../components/skill/skill.component';
+import {MenuStateService} from '../../services/menu-state.service';
 
 @Component({
   selector: 'app-skills',
@@ -44,7 +45,7 @@ export class SkillsPage implements OnInit {
     }
   ];
 
-  constructor() { }
+  constructor(public menu: MenuStateService) { }
 
   ngOnInit() {
   }

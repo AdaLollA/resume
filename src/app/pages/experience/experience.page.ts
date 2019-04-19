@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {TimelineObject} from '../../components/timeline/timeline.component';
+import {MenuStateService} from '../../services/menu-state.service';
 
 @Component({
     selector: 'app-experience',
@@ -51,7 +52,7 @@ export class ExperiencePage implements OnInit {
         }
     ];
 
-    constructor() {
+    constructor(public menu: MenuStateService) {
     }
 
     ngOnInit() {
