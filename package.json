@@ -27,7 +27,7 @@
     "@ionic/angular": "^4.3.0",
     "angular-material": "^1.1.18",
     "core-js": "^2.5.4",
-    "ptjs": "^0.2.4",
+    "pts": "^0.8.1",
     "rxjs": "~6.3.3",
     "swipe-listener": "^1.0.7",
     "zone.js": "~0.8.29"
