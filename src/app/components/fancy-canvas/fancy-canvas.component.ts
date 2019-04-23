@@ -26,11 +26,13 @@ export class FancyCanvasComponent implements OnInit {
         ];
         let tempo = new Tempo(10);
         const lineColor: string = 'rgba(141,141,141,';
+        const fade: number = 0.03;
 
         // create
         this.init = false;
         let space = new CanvasSpace('#beauty');
         space.setup({bgcolor: '#252934'});
+        space.autoResize = true;
         let form = space.getForm();
         let e: IFlyer[] = [];
         for (let i = 0; i < count; i++) {
@@ -60,7 +62,7 @@ export class FancyCanvasComponent implements OnInit {
                 form.fillOnly(el.color).point(dotLn.p2, 1, 'circle');
 
                 // opacity
-                el.opacity = el.opacity > lineOpacity ? el.opacity - 0.05 : el.opacity;
+                el.opacity = el.opacity > lineOpacity ? el.opacity - fade : el.opacity;
 
                 // lines
                 let ln = Line.fromAngle(dotLn.p2, angle, space.height + space.width);
@@ -79,6 +81,8 @@ export class FancyCanvasComponent implements OnInit {
 
         // play
         space.play().bindMouse().bindTouch();
+
+        // clear
     }
 
     private static numberBetween(min: number, max: number) {
