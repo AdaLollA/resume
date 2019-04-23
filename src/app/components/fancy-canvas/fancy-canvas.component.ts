@@ -5,6 +5,7 @@ export interface IFlyer {
     color: string
     position?: number[]
     radius?: number
+    progress?: number
 }
 
 @Component({
@@ -42,14 +43,19 @@ export class FancyCanvasComponent implements OnInit {
             const cy = space.center.y;
 
             if (!this.init) {
+                // init
                 e.forEach((el) => {
                     el.position = [
                         cx + (this.numberBetween(0, cx * 2) - cx) * spread,
-                        cy + (this.numberBetween(0, cy * 2) - cy) * spread
+                        0
                     ];
+                    el.radius = Math.abs(cx - el.position[0]);
+                    el.progress = this.numberBetween(0, 360);
                 });
                 this.init = true;
             } else {
+                // animation
+                // todo let ln = Line.fromAngle( space.center, Const.two_pi*t - Const.half_pi, space.size.y/3 );
                 e.forEach((el) => {
                     el.position = [
                         el.position[0] + 1,
@@ -57,8 +63,6 @@ export class FancyCanvasComponent implements OnInit {
                     ];
                 });
             }
-
-            // form.stroke('#42e', 5).fill('#42e').point(space.center, 3, 'circle');
 
             e.forEach((el) => {
                 form.stroke(el.color, 5).fill(el.color).point(el.position, 3, 'circle');
@@ -74,6 +78,10 @@ export class FancyCanvasComponent implements OnInit {
 
     private numberBetween(min: number, max: number) {
         return Math.floor(Math.random() * max) + min;
+    }
+
+    private distanceBetweenPoints(pointA: number[], pointB: number[]) : number {
+        return Math.sqrt(Math.pow((pointA[0] - pointB[0]), 2) + Math.pow((pointA[1] - pointB[1]), 2));
     }
 
 }
