@@ -69,7 +69,8 @@ export class FancyCanvasComponent implements OnInit {
                 // hover
                 form.point(space.pointer, 10); // todo this is cursor debug - seems to be offset by menu
                 let distance: number = Line.perpendicularFromPt(ln, space.pointer, true).magnitude();
-                if (distance < 10) {
+                let above: boolean = space.pointer.y < ln.p1.y;
+                if (distance < 10 && above) {
                     el.opacity = 1;
                 }
             });
