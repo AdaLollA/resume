@@ -14,6 +14,8 @@ export class PortfolioPage implements OnInit {
     private container;
     private scrollElement;
 
+    public fabMargin: string = '-100px';
+
     cards = [
         'a', 'b', 'c', 'd', 'e'
     ];
