@@ -3,9 +3,8 @@ import {CanvasSpace, Const, Line, Num, Pt, Tempo} from 'pts';
 
 export interface IFlyer {
     color?: string
-    position?: number[]
+    offset?: number
     radius?: number
-    progress?: number
 }
 
 @Component({
@@ -35,47 +34,28 @@ export class FancyCanvasComponent implements OnInit {
         }
 
         // setup
-        space.add((time, ftime) => {
+        space.add(() => {
             const cx = space.center.x;
             const cy = space.center.y;
-
             if (!this.init) {
                 // init
                 e.forEach((el) => {
-                    el.color = colors[ftime % colors.length];
-                    el.position = [
-                        cx + (this.numberBetween(0, cx * 2) - cx) * spread,
-                        0
-                    ];
-                    el.radius = Math.abs(cx - el.position[0]);
-                    el.progress = this.numberBetween(0, 360);
+                    el.color = colors[this.numberBetween(0, colors.length)];
+                    el.offset = this.numberBetween(0, Const.two_pi*100) / 100;
+                    el.radius = this.numberBetween(0, this.pythagorasC(space.height, space.width) / 2);
                 });
                 this.init = true;
-            } else {
-                // animation
-                // todo let ln = Line.fromAngle( space.center, Const.two_pi*t - Const.half_pi, space.size.y/3 );
             }
         });
 
         // animate
         // todo tempo
-        tempo.every(2).progress((count: number, t: number, ms: number, start: boolean) => {
+        tempo.every(20).progress((count: number, t: number, ms: number, start: boolean) => {
             e.forEach((el) => {
-                // todo form.stroke(el.color, 5).fill(el.color).point(el.position, 3, 'circle');
-                let ln = Line.fromAngle(space.center, Const.two_pi * t - Const.half_pi, space.size.y / 3);
-                form.fillOnly(el.color).point(ln.p2, 3, 'circle');
+                let ln = Line.fromAngle(space.center, Const.two_pi * t - Const.half_pi + el.offset, space.size.y / 3);
+                form.fillOnly(el.color).point(ln.p2, 1, 'circle');
             });
         }, 0);
-
-            /*.start((count) => {
-            console.log(count);
-            e.forEach((el) => {
-                // todo form.stroke(el.color, 5).fill(el.color).point(el.position, 3, 'circle');
-                let ln = Line.fromAngle(space.center, Const.two_pi * count - Const.half_pi, space.size.y / 3);
-                form.fillOnly(el.color).point(ln.p2, 3, 'circle');
-            });
-        }, 0);
-             */
         space.add(tempo as any);
 
         // play
@@ -88,6 +68,10 @@ export class FancyCanvasComponent implements OnInit {
 
     private distanceBetweenPoints(pointA: number[], pointB: number[]): number {
         return Math.sqrt(Math.pow((pointA[0] - pointB[0]), 2) + Math.pow((pointA[1] - pointB[1]), 2));
+    }
+
+    private pythagorasC(a: number, b: number): number {
+        return Math.sqrt(Math.pow(a,2) + Math.pow(b,2));
     }
 
 }
