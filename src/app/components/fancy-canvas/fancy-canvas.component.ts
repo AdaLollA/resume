@@ -18,11 +18,10 @@ export class FancyCanvasComponent implements OnInit {
     ngOnInit(): void {
         // variables
         const count = 100;
-        const spread = 0.8;
         const colors: string[] = [
             '#1aff1c', '#ff2f31', '#2d75ff'
         ];
-        let tempo = new Tempo(60);
+        let tempo = new Tempo(10);
 
         // create
         let space = new CanvasSpace('#beauty');
@@ -52,7 +51,7 @@ export class FancyCanvasComponent implements OnInit {
         // todo tempo
         tempo.every(20).progress((count: number, t: number, ms: number, start: boolean) => {
             e.forEach((el) => {
-                let ln = Line.fromAngle(space.center, Const.two_pi * t - Const.half_pi + el.offset, space.size.y / 3);
+                let ln = Line.fromAngle(space.center, Const.two_pi * t - Const.half_pi + el.offset, el.radius);
                 form.fillOnly(el.color).point(ln.p2, 1, 'circle');
             });
         }, 0);
