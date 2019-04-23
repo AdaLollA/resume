@@ -12,7 +12,6 @@ import {MenuStateService} from '../../services/menu-state.service';
 export class PortfolioPage {
     @ViewChild('container')
     private container;
-    private scrollElement;
 
     public fabMargin: string = '-100px';
 
@@ -28,9 +27,13 @@ export class PortfolioPage {
     handleScroll(e) {
         if (e.detail.scrollTop < 100) {
             this.fabMargin = '-' + (100 - e.detail.scrollTop) + 'px';
-            console.log(this.fabMargin)
         } else {
             this.fabMargin = '0';
         }
+    }
+
+    scrollToTop() {
+        console.log('top');
+        this.container.scrollToTop(200);
     }
 }

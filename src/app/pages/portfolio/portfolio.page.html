@@ -39,7 +39,8 @@
         </ion-col>
     </ion-row>
 
-    <ion-fab [ngStyle]="{'margin-bottom': fabMargin}" class="" vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab [ngStyle]="{'margin-bottom': fabMargin}" class="" vertical="bottom" horizontal="end" slot="fixed"
+             (click)="scrollToTop()">
         <ion-fab-button>
             <ion-icon name="arrow-up"></ion-icon>
         </ion-fab-button>
