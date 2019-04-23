@@ -9,92 +9,19 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-row class="full-size">
-  <ion-row class="full-width">
-    <h1>our amazing team</h1>
-  </ion-row>
-  <ion-row class="full-width">
-    <p>Currently it's only me. But new members are always welcome.</p>
-  </ion-row>
-  <ion-row>
-    <ion-col size="12" size-md="3">
-      teammmember
-    </ion-col>
-  </ion-row>
+<ion-row class="full-size container">
+  <ion-col size="12" sizeXl="3" *ngFor="let member of team; let i = index">
+    <ion-row justify-content-center align-items-center class="full-size member-container">
+      <ion-col size="12" text-center>
+        <img [src]="member.img">
+      </ion-col>
+      <ion-col size="12" text-center no-padding><p class="name">{{ member.name }}</p></ion-col>
+      <ion-col size="12" text-center no-padding><p class="profession">{{ member.profession }}</p></ion-col>
+      <ion-col size="12">
+        <ion-row class="full-size" justify-content-center>
+          <div class="divider"></div>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-col>
 </ion-row>
-
-<!--
-<div class="container">
-  <div class="row">
-    <div class="col-lg-12 text-center">
-      <h2 class="section-heading">Our Amazing Team</h2>
-      <h3 class="section-subheading text-muted">Currently it's only me. But new members are always welcome.</h3>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-3">
-      <div class="team-member">
-        <img src="img/team/1.jpg" class="img-responsive img-circle" alt="">
-        <h4>Lorenz Graf</h4>
-        <p class="text-muted">Develop</p>
-        <ul class="list-inline social-buttons">
-          <li><a href="https://twitter.com/adalolla"><i class="fa fa-twitter"></i></a>
-          </li>
-          <li><a href="https://www.facebook.com/lorenz.graf.5"><i class="fa fa-facebook"></i></a>
-          </li>
-          <li><a href="https://www.linkedin.com/in/lorenz-graf-65201a138/"><i class="fa fa-linkedin"></i></a>
-          </li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="col-sm-3">
-      <div class="team-member">
-        <img src="img/team/3.jpg" class="img-responsive img-circle" alt="">
-        <h4>Lord Graf Lorenz</h4>
-        <p class="text-muted">Lead</p>
-        <ul class="list-inline social-buttons">
-          <li><a href="https://twitter.com/adalolla"><i class="fa fa-twitter"></i></a>
-          </li>
-          <li><a href="https://www.facebook.com/lorenz.graf.5"><i class="fa fa-facebook"></i></a>
-          </li>
-          <li><a href="https://www.linkedin.com/in/lorenz-graf-65201a138/"><i class="fa fa-linkedin"></i></a>
-          </li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="col-sm-3">
-      <div class="team-member">
-        <img src="img/team/2.jpeg" class="img-responsive img-circle" alt="">
-        <h4>Gustav Götz</h4>
-        <p class="text-muted">Design</p>
-        <ul class="list-inline social-buttons">
-          <li><a href="https://twitter.com/adalolla"><i class="fa fa-twitter"></i></a>
-          </li>
-          <li><a href="https://www.facebook.com/lorenz.graf.5"><i class="fa fa-facebook"></i></a>
-          </li>
-          <li><a href="https://www.linkedin.com/in/lorenz-graf-65201a138/"><i class="fa fa-linkedin"></i></a>
-          </li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="col-sm-3">
-      <div class="team-member">
-        <img src="img/team/4.jpg" class="img-responsive img-circle" alt="">
-        <h4>Graf Gläubig</h4>
-        <p class="text-muted">Religious and Serious</p>
-        <ul class="list-inline social-buttons">
-          <li><a href="https://twitter.com/adalolla"><i class="fa fa-twitter"></i></a>
-          </li>
-          <li><a href="https://www.facebook.com/chrisie.aigner"><i class="fa fa-facebook"></i></a>
-          </li>
-          <li><a href="https://www.linkedin.com/in/lorenz-graf-65201a138/"><i class="fa fa-linkedin"></i></a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</div>
--->

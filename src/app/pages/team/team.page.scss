@@ -1,3 +1,30 @@
-.menu-button {
-  position: absolute;
+.member-container {
+  align-content: center;
+}
+
+img {
+  border-radius: 100px;
+  max-width: 200px;
+}
+
+.divider {
+  width: 40%;
+  background: var(--ion-color-light-shade);
+  height: 1px;
+  margin: 2vh 0 1vh 0;
+}
+
+.container {
+  overflow-y: auto;
+}
+
+.name {
+  font-weight: bold;
+  font-size: 20px;
+  margin: 0;
+}
+
+.profession {
+  color: var(--ion-color-medium);
+  margin: 0;
 }

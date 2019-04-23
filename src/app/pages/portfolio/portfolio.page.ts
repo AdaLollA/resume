@@ -33,7 +33,6 @@ export class PortfolioPage {
     }
 
     scrollToTop() {
-        console.log('top');
         this.container.scrollToTop(200);
     }
 }
