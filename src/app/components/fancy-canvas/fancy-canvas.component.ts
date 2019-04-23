@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {CanvasSpace, Num, Pt, Tempo} from 'pts';
+import {CanvasSpace, Const, Line, Num, Pt, Tempo} from 'pts';
 
 export interface IFlyer {
-    color: string
+    color?: string
     position?: number[]
     radius?: number
     progress?: number
@@ -23,21 +23,18 @@ export class FancyCanvasComponent implements OnInit {
         const colors: string[] = [
             '#1aff1c', '#ff2f31', '#2d75ff'
         ];
+        let tempo = new Tempo(60);
 
         // create
         let space = new CanvasSpace('#beauty');
         space.setup({bgcolor: '#181818'});
         let form = space.getForm();
         let e: IFlyer[] = [];
-
         for (let i = 0; i < count; i++) {
-            const flyer: IFlyer = {
-                color: colors[this.numberBetween(0, colors.length)]
-            };
-            e.push(flyer);
+            e.push({});
         }
 
-        // animation
+        // setup
         space.add((time, ftime) => {
             const cx = space.center.x;
             const cy = space.center.y;
@@ -45,6 +42,7 @@ export class FancyCanvasComponent implements OnInit {
             if (!this.init) {
                 // init
                 e.forEach((el) => {
+                    el.color = colors[ftime % colors.length];
                     el.position = [
                         cx + (this.numberBetween(0, cx * 2) - cx) * spread,
                         0
@@ -56,21 +54,29 @@ export class FancyCanvasComponent implements OnInit {
             } else {
                 // animation
                 // todo let ln = Line.fromAngle( space.center, Const.two_pi*t - Const.half_pi, space.size.y/3 );
-                e.forEach((el) => {
-                    el.position = [
-                        el.position[0] + 1,
-                        el.position[1] + 1
-                    ];
-                });
             }
-
-            e.forEach((el) => {
-                form.stroke(el.color, 5).fill(el.color).point(el.position, 3, 'circle');
-            });
-
-            // space.pointer stores the last mouse or touch position
-            let m = space.pointer;
         });
+
+        // animate
+        // todo tempo
+        tempo.every(2).progress((count: number, t: number, ms: number, start: boolean) => {
+            e.forEach((el) => {
+                // todo form.stroke(el.color, 5).fill(el.color).point(el.position, 3, 'circle');
+                let ln = Line.fromAngle(space.center, Const.two_pi * t - Const.half_pi, space.size.y / 3);
+                form.fillOnly(el.color).point(ln.p2, 3, 'circle');
+            });
+        }, 0);
+
+            /*.start((count) => {
+            console.log(count);
+            e.forEach((el) => {
+                // todo form.stroke(el.color, 5).fill(el.color).point(el.position, 3, 'circle');
+                let ln = Line.fromAngle(space.center, Const.two_pi * count - Const.half_pi, space.size.y / 3);
+                form.fillOnly(el.color).point(ln.p2, 3, 'circle');
+            });
+        }, 0);
+             */
+        space.add(tempo as any);
 
         // play
         space.play().bindMouse().bindTouch();
@@ -80,7 +86,7 @@ export class FancyCanvasComponent implements OnInit {
         return Math.floor(Math.random() * max) + min;
     }
 
-    private distanceBetweenPoints(pointA: number[], pointB: number[]) : number {
+    private distanceBetweenPoints(pointA: number[], pointB: number[]): number {
         return Math.sqrt(Math.pow((pointA[0] - pointB[0]), 2) + Math.pow((pointA[1] - pointB[1]), 2));
     }
 
