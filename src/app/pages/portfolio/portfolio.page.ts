@@ -9,7 +9,7 @@ import {MenuStateService} from '../../services/menu-state.service';
     templateUrl: './portfolio.page.html',
     styleUrls: ['./portfolio.page.scss'],
 })
-export class PortfolioPage implements OnInit {
+export class PortfolioPage {
     @ViewChild('container')
     private container;
     private scrollElement;
@@ -25,28 +25,12 @@ export class PortfolioPage implements OnInit {
         public router: Router) {
     }
 
-    ngOnInit(): void {
-
+    handleScroll(e) {
+        if (e.detail.scrollTop < 100) {
+            this.fabMargin = '-' + (100 - e.detail.scrollTop) + 'px';
+            console.log(this.fabMargin)
+        } else {
+            this.fabMargin = '0';
+        }
     }
-
-    /*
-    swipeScrollEvent(direction: SwipeScrollDirection) {
-        (this.container.el.getScrollElement() as any).then((el) => {
-            this.scrollElement = el;
-            if (direction == SwipeScrollDirection.Down && this.getScrollProgress() < 1) {
-                this.router.navigateByUrl('/skills');
-            } else if ((direction == SwipeScrollDirection.Up) && this.getScrollProgress() > 99) {
-                this.router.navigateByUrl('/experience');
-            }
-        });
-    }
-
-    private getScrollProgress(): number {
-        console.log(this.scrollElement);
-        const winScroll = this.scrollElement.scrollTop;
-        const height = this.scrollElement.scrollHeight - this.scrollElement.clientHeight;
-        const scrolled = (winScroll / height) * 100;
-        return scrolled;
-    }
-    */
 }
