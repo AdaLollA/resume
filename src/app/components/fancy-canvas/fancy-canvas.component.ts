@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {CanvasSpace, Num, Pt} from 'pts';
+import {CanvasSpace, Num, Pt, Tempo} from 'pts';
 
 export interface IFlyer {
     color: string
-    position: number[]
-    direction?
+    position?: number[]
+    radius?: number
 }
 
 @Component({
@@ -17,7 +17,7 @@ export class FancyCanvasComponent implements OnInit {
 
     ngOnInit(): void {
         // variables
-        const count = 150;
+        const count = 100;
         const spread = 0.8;
         const colors: string[] = [
             '#1aff1c', '#ff2f31', '#2d75ff'
@@ -31,8 +31,7 @@ export class FancyCanvasComponent implements OnInit {
 
         for (let i = 0; i < count; i++) {
             const flyer: IFlyer = {
-                color: colors[this.numberBetween(0, 2)],
-                position: [0, 0]
+                color: colors[this.numberBetween(0, colors.length)]
             };
             e.push(flyer);
         }
@@ -45,11 +44,18 @@ export class FancyCanvasComponent implements OnInit {
             if (!this.init) {
                 e.forEach((el) => {
                     el.position = [
-                        cx + (this.numberBetween(0, cx * spread * 2) - cx * spread),
-                        cy + (this.numberBetween(0, cy * spread * 2) - cy * spread)
+                        cx + (this.numberBetween(0, cx * 2) - cx) * spread,
+                        cy + (this.numberBetween(0, cy * 2) - cy) * spread
                     ];
                 });
                 this.init = true;
+            } else {
+                e.forEach((el) => {
+                    el.position = [
+                        el.position[0] + 1,
+                        el.position[1] + 1
+                    ];
+                });
             }
 
             // form.stroke('#42e', 5).fill('#42e').point(space.center, 3, 'circle');
@@ -60,15 +66,6 @@ export class FancyCanvasComponent implements OnInit {
 
             // space.pointer stores the last mouse or touch position
             let m = space.pointer;
-
-            // drawing
-            /*
-            form.strokeOnly("#123", 5).line( [new Pt( m.x, 0), m, new Pt( 0, m.y)] );
-            form.stroke("#42e").line( [new Pt(0,0), m] );
-            form.stroke("#fff", 5).fill("#42e").point( m, 10, "circle");
-            form.fill("#123").font(14, "bold").text( m.$add(20, 5), m.toString() );
-            */
-
         });
 
         // play
