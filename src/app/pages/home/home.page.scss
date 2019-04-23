@@ -4,6 +4,7 @@
 
 .title {
   font-size: 36px;
+  z-index: 1;
 }
 
 .title span {
@@ -16,4 +17,8 @@
 
 .button {
   width: 200px;
+}
+
+.fancy {
+  position: absolute;
 }
