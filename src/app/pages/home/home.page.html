@@ -17,9 +17,13 @@
             I'm a full-stack developer.
         </p>
     </ion-row>
-    <ion-row class="full-width" size="12" size-md="4" justify-content-center>
+    <ion-row class="full-width" size="12" size-md="4" justify-content-center *ngIf="menu.showMenu">
         <ion-button class="button" color="tertiary" padding fill="outline" [routerLink]="['/skills']">Skills</ion-button>
         <ion-button class="button" color="tertiary" padding fill="outline" [routerLink]="['/portfolio']">Portfolio</ion-button>
         <ion-button class="button" color="tertiary" padding fill="outline" [routerLink]="['/experience']">Experience</ion-button>
+    </ion-row>
+
+    <ion-row class="full-width" size="12" size-md="4" justify-content-center *ngIf="!menu.showMenu">
+        <ion-button class="button" color="tertiary" padding fill="outline" (click)="menu.openMenu()">show me</ion-button>
     </ion-row>
 </ion-row>

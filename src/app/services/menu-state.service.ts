@@ -35,4 +35,10 @@ export class MenuStateService {
             });
         });
     }
+
+    public openMenu() {
+        this.menuCtrl.get().then((menu) => {
+            menu.open();
+        });
+    }
 }
