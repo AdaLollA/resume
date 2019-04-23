@@ -27,4 +27,12 @@ export class MenuStateService {
             });
         });
     }
+
+    public getMenuWidth(): Promise<number> {
+        return new Promise<number>((resolve) => {
+            this.menuCtrl.get().then((menu) => {
+                resolve(menu.clientWidth);
+            });
+        });
+    }
 }

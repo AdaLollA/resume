@@ -1,5 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {CanvasSpace, Const, Line, Num, Pt, Tempo} from 'pts';
+import {Bound, CanvasSpace, Const, Line, Num, Pt, Tempo} from 'pts';
+import {$} from 'protractor';
+import {MenuStateService} from '../../services/menu-state.service';
+import {EventManager} from '@angular/platform-browser';
 
 export interface IFlyer {
     color?: string
@@ -15,8 +18,25 @@ export interface IFlyer {
 })
 export class FancyCanvasComponent implements OnInit {
     init: boolean = false;
+    menuOffset: number;
+
+    constructor(public menu: MenuStateService,
+                public eventManager: EventManager) {
+    }
 
     ngOnInit(): void {
+        // init
+        this.menu.getMenuWidth().then((width) => {
+            // resize initialize bug because of menu offset
+            if (this.menu.showMenu) {
+                this.menuOffset = width;
+                this.eventManager.addGlobalEventListener('window', 'resize', () => {
+                    // bug fixes itself when the window is re-sized ~ lol ez
+                    this.menuOffset = 0;
+                });
+            }
+        });
+
         // variables
         const angle: number = Const.two_pi - Const.quarter_pi * 3 / 2;
         const lineOpacity = 0.20;
@@ -69,8 +89,9 @@ export class FancyCanvasComponent implements OnInit {
                 form.strokeOnly(lineColor + el.opacity + ')', 1, 'round', 'round').line(ln);
 
                 // hover
-                form.point(space.pointer, 10); // todo this is cursor debug - seems to be offset by menu
-                let distance: number = Line.perpendicularFromPt(ln, space.pointer, true).magnitude();
+                // form.point(space.pointer, 10); // this is cursor debug - seems to be offset by menu
+                let perpendicular = Line.perpendicularFromPt(ln, [space.pointer.x - this.menuOffset, space.pointer.y], true);
+                let distance: number = perpendicular ? perpendicular.magnitude() : 1000;
                 let above: boolean = space.pointer.y < ln.p1.y;
                 if (distance < 10 && above) {
                     el.opacity = 1;
@@ -81,16 +102,9 @@ export class FancyCanvasComponent implements OnInit {
 
         // play
         space.play().bindMouse().bindTouch();
-
-        // clear
     }
 
     private static numberBetween(min: number, max: number) {
         return Math.floor(Math.random() * max) + min;
     }
-
-    private static radToDeg(rad: number) : number {
-        return rad * 180 / Math.PI;
-    }
-
 }
