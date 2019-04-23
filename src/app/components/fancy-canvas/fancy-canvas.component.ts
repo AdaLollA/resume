@@ -18,7 +18,7 @@ export class FancyCanvasComponent implements OnInit {
     ngOnInit(): void {
         // variables
         const count = 100;
-        const lineColor: string = 'rgba(141,141,141,0.51)';
+        const lineColor: string = 'rgba(141,141,141,0.20)';
         const colors: string[] = [
             '#1aff1c', '#ff2f31', '#2d75ff'
         ];
@@ -26,7 +26,7 @@ export class FancyCanvasComponent implements OnInit {
 
         // create
         let space = new CanvasSpace('#beauty');
-        space.setup({bgcolor: '#181818'});
+        space.setup({bgcolor: '#252934'});
         let form = space.getForm();
         let e: IFlyer[] = [];
         for (let i = 0; i < count; i++) {
