@@ -13,6 +13,7 @@ export interface IFlyer {
     styleUrls: ['./fancy-canvas.component.scss'],
 })
 export class FancyCanvasComponent implements OnInit {
+    init: boolean = false;
 
     ngOnInit(): void {
         // variables
@@ -23,7 +24,6 @@ export class FancyCanvasComponent implements OnInit {
         ];
 
         // create
-        let init: boolean = false;
         let space = new CanvasSpace('#beauty');
         space.setup({bgcolor: '#181818'});
         let form = space.getForm();
@@ -42,14 +42,14 @@ export class FancyCanvasComponent implements OnInit {
             const cx = space.center.x;
             const cy = space.center.y;
 
-            if (!init) {
+            if (!this.init) {
                 e.forEach((el) => {
                     el.position = [
                         cx + (this.numberBetween(0, cx * spread * 2) - cx * spread),
                         cy + (this.numberBetween(0, cy * spread * 2) - cy * spread)
                     ];
                 });
-                init = true;
+                this.init = true;
             }
 
             // form.stroke('#42e', 5).fill('#42e').point(space.center, 3, 'circle');
