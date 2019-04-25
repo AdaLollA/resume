@@ -35,7 +35,7 @@ export class PortfolioPage implements OnInit {
             title: 'Project B',
             description: 'Now that your app has been created, you\'ll want to start building out features and components. Check out some of the resources below for next steps.',
             technologies: ['mobile', 'web'],
-            liveDemoUrl: 'asdf',
+            liveDemoUrl: '',
             moreInfoUrl: 'https://www.google.com',
             sourceCodeUrl: 'asdf'
         },
@@ -45,7 +45,7 @@ export class PortfolioPage implements OnInit {
             technologies: ['web'],
             liveDemoUrl: 'asdf',
             moreInfoUrl: 'https://www.google.com',
-            sourceCodeUrl: 'asdf'
+            sourceCodeUrl: ''
         }
     ];
 
@@ -87,11 +87,36 @@ export class PortfolioPage implements OnInit {
         // filter selected
         if (filter) {
             this.projects.forEach((project) => {
-                let applicable: boolean = true;
-                if (project.technologies.filter(technology => this.techFilter.value.includes(technology)).length == 0) {
-                    applicable = false;
+                // technology filter
+                let technologyPass: boolean = false;
+                if (this.techFilter.value.length == 0) {
+                    technologyPass = true;
                 }
-                if (applicable) {
+                if (project.technologies.filter(technology => this.techFilter.value.includes(technology)).length > 0) {
+                    technologyPass = true;
+                }
+
+                // availability filter
+                let availabilityPass: boolean = false;
+                if (this.availabilityFilter.value.length == 0) {
+                    availabilityPass = true;
+                } else {
+                    this.availabilityFilter.value.forEach((availability) => {
+                        if (availability == 'on-request') {
+                            availabilityPass = true;
+                        } else if (availability == 'public' && project.sourceCodeUrl) {
+                            availabilityPass = true;
+                        } else if (availability == 'demo' && project.liveDemoUrl) {
+                            availabilityPass = true;
+                        }
+                    });
+                }
+
+                console.log(technologyPass, 'tech');
+                console.log(availabilityPass, 'avail');
+
+                // update visible projects based on applicability
+                if (technologyPass && availabilityPass) {
                     this.visibleProjects.push(project);
                 }
             });
