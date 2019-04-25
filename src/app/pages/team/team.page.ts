@@ -18,11 +18,11 @@ export class TeamPage implements OnInit {
         name: 'Lorenz Graf',
         profession: 'Developer'
     }, {
-        img: '../../../assets/img/team/2.jpeg',
+        img: '../../../assets/img/team/2.jpg',
         name: 'Lord Graf Lorenz',
         profession: 'Leader'
     }, {
-        img: '../../../assets/img/team/3.jpg',
+        img: '../../../assets/img/team/3.jpeg',
         name: 'Gustav Götz',
         profession: 'Designer'
     }, {
