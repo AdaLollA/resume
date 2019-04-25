@@ -9,6 +9,22 @@
     </ion-toolbar>
 </ion-header>
 
+<mat-button-toggle-group #group="matButtonToggleGroup">
+    <mat-button-toggle value="left">
+        a
+    </mat-button-toggle>
+    <mat-button-toggle value="center">
+        b
+    </mat-button-toggle>
+    <mat-button-toggle value="right">
+        c
+    </mat-button-toggle>
+    <mat-button-toggle value="justify">
+        d
+    </mat-button-toggle>
+</mat-button-toggle-group>
+<div class="example-selected-value">Selected value: {{group.value}}</div>
+
 <ion-content #container [scrollEvents]="true" (ionScroll)="handleScroll($event)">
     <ion-row>
         <ion-col size="4">
