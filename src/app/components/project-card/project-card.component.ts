@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 export interface IProject {
   title: string
@@ -15,19 +15,12 @@ export interface IProject {
   styleUrls: ['./project-card.component.scss'],
 })
 export class ProjectCardComponent implements OnInit {
+  @Input('project')
   public project: IProject;
 
   constructor() { }
 
   ngOnInit() {
-    this.project = {
-      title: 'Project Title',
-      description: 'Now that your app has been created, you\'ll want to start building out features and components. Check out some of the resources below for next steps.',
-      technologies: ['web', 'android', 'ios', 'pwa', 'xamarin'],
-      liveDemoUrl: 'asdf',
-      moreInfoUrl: 'https://www.google.com',
-      sourceCodeUrl: 'asdf'
-    }
   }
 
   openUrl(url: string) {

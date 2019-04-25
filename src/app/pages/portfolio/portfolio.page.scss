@@ -13,8 +13,12 @@
 }
 
 .divider {
-  width: 40%;
+  width: 60%;
   background: var(--ion-color-light-shade);
   height: 1px;
   margin: 2vh 0 0 0;
+}
+
+.button-group {
+  overflow: visible;
 }
