@@ -14,9 +14,11 @@
         <ion-col size="4">
             <ion-row justify-content-center><h5>Technology</h5></ion-row>
             <ion-row justify-content-around>
-                <mat-button-toggle-group #techFilter="matButtonToggleGroup" multiple="true">
-                    <mat-button-toggle value="mobile">
-                        <ion-icon name="phone-portrait"></ion-icon>
+                <mat-button-toggle-group #techFilter="matButtonToggleGroup" multiple="true" class="button-group">
+                    <mat-button-toggle value="mobile" class="tooltip">
+                        <ion-icon name="phone-portrait">
+                        </ion-icon>
+                        <span class="tooltiptext">Tooltip text</span>
                     </mat-button-toggle>
                     <mat-button-toggle value="desktop">
                         <ion-icon name="desktop"></ion-icon>
