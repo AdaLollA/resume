@@ -7,9 +7,11 @@ import {EventManager} from '@angular/platform-browser';
 })
 export class MenuStateService {
     public showMenu: boolean;
+    public firstStart: boolean;
 
     constructor(public menuCtrl: MenuController,
                 public eventManager: EventManager) {
+        this.firstStart = true;
         this.init();
         this.checkSize();
     }

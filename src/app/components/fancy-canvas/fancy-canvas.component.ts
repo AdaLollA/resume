@@ -28,12 +28,15 @@ export class FancyCanvasComponent implements OnInit {
         // init
         this.menu.getMenuWidth().then((width) => {
             // resize initialize bug because of menu offset
-            if (this.menu.showMenu) {
+            if (this.menu.showMenu && this.menu.firstStart) {
                 this.menuOffset = width;
                 this.eventManager.addGlobalEventListener('window', 'resize', () => {
                     // bug fixes itself when the window is re-sized ~ lol ez
                     this.menuOffset = 0;
                 });
+                this.menu.firstStart = false;
+            } else {
+                this.menuOffset = 0;
             }
         });
 
