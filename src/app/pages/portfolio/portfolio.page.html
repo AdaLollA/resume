@@ -9,27 +9,26 @@
     </ion-toolbar>
 </ion-header>
 
-<mat-button-toggle-group #group="matButtonToggleGroup">
-    <mat-button-toggle value="left">
-        a
-    </mat-button-toggle>
-    <mat-button-toggle value="center">
-        b
-    </mat-button-toggle>
-    <mat-button-toggle value="right">
-        c
-    </mat-button-toggle>
-    <mat-button-toggle value="justify">
-        d
-    </mat-button-toggle>
-</mat-button-toggle-group>
-<div class="example-selected-value">Selected value: {{group.value}}</div>
-
 <ion-content #container [scrollEvents]="true" (ionScroll)="handleScroll($event)">
     <ion-row>
         <ion-col size="4">
             <ion-row justify-content-center><h5>Technology</h5></ion-row>
-            <ion-row justify-content-around>a b c d</ion-row>
+            <ion-row justify-content-around>
+                <mat-button-toggle-group #techFilter="matButtonToggleGroup" multiple="true">
+                    <mat-button-toggle value="mobile">
+                        <ion-icon name="phone-portrait"></ion-icon>
+                    </mat-button-toggle>
+                    <mat-button-toggle value="desktop">
+                        <ion-icon name="desktop"></ion-icon>
+                    </mat-button-toggle>
+                    <mat-button-toggle value="web">
+                        <ion-icon name="globe"></ion-icon>
+                    </mat-button-toggle>
+                    <mat-button-toggle value="hardware">
+                        <ion-icon name="construct"></ion-icon>
+                    </mat-button-toggle>
+                </mat-button-toggle-group>
+            </ion-row>
         </ion-col>
         <ion-col size="4">
             <ion-row justify-content-center><h5>Sort by</h5></ion-row>
