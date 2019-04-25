@@ -42,7 +42,7 @@
 }
 
 .ion-page {
-  background: white;
+  background: var(--ion-background-color);
 }
 
 .active-link {
@@ -101,3 +101,11 @@
   visibility: visible;
 }
 // --- tooltip end ---
+
+* {
+  color: var(--ion-color-primary-contrast);
+}
+
+.themed-background {
+  background: var(--ion-background-color);
+}

@@ -77,7 +77,7 @@ BODY {
 }
 
 .traits {
-  color: var(--ion-color-medium);
+  color: var(--ion-color-light-shade);
   margin-top: 20px;
   margin-bottom: 10px;
   width: 100%;
@@ -85,12 +85,12 @@ BODY {
 }
 
 .geo-pin {
-  color: var(--ion-color-light-shade);
+  color: var(--ion-color-medium);
   font-size: 20px;
 }
 
 .location {
-  color: var(--ion-color-light-shade);
+  color: var(--ion-color-medium);
   margin: 0;
 }
 
