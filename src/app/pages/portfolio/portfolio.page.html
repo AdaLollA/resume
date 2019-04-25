@@ -14,7 +14,8 @@
         <ion-col size="12" size-md="3">
             <ion-row justify-content-center><h5>Technology</h5></ion-row>
             <ion-row justify-content-around>
-                <mat-button-toggle-group #techFilter="matButtonToggleGroup" multiple="true" class="button-group">
+                <mat-button-toggle-group #techFilter="matButtonToggleGroup" multiple="true" class="button-group"
+                                         (change)="applyFilter()">
                     <mat-button-toggle value="mobile" class="tooltip">
                         <ion-icon name="phone-portrait"></ion-icon>
                         <span class="tooltiptext">mobile</span>
@@ -37,7 +38,8 @@
         <ion-col size="12" size-md="3">
             <ion-row justify-content-center><h5>Availability</h5></ion-row>
             <ion-row justify-content-around>
-                <mat-button-toggle-group #techFilter="matButtonToggleGroup" multiple="true" class="button-group">
+                <mat-button-toggle-group #availabilityFilter="matButtonToggleGroup" multiple="true" class="button-group"
+                                         (change)="applyFilter()">
                     <mat-button-toggle value="on-request" class="tooltip">
                         <ion-icon name="key"></ion-icon>
                         <span class="tooltiptext">on request</span>
@@ -61,7 +63,7 @@
     </ion-row>
 
     <ion-row>
-        <ion-col size="12" size-md="6" *ngFor="let project of projects">
+        <ion-col size="12" size-md="6" *ngFor="let project of visibleProjects">
             <app-project-card [project]="project"></app-project-card>
         </ion-col>
         <ion-col size="12">
