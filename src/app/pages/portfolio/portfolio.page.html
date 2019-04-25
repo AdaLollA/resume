@@ -38,7 +38,7 @@
             <ion-row justify-content-center><h5>Availability</h5></ion-row>
             <ion-row justify-content-around>
                 <mat-button-toggle-group #techFilter="matButtonToggleGroup" multiple="true" class="button-group">
-                    <mat-button-toggle value="request" class="tooltip">
+                    <mat-button-toggle value="on-request" class="tooltip">
                         <ion-icon name="key"></ion-icon>
                         <span class="tooltiptext">on request</span>
                     </mat-button-toggle>
@@ -61,8 +61,8 @@
     </ion-row>
 
     <ion-row>
-        <ion-col size="12" size-md="6" *ngFor="let card of cards">
-            <app-project-card></app-project-card>
+        <ion-col size="12" size-md="6" *ngFor="let project of projects">
+            <app-project-card [project]="project"></app-project-card>
         </ion-col>
         <ion-col size="12">
             <h4 class="end-text" text-center>Thats all folks</h4>

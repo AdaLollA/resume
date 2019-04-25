@@ -3,6 +3,7 @@ import {SwipeScrollDirection, SwipeScrollListener, SwipeScrollListenService} fro
 import {Router} from '@angular/router';
 import {IonContent} from '@ionic/angular';
 import {MenuStateService} from '../../services/menu-state.service';
+import {IProject} from '../../components/project-card/project-card.component';
 
 @Component({
     selector: 'app-portfolio',
@@ -15,8 +16,32 @@ export class PortfolioPage {
 
     public fabMargin: string = '-100px';
 
-    cards = [
-        'a', 'b', 'c', 'd', 'e'
+    public projects: IProject[] = [
+        {
+            title: 'Project A',
+            description: 'Now that your app has been created, you\'ll want to start building out features and components. Check out some of the resources below for next steps.',
+            technologies: ['mobile', 'desktop', 'web', 'hardware'],
+            liveDemoUrl: 'asdf',
+            moreInfoUrl: 'https://www.google.com',
+            sourceCodeUrl: 'asdf'
+        },
+        {
+            title: 'Project B',
+            description: 'Now that your app has been created, you\'ll want to start building out features and components. Check out some of the resources below for next steps.',
+            technologies: ['mobile', 'desktop', 'web', 'hardware'],
+            liveDemoUrl: 'asdf',
+            moreInfoUrl: 'https://www.google.com',
+            sourceCodeUrl: 'asdf'
+        },
+        {
+            title: 'Project C',
+            description: 'Now that your app has been created, you\'ll want to start building out features and components. Check out some of the resources below for next steps.',
+            technologies: ['mobile', 'desktop', 'web', 'hardware'],
+            liveDemoUrl: 'asdf',
+            moreInfoUrl: 'https://www.google.com',
+            sourceCodeUrl: 'asdf'
+        },
+
     ];
 
     constructor(
