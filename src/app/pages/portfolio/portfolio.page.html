@@ -67,7 +67,8 @@
             <app-project-card [project]="project"></app-project-card>
         </ion-col>
         <ion-col size="12">
-            <h4 class="end-text" text-center>Thats all folks</h4>
+            <h4 class="end-text"
+                text-center>{{ visibleProjects.length > 0 ? 'Thats all folks' : 'No projects matching the filter settings' }}</h4>
         </ion-col>
     </ion-row>
 
