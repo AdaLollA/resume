@@ -1,9 +1,10 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {SwipeScrollDirection, SwipeScrollListener, SwipeScrollListenService} from '../../services/swipe-scroll-listen.service';
 import {Router} from '@angular/router';
 import {MenuStateService} from '../../services/menu-state.service';
 import {IProject} from '../../components/project-card/project-card.component';
 import {MatButtonToggleGroup} from '@angular/material';
+import {AngularFirestore} from '@angular/fire/firestore';
+import {Observable} from 'rxjs';
 
 @Component({
     selector: 'app-portfolio',
@@ -51,9 +52,14 @@ export class PortfolioPage implements OnInit {
 
     public visibleProjects: IProject[];
 
+    items: Observable<any[]>;
+
     constructor(
         public menu: MenuStateService,
-        public router: Router) {
+        public router: Router,
+        public db: AngularFirestore
+    ) {
+        this.items = db.collection('items').valueChanges();
     }
 
     ngOnInit(): void {

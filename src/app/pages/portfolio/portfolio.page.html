@@ -1,3 +1,9 @@
+<ul style="background: red;">
+    <li class="text" *ngFor="let item of items | async">
+        {{item.test}}
+    </li>
+</ul>
+
 <ion-header [hidden]="menu.showMenu">
     <ion-toolbar>
         <ion-buttons slot="start">
