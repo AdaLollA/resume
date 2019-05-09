@@ -14,6 +14,9 @@ import {HomePageModule} from './pages/home/home.module';
 import {HackerConComponent} from './components/hacker-con/hacker-con.component';
 import {ScrollingMouseComponent} from './components/scrolling-mouse/scrolling-mouse.component';
 import {FormsModule} from '@angular/forms';
+import {AngularFireModule} from '@angular/fire';
+import {environment} from '../environments/environment';
+import {AngularFirestoreModule} from '@angular/fire/firestore';
 
 @NgModule({
     declarations: [AppComponent, PersonalInfoComponent, LinkFooterComponent, HackerConComponent, ScrollingMouseComponent],
@@ -23,7 +26,9 @@ import {FormsModule} from '@angular/forms';
         IonicModule.forRoot(),
         AppRoutingModule,
         HomePageModule,
-        FormsModule
+        FormsModule,
+        AngularFireModule.initializeApp(environment.firebase),
+        AngularFirestoreModule
     ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
