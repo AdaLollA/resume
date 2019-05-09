@@ -37,11 +37,12 @@ export class PortfolioPage implements OnInit {
 
     ngOnInit(): void {
         this.collectionListener.subscribe(value => {
-            this.projects = value.sort((a, b) => {
+            this.projects = value;
+            this.projects = this.projects.sort((a, b) => {
                 if (a.date < b.date) {
-                    return -1;
-                } else if (a.date > b.date) {
                     return 1;
+                } else if (a.date > b.date) {
+                    return -1;
                 } else {
                     return 0;
                 }
