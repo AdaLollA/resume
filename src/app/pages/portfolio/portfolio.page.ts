@@ -23,7 +23,9 @@ export class PortfolioPage implements OnInit {
 
     public fabMargin: string = '-100px';
 
-    private projects: IProject[] = [
+    private projects: IProject[];
+
+        /*
         {
             title: 'Project A',
             description: 'Now that your app has been created, you\'ll want to start building out features and components. Check out some of the resources below for next steps.',
@@ -48,22 +50,24 @@ export class PortfolioPage implements OnInit {
             moreInfoUrl: 'https://www.google.com',
             sourceCodeUrl: ''
         }
-    ];
+    */
 
     public visibleProjects: IProject[];
-
-    items: Observable<any[]>;
+    private collectionListener: Observable<any[]>;
 
     constructor(
         public menu: MenuStateService,
         public router: Router,
         public db: AngularFirestore
     ) {
-        this.items = db.collection('items').valueChanges();
+        this.collectionListener = db.collection('portfolio').valueChanges();
     }
 
     ngOnInit(): void {
-        this.applyFilter();
+        this.collectionListener.subscribe(value => {
+            this.projects = value;
+            this.applyFilter();
+        });
     }
 
     handleScroll(e) {
