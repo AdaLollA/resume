@@ -1,5 +1,5 @@
 <ion-card class="project-card">
-    <ion-img [src]="project.image ? 'data:image/png;base64, ' + project.image : '/assets/shapes.svg'"></ion-img>
+    <ion-img class="project-image" [src]="project.image ? 'data:image/png;base64, ' + project.image : '/assets/shapes.svg'"></ion-img>
     <ion-card-header>
         <ion-card-subtitle>
             <ion-col *ngFor="let technology of project.technologies" no-padding>{{technology}}&nbsp;&nbsp;</ion-col>
