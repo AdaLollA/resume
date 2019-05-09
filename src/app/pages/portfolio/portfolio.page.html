@@ -66,7 +66,11 @@
         <ion-col size="12" size-md="6" *ngFor="let project of visibleProjects">
             <app-project-card [project]="project"></app-project-card>
         </ion-col>
-        <ion-col size="12">
+        <ion-col *ngIf="!projects" size="12">
+            <h4 class="end-text"
+                text-center>{{ 'Loading...' }}</h4>
+        </ion-col>
+        <ion-col *ngIf="projects" size="12">
             <h4 class="end-text"
                 text-center>{{ visibleProjects.length > 0 ? 'Thats all folks' : 'No projects matching the filter settings' }}</h4>
         </ion-col>

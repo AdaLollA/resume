@@ -8,6 +8,7 @@ export interface IProject {
   liveDemoUrl?: string
   moreInfoUrl?: string
   sourceCodeUrl?: string
+  date: Date
 }
 
 @Component({

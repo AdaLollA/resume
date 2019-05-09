@@ -24,34 +24,6 @@ export class PortfolioPage implements OnInit {
     public fabMargin: string = '-100px';
 
     private projects: IProject[];
-
-        /*
-        {
-            title: 'Project A',
-            description: 'Now that your app has been created, you\'ll want to start building out features and components. Check out some of the resources below for next steps.',
-            technologies: ['mobile'],
-            liveDemoUrl: 'asdf',
-            moreInfoUrl: 'https://www.google.com',
-            sourceCodeUrl: 'asdf'
-        },
-        {
-            title: 'Project B',
-            description: 'Now that your app has been created, you\'ll want to start building out features and components. Check out some of the resources below for next steps.',
-            technologies: ['mobile', 'web'],
-            liveDemoUrl: '',
-            moreInfoUrl: 'https://www.google.com',
-            sourceCodeUrl: 'asdf'
-        },
-        {
-            title: 'Project C',
-            description: 'Now that your app has been created, you\'ll want to start building out features and components. Check out some of the resources below for next steps.',
-            technologies: ['web'],
-            liveDemoUrl: 'asdf',
-            moreInfoUrl: 'https://www.google.com',
-            sourceCodeUrl: ''
-        }
-    */
-
     public visibleProjects: IProject[] = [];
     private collectionListener: Observable<any[]>;
 
@@ -65,7 +37,15 @@ export class PortfolioPage implements OnInit {
 
     ngOnInit(): void {
         this.collectionListener.subscribe(value => {
-            this.projects = value;
+            this.projects = value.sort((a, b) => {
+                if (a.date < b.date) {
+                    return -1;
+                } else if (a.date > b.date) {
+                    return 1;
+                } else {
+                    return 0;
+                }
+            });
             this.applyFilter();
         });
     }
