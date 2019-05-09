@@ -52,7 +52,7 @@ export class PortfolioPage implements OnInit {
         }
     */
 
-    public visibleProjects: IProject[];
+    public visibleProjects: IProject[] = [];
     private collectionListener: Observable<any[]>;
 
     constructor(
