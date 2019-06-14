@@ -64,7 +64,9 @@
 
     <ion-row>
         <ion-col size="12" size-md="6" *ngFor="let project of visibleProjects">
-            <app-project-card [project]="project"></app-project-card>
+            <ion-row align-items-center class="full-size">
+                <app-project-card [project]="project"></app-project-card>
+            </ion-row>
         </ion-col>
         <ion-col *ngIf="!projects" size="12">
             <h4 class="end-text"
