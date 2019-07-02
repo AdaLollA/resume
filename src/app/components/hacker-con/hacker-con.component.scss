@@ -11,10 +11,10 @@ body {
 
 body {
   font-family: "Segoe UI", Helvetica, Arial, sans-serif;
-  min-height: 100vh;
-  color: #57585c;
+  min-height: 100%;
+  // color: #57585c;
   color: var(--color-text);
-  background-color: #fff;
+  // background-color: #fff;
   background-color: var(--color-bg);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -137,7 +137,7 @@ body {
   position: relative;
 }
 .contentTitle {
-  height: 50vh;
+  height: 60vh;
   line-height: 12vw;
   font-size: 12vw;
   font-family: 'Playfair Display', serif;
@@ -152,7 +152,7 @@ body {
   margin: 0;
   font-size: 1.5em;
   position: absolute;
-  bottom: 100px;//
+  bottom: 20vh;
   width: 100%;
   font-weight: 400;
   animation-delay: calc(var(--delay-anim) + var(--time-anim) * 0.25);
