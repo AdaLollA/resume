@@ -6,7 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { SkillsPage } from './skills.page';
-import {SkillComponent} from '../../components/skill/skill.component';
+import {NgApexchartsModule} from 'ng-apexcharts';
 
 const routes: Routes = [
   {
@@ -20,8 +20,9 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    NgApexchartsModule
   ],
-  declarations: [SkillsPage, SkillComponent]
+  declarations: [SkillsPage]
 })
 export class SkillsPageModule {}
