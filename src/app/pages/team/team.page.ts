@@ -1,10 +1,14 @@
 import {Component, OnInit} from '@angular/core';
 import {MenuStateService} from '../../services/menu-state.service';
+import {Router} from '@angular/router';
+import {AngularFirestore} from '@angular/fire/firestore';
+import {Observable} from 'rxjs';
 
 export interface ITeamMember {
     img: string
     name: string
     profession: string
+    index: number
 }
 
 @Component({
@@ -13,28 +17,28 @@ export interface ITeamMember {
     styleUrls: ['./team.page.scss'],
 })
 export class TeamPage implements OnInit {
-    public team: ITeamMember[] = [{
-        img: '../../../assets/img/team/1.jpg',
-        name: 'Lorenz Graf',
-        profession: 'Developer'
-    }, {
-        img: '../../../assets/img/team/2.jpg',
-        name: 'Lord Graf Lorenz',
-        profession: 'Leader'
-    }, {
-        img: '../../../assets/img/team/3.jpeg',
-        name: 'Gustav Götz',
-        profession: 'Designer'
-    }, {
-        img: '../../../assets/img/team/4.jpg',
-        name: 'Graf Gläubig',
-        profession: 'Religious and Serious'
-    },];
+    public team: ITeamMember[] = [];
 
-    constructor(public menu: MenuStateService) {
+    private collectionListener: Observable<any[]>;
+
+    constructor(public menu: MenuStateService,
+                public db: AngularFirestore) {
+        this.collectionListener = db.collection('team').valueChanges();
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
+        this.collectionListener.subscribe(value => {
+            this.team = value;
+            this.team = this.team.sort((a, b) => {
+                if (a.index < b.index) {
+                    return 1;
+                } else if (a.index > b.index) {
+                    return -1;
+                } else {
+                    return 0;
+                }
+            });
+        });
     }
 
 }
