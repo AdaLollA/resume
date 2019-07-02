@@ -1,8 +1,8 @@
 {
-  "name": "app",
-  "short_name": "app",
-  "theme_color": "#1976d2",
-  "background_color": "#fafafa",
+  "name": "Lorenz Graf - Portfolio",
+  "short_name": "Lorenz Graf",
+  "theme_color": "#252934",
+  "background_color": "#252934",
   "display": "standalone",
   "scope": "/",
   "start_url": "/",
