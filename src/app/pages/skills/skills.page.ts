@@ -2,10 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import {MenuStateService} from '../../services/menu-state.service';
 import {ApexAxisChartSeries, ApexChart, ApexTitleSubtitle} from 'ng-apexcharts';
 
+import * as apexcharts from 'apexcharts';
+(window as any).ApexCharts = apexcharts.constructor;
+
 export interface ISkill {
   title: ApexTitleSubtitle
   chart: ApexChart
   series: ApexAxisChartSeries
+  labels?: string[]
 }
 
 @Component({
@@ -25,7 +29,8 @@ export class SkillsPage implements OnInit {
     series: [{
       name: 'Series 1',
       data: [80, 50, 30, 40, 100, 20],
-    }]
+    }],
+    labels: ['January', 'February', 'March', 'April', 'May', 'June']
   };
 
   /*

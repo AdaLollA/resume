@@ -1,8 +1,8 @@
 {
   "name": "resume",
   "version": "0.0.1",
-  "author": "Ionic Framework",
-  "homepage": "https://ionicframework.com/",
+  "author": "Lorenz Graf",
+  "homepage": "https://lorenz-graf.com/",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -66,5 +66,5 @@
     "tslint": "~5.12.0",
     "typescript": "~3.1.6"
   },
-  "description": "An Ionic project"
+  "description": "My personal homepage."
 }
