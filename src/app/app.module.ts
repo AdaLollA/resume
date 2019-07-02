@@ -17,6 +17,7 @@ import {FormsModule} from '@angular/forms';
 import {AngularFireModule} from '@angular/fire';
 import {environment} from '../environments/environment';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({
     declarations: [AppComponent, PersonalInfoComponent, LinkFooterComponent, HackerConComponent, ScrollingMouseComponent],
@@ -28,7 +29,8 @@ import {AngularFirestoreModule} from '@angular/fire/firestore';
         HomePageModule,
         FormsModule,
         AngularFireModule.initializeApp(environment.firebase),
-        AngularFirestoreModule
+        AngularFirestoreModule,
+        ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
     ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
