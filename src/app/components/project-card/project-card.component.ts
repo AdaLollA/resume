@@ -4,9 +4,11 @@ export interface IProject {
   title: string
   description: string
   technologies: string[]
+  image?: string
   liveDemoUrl?: string
   moreInfoUrl?: string
   sourceCodeUrl?: string
+  date: Date
 }
 
 @Component({

@@ -1,9 +1,10 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {SwipeScrollDirection, SwipeScrollListener, SwipeScrollListenService} from '../../services/swipe-scroll-listen.service';
 import {Router} from '@angular/router';
 import {MenuStateService} from '../../services/menu-state.service';
 import {IProject} from '../../components/project-card/project-card.component';
 import {MatButtonToggleGroup} from '@angular/material';
+import {AngularFirestore} from '@angular/fire/firestore';
+import {Observable} from 'rxjs';
 
 @Component({
     selector: 'app-portfolio',
@@ -22,42 +23,32 @@ export class PortfolioPage implements OnInit {
 
     public fabMargin: string = '-100px';
 
-    private projects: IProject[] = [
-        {
-            title: 'Project A',
-            description: 'Now that your app has been created, you\'ll want to start building out features and components. Check out some of the resources below for next steps.',
-            technologies: ['mobile'],
-            liveDemoUrl: 'asdf',
-            moreInfoUrl: 'https://www.google.com',
-            sourceCodeUrl: 'asdf'
-        },
-        {
-            title: 'Project B',
-            description: 'Now that your app has been created, you\'ll want to start building out features and components. Check out some of the resources below for next steps.',
-            technologies: ['mobile', 'web'],
-            liveDemoUrl: '',
-            moreInfoUrl: 'https://www.google.com',
-            sourceCodeUrl: 'asdf'
-        },
-        {
-            title: 'Project C',
-            description: 'Now that your app has been created, you\'ll want to start building out features and components. Check out some of the resources below for next steps.',
-            technologies: ['web'],
-            liveDemoUrl: 'asdf',
-            moreInfoUrl: 'https://www.google.com',
-            sourceCodeUrl: ''
-        }
-    ];
-
-    public visibleProjects: IProject[];
+    private projects: IProject[];
+    public visibleProjects: IProject[] = [];
+    private collectionListener: Observable<any[]>;
 
     constructor(
         public menu: MenuStateService,
-        public router: Router) {
+        public router: Router,
+        public db: AngularFirestore
+    ) {
+        this.collectionListener = db.collection('portfolio').valueChanges();
     }
 
     ngOnInit(): void {
-        this.applyFilter();
+        this.collectionListener.subscribe(value => {
+            this.projects = value;
+            this.projects = this.projects.sort((a, b) => {
+                if (a.date < b.date) {
+                    return 1;
+                } else if (a.date > b.date) {
+                    return -1;
+                } else {
+                    return 0;
+                }
+            });
+            this.applyFilter();
+        });
     }
 
     handleScroll(e) {
