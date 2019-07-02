@@ -30,9 +30,9 @@ export class TeamPage implements OnInit {
         this.collectionListener.subscribe(value => {
             this.team = value;
             this.team = this.team.sort((a, b) => {
-                if (a.index < b.index) {
+                if (a.index > b.index) {
                     return 1;
-                } else if (a.index > b.index) {
+                } else if (a.index < b.index) {
                     return -1;
                 } else {
                     return 0;
