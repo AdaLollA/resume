@@ -23,7 +23,7 @@ export class PortfolioPage implements OnInit {
 
     public fabMargin: string = '-100px';
 
-    private projects: IProject[];
+    public projects: IProject[];
     public visibleProjects: IProject[] = [];
     private collectionListener: Observable<any[]>;
 
