@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {TimelineObject} from '../../components/timeline/timeline.component';
 import {MenuStateService} from '../../services/menu-state.service';
+import {AngularFirestore} from '@angular/fire/firestore';
+import {Observable} from 'rxjs';
 
 @Component({
     selector: 'app-experience',
@@ -8,54 +10,44 @@ import {MenuStateService} from '../../services/menu-state.service';
     styleUrls: ['./experience.page.scss'],
 })
 export class ExperiencePage implements OnInit {
-    public education: TimelineObject[] = [
-        {
-            year: '2018+',
-            title: 'Msc: University of Applied Sciences ',
-            content: 'Management | Engineering | Innovation'
-        }, {
-            year: '2018',
-            title: 'BSc: University of Applied Sciences ',
-            content: 'Startup | Mobile | Software'
-        }, {
-            year: '2015',
-            title: 'Ing: Secondary Technical College',
-            content: 'Informatics | Electronics | Management'
-        }
-    ];
+    public education: TimelineObject[] = [];
+    public experience: TimelineObject[] = [];
+    public awards: TimelineObject[] = [];
 
-    public experience: TimelineObject[] = [
-        {
-            year: '2017+',
-            title: 'Kennstwen',
-            content: 'Co-Founder'
-        }, {
-            year: '2014 - 2018',
-            title: 'SBS Software Ges.m.b.H',
-            content: 'Mobile | Web | Prototyping'
-        }, {
-            year: '2013',
-            title: 'PALFINGER Group',
-            content: 'Programmer | Mechanic | Paperwork'
-        }
-    ];
+    private collectionListenerEducation: Observable<any[]>;
+    private collectionListenerExperience: Observable<any[]>;
+    private collectionListenerAwards: Observable<any[]>;
 
-    public awards: TimelineObject[] = [
-        {
-            year: '2017',
-            title: '2nd Place',
-            content: 'Coding Contest'
-        }, {
-            year: '2014',
-            title: 'Research and Development Talent',
-            content: 'Austrian Ministry for Transport, Innovation and Technology'
-        }
-    ];
-
-    constructor(public menu: MenuStateService) {
+    constructor(public menu: MenuStateService,
+                public db: AngularFirestore) {
+        this.collectionListenerEducation = db.collection('education').valueChanges();
+        this.collectionListenerExperience = db.collection('experience').valueChanges();
+        this.collectionListenerAwards = db.collection('awards').valueChanges();
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
+        this.collectionListenerEducation.subscribe(value => {
+            this.education = value;
+            this.education = this.education.sort((a, b) => {return this.dateCompare(a, b)});
+        });
+        this.collectionListenerExperience.subscribe(value => {
+            this.experience = value;
+            this.experience = this.experience.sort((a, b) => {return this.dateCompare(a, b)});
+        });
+        this.collectionListenerAwards.subscribe(value => {
+            this.awards = value;
+            this.awards = this.awards.sort((a, b) => {return this.dateCompare(a, b)});
+        });
+    }
+
+    dateCompare(a: TimelineObject, b: TimelineObject): number {
+        if (a.date < b.date) {
+            return 1;
+        } else if (a.date > b.date) {
+            return -1;
+        } else {
+            return 0;
+        }
     }
 
 }
