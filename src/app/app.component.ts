@@ -13,6 +13,7 @@ import {ThemeService} from './services/theme.service';
 export class AppComponent implements SwipeScrollListener {
     public introMarginTop = '0vh';
     public introVisibility = 'visible';
+    public brightMode = false;
 
     public appPages = [
         {
@@ -46,7 +47,7 @@ export class AppComponent implements SwipeScrollListener {
         private platform: Platform,
         public swipeScrollListener: SwipeScrollListenService,
         public router: Router,
-        private theme: ThemeService
+        public theme: ThemeService
     ) {
         this.initializeApp();
     }
@@ -64,7 +65,8 @@ export class AppComponent implements SwipeScrollListener {
     }
 
     public toggleMode(event: CustomEvent) {
-        if (event.detail.checked) {
+        this.brightMode = event.detail.checked;
+        if (this.brightMode) {
             this.theme.light();
         } else {
             this.theme.dark();
