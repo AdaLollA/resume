@@ -19,8 +19,20 @@
   width: 100%;
 }
 
-.mode-slider {
+.mode-toggle-container {
   width: 60%;
+}
+
+.mode-icon {
+  color: var(--ion-color-medium);
+}
+
+.mode-toggle {
+  --background: var(--ion-color-primary-shade);
+  --handle-background: var(--ion-color-primary);
+
+  --background-checked: var(--ion-color-secondary-shade);
+  --handle-background-checked: var(--ion-color-secondary);
 }
 
 .menu {
