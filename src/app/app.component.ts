@@ -13,7 +13,6 @@ import {ThemeService} from './services/theme.service';
 export class AppComponent implements SwipeScrollListener {
     public introMarginTop = '0vh';
     public introVisibility = 'visible';
-    public brightMode: boolean = false;
 
     public appPages = [
         {
@@ -65,9 +64,11 @@ export class AppComponent implements SwipeScrollListener {
     }
 
     public toggleMode(event: CustomEvent) {
-        console.log(event.detail.checked);
-        this.brightMode = event.detail.checked;
-        // todo switch
+        if (event.detail.checked) {
+            this.theme.light();
+        } else {
+            this.theme.dark();
+        }
     }
 
     private dismissIntro() {
