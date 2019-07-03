@@ -60,12 +60,14 @@ export class AppComponent implements SwipeScrollListener {
                 console.log('running locally - hiding intro');
                 this.introVisibility = 'hidden';
             }
+            this.theme.dark();
         });
     }
 
     public toggleMode(event: CustomEvent) {
         console.log(event.detail.checked);
         this.brightMode = event.detail.checked;
+        // todo switch
     }
 
     private dismissIntro() {

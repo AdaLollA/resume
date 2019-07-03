@@ -10,11 +10,21 @@ export class ThemeService {
         this.renderer = rendererFactory.createRenderer(null, null);
     }
 
-    addBodyClass(bodyClass) {
+    private addBodyClass(bodyClass) {
         this.renderer.addClass(document.body, bodyClass);
     }
 
-    removeBodyClass(bodyClass) {
+    private removeBodyClass(bodyClass) {
         this.renderer.removeClass(document.body, bodyClass);
+    }
+
+    public light() {
+        this.removeBodyClass('dark-theme');
+        this.addBodyClass('light-theme');
+    }
+
+    public dark() {
+        this.removeBodyClass('light-theme');
+        this.addBodyClass('dark-theme');
     }
 }
