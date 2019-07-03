@@ -17,17 +17,26 @@
                     </ion-menu-toggle>
                 </ion-list>
             </ion-content>
-            <!--
-            todo light / dark mode
             <ion-row justify-content-center>
-                <ion-item class="mode-slider">
-                <ion-range #mode min="1" max="100" step="100" snaps="true" ticks="true" (ionChange)="toggleMode($event)" (click)="toggleMode($event)">
-                    <ion-icon slot="start" name="sunny"></ion-icon>
-                    <ion-icon slot="end" name="moon"></ion-icon>
-                </ion-range>
-            </ion-item>
+                <ion-col size="4" no-padding>
+                    <ion-row class="full-size" justify-content-end align-items-center>
+                        <ion-icon (click)="theme.dark(); brightMode = false;" class="mode-icon" name="moon"></ion-icon>
+                    </ion-row>
+                </ion-col>
+                <ion-col size="3.5" no-padding>
+                    <ion-row class="full-size" justify-content-center align-items-center>
+                        <ion-item>
+                            <ion-toggle class="mode-toggle" [checked]="brightMode" (ionChange)="toggleMode($event)">
+                            </ion-toggle>
+                        </ion-item>
+                    </ion-row>
+                </ion-col>
+                <ion-col size="4" no-padding>
+                    <ion-row class="full-size" justify-content-start align-items-center>
+                        <ion-icon (click)="theme.light(); brightMode = true;" class="mode-icon" name="sunny"></ion-icon>
+                    </ion-row>
+                </ion-col>
             </ion-row>
-            -->
             <app-link-footer></app-link-footer>
         </ion-menu>
         <ion-router-outlet class="router" main></ion-router-outlet>

@@ -19,8 +19,18 @@
   width: 100%;
 }
 
-.mode-slider {
-  width: 60%;
+.mode-icon {
+  color: var(--ion-color-medium);
+  font-size: 20px;
+  margin-top: -5px;
+}
+
+.mode-toggle {
+  --background: var(--ion-color-primary-shade);
+  --handle-background: var(--ion-color-primary);
+
+  --background-checked: var(--ion-color-secondary-shade);
+  --handle-background-checked: var(--ion-color-secondary);
 }
 
 .menu {

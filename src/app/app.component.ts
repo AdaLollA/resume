@@ -4,6 +4,7 @@ import {Platform} from '@ionic/angular';
 
 import {SwipeScrollDirection, SwipeScrollListener, SwipeScrollListenService} from './services/swipe-scroll-listen.service';
 import {Router} from '@angular/router';
+import {ThemeService} from './services/theme.service';
 
 @Component({
     selector: 'app-root',
@@ -12,7 +13,7 @@ import {Router} from '@angular/router';
 export class AppComponent implements SwipeScrollListener {
     public introMarginTop = '0vh';
     public introVisibility = 'visible';
-    public brightMode: boolean;
+    public brightMode = false;
 
     public appPages = [
         {
@@ -45,7 +46,8 @@ export class AppComponent implements SwipeScrollListener {
     constructor(
         private platform: Platform,
         public swipeScrollListener: SwipeScrollListenService,
-        public router: Router
+        public router: Router,
+        public theme: ThemeService
     ) {
         this.initializeApp();
     }
@@ -58,13 +60,17 @@ export class AppComponent implements SwipeScrollListener {
                 console.log('running locally - hiding intro');
                 this.introVisibility = 'hidden';
             }
+            this.theme.dark();
         });
     }
 
-    public toggleMode(event) {
-        // todo
-        console.log(event);
-        this.brightMode = event.value;
+    public toggleMode(event: CustomEvent) {
+        this.brightMode = event.detail.checked;
+        if (this.brightMode) {
+            this.theme.light();
+        } else {
+            this.theme.dark();
+        }
     }
 
     private dismissIntro() {
@@ -90,7 +96,7 @@ export class AppComponent implements SwipeScrollListener {
     swipeScrollEvent(direction: SwipeScrollDirection) {
         if (direction == SwipeScrollDirection.Up && this.introVisibility != 'hidden') {
             this.dismissIntro();
-        }else if (direction == SwipeScrollDirection.Down && this.introVisibility == 'hidden' && this.router.url == '/home') {
+        } else if (direction == SwipeScrollDirection.Down && this.introVisibility == 'hidden' && this.router.url == '/home') {
             this.showIntro();
         }
         /*
