@@ -77,20 +77,8 @@ export class SkillsPage implements OnInit {
                 labels: this.skills[1].labels,
                 datasets: [{
                     data: this.skills[1].data,
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(255, 99, 132, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(255, 99, 132, 1)'
-                    ],
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
                     borderWidth: 1
                 }]
             },
@@ -102,7 +90,8 @@ export class SkillsPage implements OnInit {
                     display: true,
                     text: 'SOFT',
                     padding: 20,
-                    fontSize: 24
+                    fontSize: 24,
+                    position: 'bottom'
                 },
                 maintainAspectRatio: false,
                 aspectRatio: 1,
@@ -154,21 +143,30 @@ export class SkillsPage implements OnInit {
                 title: {
                     display: true,
                     text: 'HARD',
-                    padding: 20,
+                    padding: 30,
                     fontSize: 24
                 },
                 scales: {
                     yAxes: [{
-                        beginAtZero: true,
                         ticks: {
                             min: 0,
                             max: 10,
                             stepSize: 2
-                        }
+                        },
+                        gridLines: { color: '#a2a3a5' },
+                        angleLines: { color: '#a2a3a5' }
                     }]
                 },
                 maintainAspectRatio: false,
-                aspectRatio: 1
+                aspectRatio: 1,
+                layout: {
+                    padding: {
+                        left: 35,
+                        right: 35,
+                        top: 0,
+                        bottom: 0
+                    }
+                }
             }
         });
     }
