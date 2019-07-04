@@ -1,87 +1,157 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ISkill} from '../../components/skill/skill.component';
 import {MenuStateService} from '../../services/menu-state.service';
-import { Chart } from 'chart.js';
+import {Chart} from 'chart.js';
+import {Observable} from 'rxjs';
+import {Router} from '@angular/router';
+import {AngularFirestore} from '@angular/fire/firestore';
 
 @Component({
-  selector: 'app-skills',
-  templateUrl: './skills.page.html',
-  styleUrls: ['./skills.page.scss'],
+    selector: 'app-skills',
+    templateUrl: './skills.page.html',
+    styleUrls: ['./skills.page.scss'],
 })
 export class SkillsPage implements OnInit {
-  public softSkills: ISkill[] = [
-    {
-      image: 'calendar',
-      text: 'organize'
-    },
-    {
-      image: 'ios-people',
-      text: 'lead'
-    },
-    {
-      image: 'bulb',
-      text: 'understand'
-    },
-    {
-      image: 'flask',
-      text: 'analyse'
-    }
-  ];
-  public hardSkills: ISkill[] = [
-    {
-      image: 'phone-portrait',
-      text: 'native'
-    },
-    {
-      image: 'cloud-outline',
-      text: 'web'
-    },
-    {
-      image: 'cog',
-      text: 'engineer'
-    },
-    {
-      image: 'brush',
-      text: 'design'
-    }
-  ];
-
-  public chart;
-
-  constructor(public menu: MenuStateService) { }
-
-  ngOnInit() {
-    this.chart = new Chart('canvas', {
-      type: 'line',
-      data: {
-        labels: ['a','b','c'],
-        datasets: [
-          {
-            data: [2,3,1],
-            borderColor: "#3cba9f",
-            fill: false
-          },
-          {
-            data: [3,1,2],
-            borderColor: "#ffcc00",
-            fill: false
-          },
-        ]
+    /*
+    public softSkills: ISkill[] = [
+      {
+        image: 'calendar',
+        text: 'organize'
       },
-      options: {
-        legend: {
-          display: false
-        },
-        scales: {
-          xAxes: [{
-            display: true
-          }],
-          yAxes: [{
-            display: true
-          }],
-        }
+      {
+        image: 'ios-people',
+        text: 'lead'
+      },
+      {
+        image: 'bulb',
+        text: 'understand'
+      },
+      {
+        image: 'flask',
+        text: 'analyse'
       }
-    });
-  }
+    ];
+    public skills: ISkill[] = [
+      {
+        image: 'phone-portrait',
+        text: 'native'
+      },
+      {
+        image: 'cloud-outline',
+        text: 'web'
+      },
+      {
+        image: 'cog',
+        text: 'engineer'
+      },
+      {
+        image: 'brush',
+        text: 'design'
+      }
+    ];
+    */
+
+    public skills;
+
+    public softChart;
+    public hardChart;
+
+    private collectionListener: Observable<any[]>;
+
+    constructor(public menu: MenuStateService,
+                public db: AngularFirestore) {
+        this.collectionListener = db.collection('skills').valueChanges();
+    }
+
+    ngOnInit() {
+        this.collectionListener.subscribe(value => {
+            this.skills = value;
+            console.log(this.skills);
+            this.initSoftSkillChart();
+            this.initHardSkillChart();
+        });
+    }
+
+    private initSoftSkillChart() {
+        this.softChart = new Chart('soft', {
+            type: 'radar',
+            data: {
+                labels: this.skills[1].labels,
+                datasets: [{
+                    label: '# of Votes',
+                    data: this.skills[1].data,
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+    }
+
+    private initHardSkillChart() {
+        this.hardChart = new Chart('hard', {
+            type: 'bar',
+            data: {
+                labels: this.skills[0].labels,
+                datasets: [{
+                    label: '# of Votes',
+                    data: this.skills[0].data,
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                },
+                animation: {},
+                legend: {
+                    display: false
+                }
+            }
+        });
+    }
 
 }
