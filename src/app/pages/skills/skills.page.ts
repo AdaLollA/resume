@@ -76,7 +76,6 @@ export class SkillsPage implements OnInit {
             data: {
                 labels: this.skills[1].labels,
                 datasets: [{
-                    label: '# of Votes',
                     data: this.skills[1].data,
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
@@ -134,7 +133,7 @@ export class SkillsPage implements OnInit {
             data: {
                 labels: this.skills[0].labels,
                 datasets: [{
-                    label: '# of Votes',
+                    label: 'Skill Level',
                     data: this.skills[0].data,
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
@@ -158,7 +157,19 @@ export class SkillsPage implements OnInit {
             options: {
                 legend: {
                     display: false
-                }
+                },
+                scales: {
+                    yAxes: [{
+                        beginAtZero: true,
+                        ticks: {
+                            min: 0,
+                            max: 10,
+                            stepSize: 2
+                        }
+                    }]
+                },
+                maintainAspectRatio: false,
+                aspectRatio: 1
             }
         });
     }
