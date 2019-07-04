@@ -108,10 +108,13 @@ export class SkillsPage implements OnInit {
                 aspectRatio: 1,
                 scale: {
                     ticks: {
+                        display: false,
                         max: 10,
                         min: 0,
                         stepSize: 2
-                    }
+                    },
+                    angleLines: { color: '#a2a3a5' },
+                    gridLines: { color: '#a2a3a5' }
                 }
             }
         });
