@@ -15,8 +15,8 @@
             <ion-row class="full-width" justify-content-center align-items-end>
                 <p class="skill-title">Soft Skills</p>
             </ion-row>
-            <ion-row justify-content-around class="full-width" align-items-start>
-                <canvas id="soft">{{ softChart }}</canvas>
+            <ion-row justify-content-around class="full-width chart-container" align-items-start>
+                <canvas id="soft" class="chart" height="100%">{{ softChart }}</canvas>
             </ion-row>
         </ion-row>
 
@@ -28,8 +28,8 @@
             <ion-row class="full-width" justify-content-center align-items-end>
                 <p class="skill-title">Hard Skills</p>
             </ion-row>
-            <ion-row justify-content-around class="full-width" align-items-start>
-                <canvas id="hard">{{ hardChart }}</canvas>
+            <ion-row justify-content-start class="full-width chart-container" align-items-start>
+                <canvas id="hard" class="chart" height="90%">{{ hardChart }}</canvas>
             </ion-row>
         </ion-row>
     </ion-row>

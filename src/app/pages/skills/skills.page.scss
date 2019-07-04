@@ -9,17 +9,22 @@
   padding-bottom: 1vw;
 }
 
-.skill-col {
-
-}
-
 .divider {
   width: 70%;
   background: var(--ion-color-light-shade);
   height: 1px;
-  margin: 5vh 0 5vh 0;
+  margin: 1vh 0 1vh 0;
 }
 
 .wrapper {
   width: 80%;
+  height: 100%;
+}
+
+.chart-container {
+  height: 40vh;
+}
+
+.chart {
+  margin: auto;
 }
