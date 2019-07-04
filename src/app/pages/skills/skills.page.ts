@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ISkill} from '../../components/skill/skill.component';
 import {MenuStateService} from '../../services/menu-state.service';
+import { Chart } from 'chart.js';
 
 @Component({
   selector: 'app-skills',
@@ -45,9 +46,42 @@ export class SkillsPage implements OnInit {
     }
   ];
 
+  public chart;
+
   constructor(public menu: MenuStateService) { }
 
   ngOnInit() {
+    this.chart = new Chart('canvas', {
+      type: 'line',
+      data: {
+        labels: ['a','b','c'],
+        datasets: [
+          {
+            data: [2,3,1],
+            borderColor: "#3cba9f",
+            fill: false
+          },
+          {
+            data: [3,1,2],
+            borderColor: "#ffcc00",
+            fill: false
+          },
+        ]
+      },
+      options: {
+        legend: {
+          display: false
+        },
+        scales: {
+          xAxes: [{
+            display: true
+          }],
+          yAxes: [{
+            display: true
+          }],
+        }
+      }
+    });
   }
 
 }
