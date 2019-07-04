@@ -110,7 +110,13 @@ export class SkillsPage implements OnInit {
             options: {
                 legend: {
                     display: false
-                }
+                },
+                title: {
+                    display: true,
+                    text: 'soft'
+                },
+                maintainAspectRatio: false,
+                aspectRatio: 1
             }
         });
     }
