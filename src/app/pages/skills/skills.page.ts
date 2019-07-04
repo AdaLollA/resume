@@ -148,6 +148,7 @@ export class SkillsPage implements OnInit {
                 },
                 scales: {
                     yAxes: [{
+                        display: false, // hides axis visually but keeps min and max
                         ticks: {
                             min: 0,
                             max: 10,
