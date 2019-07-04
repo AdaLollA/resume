@@ -119,3 +119,7 @@
 .themed-background {
   background: var(--ion-background-color);
 }
+
+ion-toolbar {
+  --background: --ion-background-color;
+}
