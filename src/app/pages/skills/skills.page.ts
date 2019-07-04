@@ -10,47 +10,7 @@ import {AngularFirestore} from '@angular/fire/firestore';
     styleUrls: ['./skills.page.scss'],
 })
 export class SkillsPage implements OnInit {
-    /*
-    public softSkills: ISkill[] = [
-      {
-        image: 'calendar',
-        text: 'organize'
-      },
-      {
-        image: 'ios-people',
-        text: 'lead'
-      },
-      {
-        image: 'bulb',
-        text: 'understand'
-      },
-      {
-        image: 'flask',
-        text: 'analyse'
-      }
-    ];
-    public skills: ISkill[] = [
-      {
-        image: 'phone-portrait',
-        text: 'native'
-      },
-      {
-        image: 'cloud-outline',
-        text: 'web'
-      },
-      {
-        image: 'cog',
-        text: 'engineer'
-      },
-      {
-        image: 'brush',
-        text: 'design'
-      }
-    ];
-    */
-
     public skills;
-
     public softChart;
     public hardChart;
 
