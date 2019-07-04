@@ -82,21 +82,9 @@ export class SkillsPage implements OnInit {
                         'rgba(255, 99, 132, 0.2)',
                         'rgba(255, 99, 132, 0.2)',
                         'rgba(255, 99, 132, 0.2)',
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(255, 99, 132, 0.2)',
                         'rgba(255, 99, 132, 0.2)'
                     ],
                     borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(255, 99, 132, 1)',
                         'rgba(255, 99, 132, 1)',
                         'rgba(255, 99, 132, 1)',
                         'rgba(255, 99, 132, 1)',
@@ -112,7 +100,9 @@ export class SkillsPage implements OnInit {
                 },
                 title: {
                     display: true,
-                    text: 'soft'
+                    text: 'SOFT',
+                    padding: 20,
+                    fontSize: 24
                 },
                 maintainAspectRatio: false,
                 aspectRatio: 1,
@@ -157,6 +147,12 @@ export class SkillsPage implements OnInit {
             options: {
                 legend: {
                     display: false
+                },
+                title: {
+                    display: true,
+                    text: 'HARD',
+                    padding: 20,
+                    fontSize: 24
                 },
                 scales: {
                     yAxes: [{
