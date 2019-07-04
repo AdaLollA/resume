@@ -116,7 +116,14 @@ export class SkillsPage implements OnInit {
                     text: 'soft'
                 },
                 maintainAspectRatio: false,
-                aspectRatio: 1
+                aspectRatio: 1,
+                scale: {
+                    ticks: {
+                        max: 10,
+                        min: 0,
+                        stepSize: 2
+                    }
+                }
             }
         });
     }
@@ -149,13 +156,6 @@ export class SkillsPage implements OnInit {
                 }]
             },
             options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-                },
                 legend: {
                     display: false
                 }

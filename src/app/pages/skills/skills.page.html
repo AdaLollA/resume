@@ -10,21 +10,17 @@
 </ion-header>
 
 <ion-row class="full-size" justify-content-center align-items-center>
-    <ion-row class="wrapper" justify-content-center>
-        <ion-row class="full-width" justify-content-center>
-            <ion-row justify-content-around class="full-width chart-container" align-items-start>
+    <ion-row class="full-size" justify-content-center>
+        <ion-row class="full-width chart-container" justify-content-center>
                 <canvas id="soft">{{ softChart }}</canvas>
-            </ion-row>
         </ion-row>
 
-        <ion-row class="full-width" justify-content-center>
+        <ion-row class="full-width divider-container" justify-content-center>
             <div class="divider"></div>
         </ion-row>
 
-        <ion-row class="full-width">
-            <ion-row justify-content-start class="full-width chart-container" align-items-start>
-                <canvas id="hard">{{ hardChart }}</canvas>
-            </ion-row>
+        <ion-row class="full-width chart-container">
+            <canvas id="hard">{{ hardChart }}</canvas>
         </ion-row>
     </ion-row>
 </ion-row>
