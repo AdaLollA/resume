@@ -11,7 +11,9 @@ export class LoginPage implements OnInit {
 
   constructor(public auth: AuthService, private router: Router) {
     auth.user$.subscribe((user) => {
-      this.router.navigate(['cms']);
+      if (user) {
+        // todo uncomment for forwarding this.router.navigate(['cms']);
+      }
     })
   }
 
