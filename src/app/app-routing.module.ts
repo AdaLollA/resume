@@ -13,8 +13,9 @@ const routes: Routes = [
     },
     {path: 'experience', loadChildren: './pages/experience/experience.module#ExperiencePageModule'},
     {path: 'portfolio', loadChildren: './pages/portfolio/portfolio.module#PortfolioPageModule'},
-  { path: 'skills', loadChildren: './pages/skills/skills.module#SkillsPageModule' },
-  { path: 'team', loadChildren: './pages/team/team.module#TeamPageModule' }
+    {path: 'skills', loadChildren: './pages/skills/skills.module#SkillsPageModule'},
+    {path: 'team', loadChildren: './pages/team/team.module#TeamPageModule'},
+    {path: 'cms', loadChildren: './cms/cms.module#CmsPageModule'}
 ];
 
 @NgModule({
