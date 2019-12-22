@@ -15,8 +15,6 @@ interface User {
     displayName?: string;
 }
 
-// https://fireship.io/lessons/angularfire-google-oauth/
-
 @Injectable({
     providedIn: 'root'
 })
@@ -47,6 +45,7 @@ export class AuthService {
 
     async signOut() {
         await this.afAuth.auth.signOut();
+        this.user$ = null;
         return this.router.navigate(['/']);
     }
 

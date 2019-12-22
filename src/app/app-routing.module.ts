@@ -1,5 +1,6 @@
 import {NgModule} from '@angular/core';
 import {PreloadAllModules, RouterModule, Routes} from '@angular/router';
+import {AuthGuardService} from './services/auth-guard.service';
 
 const routes: Routes = [
     {
@@ -15,7 +16,9 @@ const routes: Routes = [
     {path: 'portfolio', loadChildren: './pages/portfolio/portfolio.module#PortfolioPageModule'},
     {path: 'skills', loadChildren: './pages/skills/skills.module#SkillsPageModule'},
     {path: 'team', loadChildren: './pages/team/team.module#TeamPageModule'},
-    {path: 'cms', loadChildren: './cms/cms.module#CmsPageModule'}
+    {path: 'cms', loadChildren: './cms/cms.module#CmsPageModule', canActivate: [AuthGuardService]},
+    {path: 'login', loadChildren: './cms/login/login.module#LoginPageModule'}
+
 ];
 
 @NgModule({

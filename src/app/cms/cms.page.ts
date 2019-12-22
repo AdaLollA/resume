@@ -8,7 +8,7 @@ import {AuthService} from '../services/auth.service';
 })
 export class CmsPage implements OnInit {
 
-  constructor(public auth: AuthService) { }
+  constructor() { }
 
   ngOnInit() {
   }
