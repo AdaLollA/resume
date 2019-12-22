@@ -11,15 +11,12 @@ export class AuthGuardService {
     }
 
     canActivate(route: ActivatedRouteSnapshot): boolean {
-        console.log(route);
-
         this.auth.user$.subscribe((user) => {
             if (!user) {
                 this.router.navigate(['login']);
                 return false;
             }
         });
-
         return true;
     }
 }
