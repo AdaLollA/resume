@@ -5,13 +5,15 @@
 </ion-header>
 
 <ion-content>
-    <div *ngIf="auth.user$ | async as user; else login">
-        {{ user | json }}
-        <hr>
-        <ion-button (click)="auth.signOut()">Sign Out</ion-button>
-    </div>
-
+    <!--
+      <div *ngIf="auth.user$ | async as user; else login">
+          {{ user | json }}
+          <hr>
+          <ion-button (click)="auth.signOut()">Sign Out</ion-button>
+      </div>
     <ng-template #login>
+      -->
+    <ng-template>
         <ion-button (click)="auth.googleSignIn()">Sign In</ion-button>
     </ng-template>
 </ion-content>
