@@ -18,12 +18,14 @@ import {AngularFireModule} from '@angular/fire';
 import {environment} from '../environments/environment';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import {AngularFireAuthModule} from '@angular/fire/auth';
 
 @NgModule({
     declarations: [AppComponent, PersonalInfoComponent, LinkFooterComponent, HackerConComponent, ScrollingMouseComponent],
   entryComponents: [],
     imports: [
         BrowserModule,
+        AngularFireAuthModule,
         IonicModule.forRoot(),
         AppRoutingModule,
         HomePageModule,
