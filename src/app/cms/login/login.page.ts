@@ -12,7 +12,7 @@ export class LoginPage implements OnInit {
   constructor(public auth: AuthService, private router: Router) {
     auth.user$.subscribe((user) => {
       if (user) {
-        // todo uncomment for forwarding this.router.navigate(['cms']);
+        this.router.navigate(['cms']);
       }
     })
   }
