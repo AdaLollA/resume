@@ -4,6 +4,7 @@ import {TimelineObject} from '../components/timeline/timeline.component';
 import {Observable} from 'rxjs';
 import {IProject} from '../components/project-card/project-card.component';
 import {ITeamMember} from '../pages/team/team.page';
+import {AuthService} from '../services/auth.service';
 
 @Component({
   selector: 'app-cms',
@@ -25,7 +26,7 @@ export class CmsPage implements OnInit {
   private collectionListenerSkills: Observable<any[]>;
   private collectionListenerTeam: Observable<any[]>;
 
-  constructor(public db: AngularFirestore) {
+  constructor(public db: AngularFirestore, public auth: AuthService) {
     this.collectionListenerEducation = db.collection('education').valueChanges();
     this.collectionListenerExperience = db.collection('experience').valueChanges();
     this.collectionListenerAwards = db.collection('awards').valueChanges();
