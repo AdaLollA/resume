@@ -33,6 +33,18 @@
             <ion-row class="full-size">
                 <ion-card class="full-size">
                     <ion-card-header class="ion-text-center">Hard Skills</ion-card-header>
+                    <ion-card-content>
+                        <ion-row *ngFor="let soft of skills[0].labels; let i = index">
+                            <ion-col size="4">
+                                <p>{{ soft }}</p>
+                            </ion-col>
+                            <ion-col size="8">
+                                <ion-item class="input-range">
+                                    <ion-range class="input-range" min="0" max="10" [value]="skills[0].data[i]"></ion-range>
+                                </ion-item>
+                            </ion-col>
+                        </ion-row>
+                    </ion-card-content>
                 </ion-card>
             </ion-row>
             <ion-row class="full-size">
