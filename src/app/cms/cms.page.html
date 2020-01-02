@@ -3,14 +3,17 @@
         <ion-title>cms</ion-title>
         <ion-buttons slot="primary">
             <!-- user -->
-            <ion-button *ngIf="auth.user$ | async as user">
+            <ion-button *ngIf="auth.user$ | async as user" (click)="auth.signOut()">
                 <img [src]="user.photoURL" class="icon">
+                &nbsp;&nbsp;Sign Out
             </ion-button>
 
             <!-- more -->
+            <!--
             <ion-button>
                 <ion-icon slot="icon-only" name="more"></ion-icon>
             </ion-button>
+            -->
         </ion-buttons>
     </ion-toolbar>
 </ion-header>
