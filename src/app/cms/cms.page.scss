@@ -3,3 +3,16 @@
   width: 28px;
   border-radius: 50%;
 }
+
+.table-root {
+  justify-content: space-around;
+  height: 100%;
+  width: 100%;
+}
+
+.table-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
