@@ -5,6 +5,7 @@ import {Observable} from 'rxjs';
 import {IProject} from '../components/project-card/project-card.component';
 import {ITeamMember} from '../pages/team/team.page';
 import {AuthService} from '../services/auth.service';
+import {AlertController} from '@ionic/angular';
 
 @Component({
   selector: 'app-cms',
@@ -26,7 +27,7 @@ export class CmsPage implements OnInit {
   private collectionListenerSkills: Observable<any[]>;
   private collectionListenerTeam: Observable<any[]>;
 
-  constructor(public db: AngularFirestore, public auth: AuthService) {
+  constructor(public db: AngularFirestore, public auth: AuthService, public alertController: AlertController) {
     this.collectionListenerEducation = db.collection('education').valueChanges();
     this.collectionListenerExperience = db.collection('experience').valueChanges();
     this.collectionListenerAwards = db.collection('awards').valueChanges();
@@ -85,6 +86,28 @@ export class CmsPage implements OnInit {
     } else {
       return 0;
     }
+  }
+
+  async signOutConfirm() {
+    const alert = await this.alertController.create({
+      header: 'Sign Out',
+      message: 'Are you sure you want to sign out?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'safe'
+        }, {
+          text: 'Sign Out',
+          cssClass: 'warning',
+          handler: () => {
+            this.auth.signOut();
+          }
+        }
+      ]
+    });
+
+    await alert.present();
   }
 
 }

@@ -123,3 +123,11 @@
 ion-toolbar {
   --background: --ion-background-color;
 }
+
+.warning * {
+  color: var(--ion-color-danger-shade);
+}
+
+.safe * {
+  color: var(--ion-color-success-shade);
+}
