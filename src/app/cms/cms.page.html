@@ -23,7 +23,8 @@
                             </ion-col>
                             <ion-col size="8">
                                 <ion-item class="input-range">
-                                    <ion-range class="input-range" min="0" max="10" [value]="skills[1].data[i]"></ion-range>
+                                    <ion-range class="input-range" min="0" max="10"
+                                               [value]="skills[1].data[i]"></ion-range>
                                 </ion-item>
                             </ion-col>
                         </ion-row>
@@ -40,7 +41,8 @@
                             </ion-col>
                             <ion-col size="8">
                                 <ion-item class="input-range">
-                                    <ion-range class="input-range" min="0" max="10" [value]="skills[0].data[i]"></ion-range>
+                                    <ion-range class="input-range" min="0" max="10"
+                                               [value]="skills[0].data[i]"></ion-range>
                                 </ion-item>
                             </ion-col>
                         </ion-row>
@@ -52,16 +54,23 @@
                     <ion-card-header class="ion-text-center">Team</ion-card-header>
                     <ion-card-content>
                         <ion-row *ngFor="let member of team">
-                            <ion-col size="2" class="flex-center"><img class="team-member-image" [src]="member.img"></ion-col>
-                            <ion-col size="5" class="flex-center"><p class="ion-text-center">{{ member.name }}</p></ion-col>
-                            <ion-col size="4" class="flex-center"><p class="ion-text-center">{{ member.profession }}</p></ion-col>
-                            <ion-col size="1" class="flex-center"><ion-icon name="create"></ion-icon></ion-col>
+                            <ion-col size="2" class="flex-center"><img class="team-member-image" [src]="member.img">
+                            </ion-col>
+                            <ion-col size="5" class="flex-center"><p class="ion-text-center">{{ member.name }}</p>
+                            </ion-col>
+                            <ion-col size="4" class="flex-center"><p class="ion-text-center">{{ member.profession }}</p>
+                            </ion-col>
+                            <ion-col size="1" class="flex-center">
+                                <ion-button fill="clear">
+                                    <ion-icon slot="icon-only" name="create" class="edit-icon"></ion-icon>
+                                </ion-button>
+                            </ion-col>
                         </ion-row>
                     </ion-card-content>
                 </ion-card>
             </ion-row>
         </ion-col>
-        <ion-col size="4" class="table-col">
+        <ion-col size="4" class="table-col middle-col">
             <ion-row class="full-size">
                 <ion-card class="full-size">
                     <ion-card-header class="ion-text-center">Education</ion-card-header>
