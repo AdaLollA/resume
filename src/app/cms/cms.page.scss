@@ -60,3 +60,12 @@
 .auto-height {
   height: auto;
 }
+
+.divider {
+  width: 70%;
+  background: var(--ion-color-light-shade);
+  height: 1px;
+  margin: auto;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
