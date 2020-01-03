@@ -65,3 +65,8 @@
   margin-top: 5px;
   margin-bottom: 5px;
 }
+
+.third-height {
+  height: calc(33% - 56px/3);
+  width: 100%;
+}
