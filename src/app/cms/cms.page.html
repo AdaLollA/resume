@@ -95,6 +95,15 @@
                                 <ion-row>{{ p.description }}</ion-row>
                             </ion-col>
                         </ion-row>
+                        <ion-row class="ion-justify-content-center full-width">
+                            <p *ngFor="let tag of p.technologies" class="tag">{{ tag }}</p>
+                        </ion-row>
+                        <ion-row class="full-width ion-justify-content-center">
+                            <ion-button class="more-buttons" size="small" [disabled]="!p.moreInfoUrl">Info</ion-button>
+                            <ion-button class="more-buttons" color="secondary" size="small" [disabled]="!p.sourceCodeUrl">Code
+                            </ion-button>
+                            <ion-button class="more-buttons" color="tertiary" size="small" [disabled]="!p.liveDemoUrl">Demo</ion-button>
+                        </ion-row>
                         <div class="divider"></div>
                     </ion-row>
                 </app-cms-element>
