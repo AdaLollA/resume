@@ -63,4 +63,29 @@ export class AuthService {
 
         return userRef.set(data, {merge: true});
     }
+
+    //      |----------------------------------------------------------------------------|
+    //      |CRUD https://angular-templates.io/tutorials/about/angular-crud-with-firebase|
+    //      |----------------------------------------------------------------------------|
+
+    /*
+    createUser(value, avatar) {
+        return this.afs.collection('users').add({
+            name: value.name,
+            nameToSearch: value.name.toLowerCase(),
+            surname: value.surname,
+            age: parseInt(value.age),
+            avatar: avatar
+        });
+    }
+
+    updateUser(userKey, value) {
+        value.nameToSearch = value.name.toLowerCase();
+        return this.afs.collection('users').doc(userKey).set(value);
+    }
+
+    deleteUser(userKey) {
+        return this.afs.collection('users').doc(userKey).delete();
+    }
+    */
 }
