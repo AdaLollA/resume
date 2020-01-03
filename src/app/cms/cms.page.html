@@ -14,9 +14,7 @@
     <ion-row class="table-root" *ngIf="auth.user$ | async as user; else loading">
         <ion-col size="4" class="table-col">
             <ion-row class="full-size">
-                <ion-card class="full-size">
-                    <ion-card-header class="ion-text-center">Soft Skills</ion-card-header>
-                    <ion-card-content>
+                <app-cms-element class="full-size" title="Soft Skills">
                         <ion-row *ngFor="let soft of skills[1].labels; let i = index">
                             <ion-col size="4">
                                 <p>{{ soft }}</p>
@@ -28,13 +26,10 @@
                                 </ion-item>
                             </ion-col>
                         </ion-row>
-                    </ion-card-content>
-                </ion-card>
+                </app-cms-element>
             </ion-row>
             <ion-row class="full-size">
-                <ion-card class="full-size">
-                    <ion-card-header class="ion-text-center">Hard Skills</ion-card-header>
-                    <ion-card-content>
+                <app-cms-element class="full-size" title="Hard Skills">
                         <ion-row *ngFor="let soft of skills[0].labels; let i = index">
                             <ion-col size="4">
                                 <p>{{ soft }}</p>
@@ -46,13 +41,10 @@
                                 </ion-item>
                             </ion-col>
                         </ion-row>
-                    </ion-card-content>
-                </ion-card>
+                </app-cms-element>
             </ion-row>
             <ion-row class="full-size">
-                <ion-card class="full-size">
-                    <ion-card-header class="ion-text-center">Team</ion-card-header>
-                    <ion-card-content>
+                <app-cms-element class="full-size" title="Team">
                         <ion-row *ngFor="let member of team">
                             <ion-col size="2" class="flex-center"><img class="team-member-image" [src]="member.img">
                             </ion-col>
@@ -61,37 +53,28 @@
                             <ion-col size="4" class="flex-center"><p class="ion-text-center">{{ member.profession }}</p>
                             </ion-col>
                             <ion-col size="1" class="flex-center">
-                                <ion-button fill="clear">
+                                <ion-button fill="clear" size="small">
                                     <ion-icon slot="icon-only" name="create" class="edit-icon"></ion-icon>
                                 </ion-button>
                             </ion-col>
                         </ion-row>
-                    </ion-card-content>
-                </ion-card>
+                </app-cms-element>
             </ion-row>
         </ion-col>
         <ion-col size="4" class="table-col middle-col">
             <ion-row class="full-size">
-                <ion-card class="full-size">
-                    <ion-card-header class="ion-text-center">Education</ion-card-header>
-                </ion-card>
+                <app-cms-element class="full-size" title="Education"></app-cms-element>
             </ion-row>
             <ion-row class="full-size">
-                <ion-card class="full-size">
-                    <ion-card-header class="ion-text-center">Experience</ion-card-header>
-                </ion-card>
+                <app-cms-element class="full-size" title="Experience"></app-cms-element>
             </ion-row>
             <ion-row class="full-size">
-                <ion-card class="full-size">
-                    <ion-card-header class="ion-text-center">Awards</ion-card-header>
-                </ion-card>
+                <app-cms-element class="full-size" title="Awards"></app-cms-element>
             </ion-row>
         </ion-col>
-        <ion-col size="4" class="table-col full-size">
+        <ion-col size="4" class="table-col full-size auto-height">
             <ion-row class="full-size">
-                <ion-card class="full-size">
-                    <ion-card-header class="ion-text-center">Portfolio</ion-card-header>
-                </ion-card>
+                <app-cms-element class="full-size" title="Portfolio"></app-cms-element>
             </ion-row>
         </ion-col>
     </ion-row>

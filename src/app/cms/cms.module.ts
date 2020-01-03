@@ -6,6 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { CmsPage } from './cms.page';
+import {CmsElementComponent} from './cms-element/cms-element.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,6 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [CmsPage]
+    declarations: [CmsPage, CmsElementComponent]
 })
 export class CmsPageModule {}
