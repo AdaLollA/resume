@@ -10,6 +10,7 @@
 
 .cms-content {
   padding-bottom: 0;
+  margin-top: 45px;
 }
 
 .scroll-y {
@@ -19,4 +20,9 @@
 .no-padding-top-bot {
   padding-top: 0;
   padding-bottom: 0;
+}
+
+.sticky {
+  position: fixed;
+  width: calc(98%/3);
 }
