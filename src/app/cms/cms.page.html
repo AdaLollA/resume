@@ -100,9 +100,19 @@
                         </ion-row>
                         <ion-row class="full-width ion-justify-content-center">
                             <ion-button class="more-buttons" size="small" [disabled]="!p.moreInfoUrl">Info</ion-button>
-                            <ion-button class="more-buttons" color="secondary" size="small" [disabled]="!p.sourceCodeUrl">Code
+                            <ion-button class="more-buttons" color="secondary" size="small"
+                                        [disabled]="!p.sourceCodeUrl">Code
                             </ion-button>
-                            <ion-button class="more-buttons" color="tertiary" size="small" [disabled]="!p.liveDemoUrl">Demo</ion-button>
+                            <ion-button class="more-buttons" color="tertiary" size="small" [disabled]="!p.liveDemoUrl">
+                                Demo
+                            </ion-button>
+                        </ion-row>
+                        <ion-row class="full-width ion-justify-content-center">
+                            <ion-col size="1" class="flex-center">
+                                <ion-button fill="clear" size="small">
+                                    <ion-icon slot="icon-only" name="create" class="edit-icon"></ion-icon>
+                                </ion-button>
+                            </ion-col>
                         </ion-row>
                         <div class="divider"></div>
                     </ion-row>
