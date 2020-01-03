@@ -63,18 +63,34 @@
         </ion-col>
         <ion-col size="4" class="table-col middle-col">
             <ion-row class="full-size">
-                <app-cms-element class="full-size" title="Education"></app-cms-element>
+                <app-cms-element class="full-size" title="Education">
+                    <ion-row *ngFor="let edu of education">
+                        {{ edu.content }}
+                    </ion-row>
+                </app-cms-element>
             </ion-row>
             <ion-row class="full-size">
-                <app-cms-element class="full-size" title="Experience"></app-cms-element>
+                <app-cms-element class="full-size" title="Experience">
+                    <ion-row *ngFor="let exp of experience">
+                        {{ exp.content }}
+                    </ion-row>
+                </app-cms-element>
             </ion-row>
             <ion-row class="full-size">
-                <app-cms-element class="full-size" title="Awards"></app-cms-element>
+                <app-cms-element class="full-size" title="Awards">
+                    <ion-row *ngFor="let a of awards">
+                        {{ a.content }}
+                    </ion-row>
+                </app-cms-element>
             </ion-row>
         </ion-col>
         <ion-col size="4" class="table-col full-size auto-height">
             <ion-row class="full-size">
-                <app-cms-element class="full-size" title="Portfolio"></app-cms-element>
+                <app-cms-element class="full-size" title="Portfolio">
+                    <ion-row *ngFor="let p of projects">
+                        {{ p.title }}
+                    </ion-row>
+                </app-cms-element>
             </ion-row>
         </ion-col>
     </ion-row>
