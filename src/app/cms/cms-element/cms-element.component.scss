@@ -24,9 +24,7 @@
 
 .sticky {
   position: fixed;
-  width: calc(89%/3);
+  width: calc(90%/3);
   background: var(--ion-background-color);
   z-index: 1;
-  margin-left: 3px;
-  margin-top: 3px;
 }
