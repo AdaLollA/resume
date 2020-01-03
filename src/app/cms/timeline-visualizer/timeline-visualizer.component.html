@@ -1,0 +1,18 @@
+<ion-row class="full-width">
+  <ion-col class="full-width" size="2">
+    <p>{{ data.year }}</p>
+  </ion-col>
+  <ion-col class="full-width" size="9">
+    <ion-row class="full-width">
+      <p><b>{{ data.title }}</b></p>
+    </ion-row>
+    <ion-row class="full-width close-content">
+      <p>{{ data.content }}</p>
+    </ion-row>
+  </ion-col>
+  <ion-col size="1" class="flex-center">
+    <ion-button fill="clear" size="small">
+      <ion-icon slot="icon-only" name="create" class="edit-icon"></ion-icon>
+    </ion-button>
+  </ion-col>
+</ion-row>

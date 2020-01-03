@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { CmsPage } from './cms.page';
 import {CmsElementComponent} from './cms-element/cms-element.component';
+import {TimelineVisualizerComponent} from './timeline-visualizer/timeline-visualizer.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,6 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-    declarations: [CmsPage, CmsElementComponent]
+  declarations: [CmsPage, CmsElementComponent, TimelineVisualizerComponent]
 })
 export class CmsPageModule {}
