@@ -4,7 +4,7 @@ export interface TimelineObject {
   year: string
   title: string
   content: string
-  date: Date
+  date: Date | string
 }
 
 @Component({

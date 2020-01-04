@@ -9,8 +9,12 @@
       <ion-input [(ngModel)]="modifiedData.content" (ionChange)="checkChanges()"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label position="floating">Year (visual only)</ion-label>
-      <ion-input [(ngModel)]="modifiedData.year" (ionChange)="checkChanges()"></ion-input>
+      <ion-label position="floating">Time (visual only)</ion-label>
+      <ion-input [(ngModel)]="modifiedData.year" (ionChange)="checkChanges()" type="number"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Date MM/DD/YYYY (sorting)</ion-label>
+      <ion-datetime displayFormat="MM/DD/YYYY" [max]="now" [(ngModel)]="modifiedData.date" (ionChange)="checkChanges()" ></ion-datetime>
     </ion-item>
   </ion-row>
   <ion-row class="full-width flex-center">

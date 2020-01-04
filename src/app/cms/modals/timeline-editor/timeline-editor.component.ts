@@ -7,15 +7,19 @@ import {ModalController, NavParams} from '@ionic/angular';
     templateUrl: './timeline-editor.component.html',
     styleUrls: ['./timeline-editor.component.scss'],
 })
-export class TimelineEditorComponent {
+export class TimelineEditorComponent implements OnInit {
 
     @Input() data: TimelineObject;
     public modifiedData: TimelineObject;
 
     public changes: boolean = false;
+    public now: Date;
 
     constructor(public nav: NavParams, public modalCtrl: ModalController) {
-        console.log(this.data);
+    }
+
+    ngOnInit(): void {
+        this.now = new Date();
         if (this.data) {
             // edit existing data set
             // todo
@@ -24,8 +28,8 @@ export class TimelineEditorComponent {
             this.modifiedData = {
                 title: '',
                 content: '',
-                year: (new Date()).getFullYear().toString(),
-                date: new Date()
+                year: this.now.getFullYear().toString(),
+                date: this.now.toISOString()
             };
         }
     }
@@ -39,7 +43,7 @@ export class TimelineEditorComponent {
         if (this.modifiedData.title != '' && this.modifiedData.content != '' && this.modifiedData.year != '') {
             // all fields contain data
             if (
-                this.modifiedData != this.data
+                this.modifiedData != this.data // todo test if this works, else use solution below
                 /*
                 this.modifiedData.title != this.data.title &&
                 this.modifiedData.content != this.data.content &&
@@ -48,8 +52,8 @@ export class TimelineEditorComponent {
                 */
             ) {
                 // fields have changed from previous data
-              this.changes = true;
-              return;
+                this.changes = true;
+                return;
             }
         }
         this.changes = false;
