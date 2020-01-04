@@ -32,10 +32,9 @@ export class TimelineEditorComponent implements OnInit {
             // fix date DB<>UI
             try {
                 let date: any = this.data.date;
-                console.log(date, 'DATE');
                 this.data.date = this.toDateTime(date.seconds).toISOString();
             } catch (e) {
-                
+
             }
 
             // clone modifiable data so we can react to changes
@@ -66,17 +65,14 @@ export class TimelineEditorComponent implements OnInit {
                 console.log(res);
             });
         }
+        this.dismiss();
     }
 
     checkChanges() {
         if (this.modifiedData.title != '' && this.modifiedData.content != '' && this.modifiedData.year != '') {
             // all fields contain data
-            console.log('fields contain data');
-            console.log(this.modifiedData.title != this.data.title, 'title change');
-            console.log(this.data.title, 'title original');
             if (this.modifiedData != this.data) {
                 // fields have changed from previous data
-                console.log('fields have changed');
                 this.changes = true;
                 return;
             }
@@ -84,9 +80,14 @@ export class TimelineEditorComponent implements OnInit {
         this.changes = false;
     }
 
-    cancel() {
+    dismiss() {
         this.modalCtrl.dismiss({
             'dismissed': true
         });
+    }
+
+    delete() {
+        this.auth.deleteTimeLineObject(this.data.id, this.type);
+        this.dismiss();
     }
 }
