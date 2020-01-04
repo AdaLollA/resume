@@ -1,23 +1,26 @@
 <ion-row class="full-size flex-center">
-  <ion-row>
-    <ion-item>
+  <ion-row class="flex-center full-width ion-margin-bottom">
+    <h1>{{ type }}</h1>
+  </ion-row>
+  <ion-row class="full-width ion-margin-bottom">
+    <ion-item class="full-width input-margin">
       <ion-label position="floating">Title</ion-label>
       <ion-input [(ngModel)]="modifiedData.title" (ionChange)="checkChanges()"></ion-input>
     </ion-item>
-    <ion-item>
+    <ion-item class="full-width input-margin">
       <ion-label position="floating">Content</ion-label>
       <ion-input [(ngModel)]="modifiedData.content" (ionChange)="checkChanges()"></ion-input>
     </ion-item>
-    <ion-item>
+    <ion-item class="full-width input-margin">
       <ion-label position="floating">Time (visual only)</ion-label>
       <ion-input [(ngModel)]="modifiedData.year" (ionChange)="checkChanges()" type="number"></ion-input>
     </ion-item>
-    <ion-item>
+    <ion-item class="full-width input-margin">
       <ion-label position="floating">Date MM/DD/YYYY (sorting)</ion-label>
       <ion-datetime displayFormat="MM/DD/YYYY" [max]="now" [(ngModel)]="modifiedData.date" (ionChange)="checkChanges()" ></ion-datetime>
     </ion-item>
   </ion-row>
-  <ion-row class="full-width flex-center">
+  <ion-row class="full-width flex-center ion-margin-top">
     <ion-button (click)="cancel()">Cancel</ion-button>
     <ion-button [disabled]="!changes">{{ data ? 'Save' : 'Create' }}</ion-button>
     <ion-button [disabled]="!data">Delete</ion-button>

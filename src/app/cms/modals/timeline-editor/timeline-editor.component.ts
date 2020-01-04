@@ -1,6 +1,7 @@
 import {Component, Input, OnInit, Output} from '@angular/core';
 import {TimelineObject} from '../../../components/timeline/timeline.component';
 import {ModalController, NavParams} from '@ionic/angular';
+import {CmsType} from '../../cms.page';
 
 @Component({
     selector: 'app-timeline-editor',
@@ -12,6 +13,8 @@ export class TimelineEditorComponent implements OnInit {
     @Input() data: TimelineObject;
     public modifiedData: TimelineObject;
 
+    @Input() type: CmsType;
+
     public changes: boolean = false;
     public now: Date;
 
@@ -19,6 +22,7 @@ export class TimelineEditorComponent implements OnInit {
     }
 
     ngOnInit(): void {
+      console.log(this.type.toString());
         this.now = new Date();
         if (this.data) {
             // edit existing data set

@@ -63,7 +63,7 @@
         </ion-col>
         <ion-col size="4" class="table-col middle-col">
             <ion-row class="third-height">
-                <app-cms-element class="full-size" title="Education" (add)="editTimeLineObject(NULL_TIMELINE_OBJECT)">
+                <app-cms-element class="full-size" title="Education" (add)="editTimeLineObject(null, type.EDUCATION)">
                     <ion-row *ngFor="let edu of education" class="full-width">
                         <app-timeline-visualizer [data]="edu" class="full-width"></app-timeline-visualizer>
                     </ion-row>

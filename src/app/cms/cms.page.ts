@@ -9,9 +9,14 @@ import {AlertController, ModalController} from '@ionic/angular';
 import {TimelineEditorComponent} from './modals/timeline-editor/timeline-editor.component';
 
 export enum CmsType {
-    SOFT_SKILL, HARD_SKILL, TEAM, TIME_LINE_OBJECT, PORTFOLIO
+    SOFT_SKILL = "Soft Skill",
+    HARD_SKILL = "Hard Skill",
+    TEAM = "Team",
+    EDUCATION = "Education",
+    EXPERIENCE = "Experience",
+    AWARD = "Award",
+    PORTFOLIO = "Portfolio"
 }
-
 
 @Component({
     selector: 'app-cms',
@@ -32,6 +37,8 @@ export class CmsPage implements OnInit {
     private collectionListenerProjects: Observable<any[]>;
     private collectionListenerSkills: Observable<any[]>;
     private collectionListenerTeam: Observable<any[]>;
+
+    public type = CmsType;
 
     constructor(public db: AngularFirestore,
                 public auth: AuthService,
@@ -125,11 +132,12 @@ export class CmsPage implements OnInit {
         await alert.present();
     }
 
-    async editTimeLineObject(data: TimelineObject) {
+    async editTimeLineObject(data: TimelineObject, type: CmsType) {
         const modal = await this.modalController.create({
             component: TimelineEditorComponent,
             componentProps: {
-                data
+                data,
+                type
             }
         });
         return await modal.present();
