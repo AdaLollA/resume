@@ -93,33 +93,15 @@ export class AuthService {
         }
     }
 
-    public createTimeLineObject({title, content, date, year}: TimelineObject, type: CmsType) {
-        return this.afs.collection(this.typeToCollection(type)).add({
-            title,
-            content,
-            date,
-            year
-        });
+    public createTimeLineObject(data: TimelineObject, type: CmsType) {
+        return this.afs.collection(this.typeToCollection(type)).add(data);
     }
 
-    deleteTimeLineObject(id, type) {
+    deleteTimeLineObject(id: string, type: CmsType) {
         return this.afs.collection(this.typeToCollection(type)).doc(id).delete();
     }
 
-    /*
-    createUser(value, avatar) {
-        return this.afs.collection('users').add({
-            name: value.name,
-            nameToSearch: value.name.toLowerCase(),
-            surname: value.surname,
-            age: parseInt(value.age),
-            avatar: avatar
-        });
+    updateTimeLineObject(data: TimelineObject, type: CmsType) {
+        return this.afs.collection(this.typeToCollection(type)).doc(data.id).set(data);
     }
-
-    updateUser(userKey, value) {
-        value.nameToSearch = value.name.toLowerCase();
-        return this.afs.collection('users').doc(userKey).set(value);
-    }
-    */
 }
