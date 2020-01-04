@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {AngularFirestore} from '@angular/fire/firestore';
+import {AngularFirestore, AngularFirestoreCollection} from '@angular/fire/firestore';
 import {TimelineObject} from '../components/timeline/timeline.component';
 import {Observable} from 'rxjs';
 import {IProject} from '../components/project-card/project-card.component';
@@ -7,6 +7,7 @@ import {ITeamMember} from '../pages/team/team.page';
 import {AuthService, CmsType} from '../services/auth.service';
 import {AlertController, ModalController} from '@ionic/angular';
 import {TimelineEditorComponent} from './modals/timeline-editor/timeline-editor.component';
+import {map} from 'rxjs/operators';
 
 @Component({
     selector: 'app-cms',
@@ -21,7 +22,7 @@ export class CmsPage implements OnInit {
     public team: ITeamMember[] = [];
     public skills;
 
-    private collectionListenerEducation: Observable<any[]>;
+    private collectionListenerEducation: AngularFirestoreCollection<TimelineObject>;
     private collectionListenerExperience: Observable<any[]>;
     private collectionListenerAwards: Observable<any[]>;
     private collectionListenerProjects: Observable<any[]>;
@@ -34,7 +35,7 @@ export class CmsPage implements OnInit {
                 public auth: AuthService,
                 public alertController: AlertController,
                 public modalController: ModalController) {
-        this.collectionListenerEducation = db.collection('education').valueChanges();
+        this.collectionListenerEducation = db.collection<TimelineObject>('education');
         this.collectionListenerExperience = db.collection('experience').valueChanges();
         this.collectionListenerAwards = db.collection('awards').valueChanges();
         this.collectionListenerProjects = db.collection('portfolio').valueChanges();
@@ -43,12 +44,29 @@ export class CmsPage implements OnInit {
     }
 
     ngOnInit(): void {
+        /*
         this.collectionListenerEducation.subscribe(value => {
             this.education = value;
             this.education = this.education.sort((a, b) => {
                 return this.dateCompare(a, b);
             });
         });
+        */
+        this.collectionListenerEducation.snapshotChanges().pipe(
+            map(actions => {
+                return actions.map(a => {
+                    const data = a.payload.doc.data() as TimelineObject;
+                    const id = a.payload.doc.id;
+                    console.log(id, 'ID'); // todo
+                    return {id, ...data};
+                });
+            })
+        ).subscribe(value => {
+            this.education = value;
+            this.education = this.education.sort((a, b) => {
+                return this.dateCompare(a, b);
+            });
+        });;
         this.collectionListenerExperience.subscribe(value => {
             this.experience = value;
             this.experience = this.experience.sort((a, b) => {
