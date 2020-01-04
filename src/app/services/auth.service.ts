@@ -10,13 +10,13 @@ import {Router} from '@angular/router';
 import {TimelineObject} from '../components/timeline/timeline.component';
 
 export enum CmsType {
-    SOFT_SKILL = "Soft Skill",
-    HARD_SKILL = "Hard Skill",
-    TEAM = "Team",
-    EDUCATION = "Education",
-    EXPERIENCE = "Experience",
-    AWARD = "Award",
-    PORTFOLIO = "Portfolio"
+    SOFT_SKILL = 'Soft Skill',
+    HARD_SKILL = 'Hard Skill',
+    TEAM = 'Team',
+    EDUCATION = 'Education',
+    EXPERIENCE = 'Experience',
+    AWARD = 'Award',
+    PORTFOLIO = 'Portfolio'
 }
 
 interface User {
@@ -81,19 +81,29 @@ export class AuthService {
 
     private typeToCollection(type: CmsType): string {
         switch (type) {
-            case CmsType.EDUCATION: { return  'education' }
-            case CmsType.EXPERIENCE: { return 'experience' }
-            case CmsType.AWARD: { return 'awards' }
+            case CmsType.EDUCATION: {
+                return 'education';
+            }
+            case CmsType.EXPERIENCE: {
+                return 'experience';
+            }
+            case CmsType.AWARD: {
+                return 'awards';
+            }
         }
     }
 
-    public createTimeLineObject({title,content,date,year}: TimelineObject, type: CmsType) {
+    public createTimeLineObject({title, content, date, year}: TimelineObject, type: CmsType) {
         return this.afs.collection(this.typeToCollection(type)).add({
             title,
             content,
             date,
             year
         });
+    }
+
+    deleteTimeLineObject(id, type) {
+        return this.afs.collection(this.typeToCollection(type)).doc(id).delete();
     }
 
     /*
@@ -110,10 +120,6 @@ export class AuthService {
     updateUser(userKey, value) {
         value.nameToSearch = value.name.toLowerCase();
         return this.afs.collection('users').doc(userKey).set(value);
-    }
-
-    deleteUser(userKey) {
-        return this.afs.collection('users').doc(userKey).delete();
     }
     */
 }
