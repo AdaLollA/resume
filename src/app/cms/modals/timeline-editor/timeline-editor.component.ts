@@ -19,17 +19,15 @@ export class TimelineEditorComponent implements OnInit {
     public now: Date;
 
     constructor(public nav: NavParams, public modalCtrl: ModalController, private auth: AuthService) {
-        /*
-        this.data = nav.get('data');
-        this.type = nav.get('type');
-        */
     }
 
     ngOnInit(): void {
         this.now = new Date();
         if (this.data) {
             // edit existing data set
-            this.modifiedData = this.data;
+            let date: any = this.data.date;
+            this.data.date = this.toDateTime(date.seconds).toISOString();
+            this.modifiedData = Object.assign({}, this.data);
         } else {
             // create new data set
             this.modifiedData = {
@@ -39,6 +37,12 @@ export class TimelineEditorComponent implements OnInit {
                 date: this.now.toISOString()
             };
         }
+    }
+
+    private toDateTime(secs) {
+        let t = new Date(1970, 0, 1); // Epoch
+        t.setSeconds(secs);
+        return t;
     }
 
     save() {
@@ -55,16 +59,12 @@ export class TimelineEditorComponent implements OnInit {
     checkChanges() {
         if (this.modifiedData.title != '' && this.modifiedData.content != '' && this.modifiedData.year != '') {
             // all fields contain data
-            if (
-                this.modifiedData != this.data // todo test if this works, else use solution below
-                /*
-                this.modifiedData.title != this.data.title &&
-                this.modifiedData.content != this.data.content &&
-                this.modifiedData.year != this.data.year &&
-                this.modifiedData.date != this.data.date
-                */
-            ) {
+            console.log('fields contain data');
+            console.log(this.modifiedData.title != this.data.title, 'title change');
+            console.log(this.data.title, 'title original');
+            if (this.modifiedData != this.data) {
                 // fields have changed from previous data
+                console.log('fields have changed');
                 this.changes = true;
                 return;
             }
