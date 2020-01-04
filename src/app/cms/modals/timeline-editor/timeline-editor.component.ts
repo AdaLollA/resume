@@ -25,8 +25,16 @@ export class TimelineEditorComponent implements OnInit {
         this.now = new Date();
         if (this.data) {
             // edit existing data set
+
+            // clone of data to not temper with original data
+            this.data = Object.assign({}, this.data);
+
+            // fix date DB<>UI
             let date: any = this.data.date;
+            console.log(date, 'DATE');
             this.data.date = this.toDateTime(date.seconds).toISOString();
+
+            // clone modifiable data so we can react to changes
             this.modifiedData = Object.assign({}, this.data);
         } else {
             // create new data set
