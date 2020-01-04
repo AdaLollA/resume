@@ -19,13 +19,17 @@ export class TimelineEditorComponent implements OnInit {
     public now: Date;
 
     constructor(public nav: NavParams, public modalCtrl: ModalController, private auth: AuthService) {
+        /*
+        this.data = nav.get('data');
+        this.type = nav.get('type');
+        */
     }
 
     ngOnInit(): void {
         this.now = new Date();
         if (this.data) {
             // edit existing data set
-            // todo
+            this.modifiedData = this.data;
         } else {
             // create new data set
             this.modifiedData = {
