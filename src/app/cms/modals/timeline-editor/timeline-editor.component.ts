@@ -61,9 +61,7 @@ export class TimelineEditorComponent implements OnInit {
             // update existing data set
         } else {
             // create new data set
-            this.auth.createTimeLineObject(this.modifiedData, this.type).then((res) => {
-                console.log(res);
-            });
+            this.auth.createTimeLineObject(this.modifiedData, this.type);
         }
         this.dismiss();
     }
