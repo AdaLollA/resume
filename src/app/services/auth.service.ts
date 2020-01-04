@@ -9,6 +9,16 @@ import {switchMap} from 'rxjs/operators';
 import {Router} from '@angular/router';
 import {TimelineObject} from '../components/timeline/timeline.component';
 
+export enum CmsType {
+    SOFT_SKILL = "Soft Skill",
+    HARD_SKILL = "Hard Skill",
+    TEAM = "Team",
+    EDUCATION = "Education",
+    EXPERIENCE = "Experience",
+    AWARD = "Award",
+    PORTFOLIO = "Portfolio"
+}
+
 interface User {
     uid: string;
     email: string;
@@ -69,8 +79,16 @@ export class AuthService {
     //      |CRUD https://angular-templates.io/tutorials/about/angular-crud-with-firebase|
     //      |----------------------------------------------------------------------------|
 
-    createAward({title,content,date,year}: TimelineObject) {
-        return this.afs.collection('awards').add({
+    private typeToCollection(type: CmsType): string {
+        switch (type) {
+            case CmsType.EDUCATION: { return  'education' }
+            case CmsType.EXPERIENCE: { return 'experience' }
+            case CmsType.AWARD: { return 'awards' }
+        }
+    }
+
+    public createTimeLineObject({title,content,date,year}: TimelineObject, type: CmsType) {
+        return this.afs.collection(this.typeToCollection(type)).add({
             title,
             content,
             date,

@@ -1,7 +1,7 @@
 import {Component, Input, OnInit, Output} from '@angular/core';
 import {TimelineObject} from '../../../components/timeline/timeline.component';
 import {ModalController, NavParams} from '@ionic/angular';
-import {CmsType} from '../../cms.page';
+import {AuthService, CmsType} from '../../../services/auth.service';
 
 @Component({
     selector: 'app-timeline-editor',
@@ -18,11 +18,10 @@ export class TimelineEditorComponent implements OnInit {
     public changes: boolean = false;
     public now: Date;
 
-    constructor(public nav: NavParams, public modalCtrl: ModalController) {
+    constructor(public nav: NavParams, public modalCtrl: ModalController, private auth: AuthService) {
     }
 
     ngOnInit(): void {
-      console.log(this.type.toString());
         this.now = new Date();
         if (this.data) {
             // edit existing data set
@@ -38,12 +37,18 @@ export class TimelineEditorComponent implements OnInit {
         }
     }
 
-    save(timeline: TimelineObject) {
-        // todo
+    save() {
+        if (this.data) {
+            // update existing data set
+        } else {
+            // create new data set
+            this.auth.createTimeLineObject(this.modifiedData, this.type).then((res) => {
+                console.log(res);
+            });
+        }
     }
 
     checkChanges() {
-        console.log(this.modifiedData);
         if (this.modifiedData.title != '' && this.modifiedData.content != '' && this.modifiedData.year != '') {
             // all fields contain data
             if (

@@ -4,19 +4,9 @@ import {TimelineObject} from '../components/timeline/timeline.component';
 import {Observable} from 'rxjs';
 import {IProject} from '../components/project-card/project-card.component';
 import {ITeamMember} from '../pages/team/team.page';
-import {AuthService} from '../services/auth.service';
+import {AuthService, CmsType} from '../services/auth.service';
 import {AlertController, ModalController} from '@ionic/angular';
 import {TimelineEditorComponent} from './modals/timeline-editor/timeline-editor.component';
-
-export enum CmsType {
-    SOFT_SKILL = "Soft Skill",
-    HARD_SKILL = "Hard Skill",
-    TEAM = "Team",
-    EDUCATION = "Education",
-    EXPERIENCE = "Experience",
-    AWARD = "Award",
-    PORTFOLIO = "Portfolio"
-}
 
 @Component({
     selector: 'app-cms',

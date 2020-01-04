@@ -22,7 +22,7 @@
   </ion-row>
   <ion-row class="full-width flex-center ion-margin-top">
     <ion-button (click)="cancel()">Cancel</ion-button>
-    <ion-button [disabled]="!changes">{{ data ? 'Save' : 'Create' }}</ion-button>
+    <ion-button [disabled]="!changes" (click)="save()">{{ data ? 'Save' : 'Create' }}</ion-button>
     <ion-button [disabled]="!data">Delete</ion-button>
   </ion-row>
 </ion-row>
