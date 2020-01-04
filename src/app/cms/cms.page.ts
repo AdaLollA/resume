@@ -26,13 +26,6 @@ export class CmsPage implements OnInit {
     public team: ITeamMember[] = [];
     public skills;
 
-    public NULL_TIMELINE_OBJECT: TimelineObject = {
-      date: new Date(),
-      year: '',
-      title: '',
-      content: ''
-    };
-
     private collectionListenerEducation: Observable<any[]>;
     private collectionListenerExperience: Observable<any[]>;
     private collectionListenerAwards: Observable<any[]>;
@@ -132,14 +125,11 @@ export class CmsPage implements OnInit {
         await alert.present();
     }
 
-    async editTimeLineObject({title, content, year, date}: TimelineObject) {
+    async editTimeLineObject(data: TimelineObject) {
         const modal = await this.modalController.create({
             component: TimelineEditorComponent,
             componentProps: {
-                title,
-                content,
-                year,
-                date
+                data
             }
         });
         return await modal.present();

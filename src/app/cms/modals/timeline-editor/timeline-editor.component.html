@@ -1,3 +1,21 @@
-<p>
-  timeline-editor works!
-</p>
+<ion-row class="full-size flex-center">
+  <ion-row>
+    <ion-item>
+      <ion-label position="floating">Title</ion-label>
+      <ion-input [(ngModel)]="modifiedData.title" (ionChange)="checkChanges()"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Content</ion-label>
+      <ion-input [(ngModel)]="modifiedData.content" (ionChange)="checkChanges()"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Year (visual only)</ion-label>
+      <ion-input [(ngModel)]="modifiedData.year" (ionChange)="checkChanges()"></ion-input>
+    </ion-item>
+  </ion-row>
+  <ion-row class="full-width flex-center">
+    <ion-button (click)="cancel()">Cancel</ion-button>
+    <ion-button>Save</ion-button>
+    <ion-button [disabled]="!data">Delete</ion-button>
+  </ion-row>
+</ion-row>
