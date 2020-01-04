@@ -12,6 +12,8 @@ export class TimelineEditorComponent {
     @Input() data: TimelineObject;
     public modifiedData: TimelineObject;
 
+    public changes: boolean = false;
+
     constructor(public nav: NavParams, public modalCtrl: ModalController) {
         console.log(this.data);
         if (this.data) {
@@ -32,16 +34,25 @@ export class TimelineEditorComponent {
         // todo
     }
 
-    checkChanges(): boolean {
+    checkChanges() {
         console.log(this.modifiedData);
         if (this.modifiedData.title != '' && this.modifiedData.content != '' && this.modifiedData.year != '') {
             // all fields contain data
-            if (this.modifiedData != this.data) {
+            if (
+                this.modifiedData != this.data
+                /*
+                this.modifiedData.title != this.data.title &&
+                this.modifiedData.content != this.data.content &&
+                this.modifiedData.year != this.data.year &&
+                this.modifiedData.date != this.data.date
+                */
+            ) {
                 // fields have changed from previous data
-                return true;
+              this.changes = true;
+              return;
             }
         }
-        return false;
+        this.changes = false;
     }
 
     cancel() {
