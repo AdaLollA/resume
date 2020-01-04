@@ -57,7 +57,6 @@ export class CmsPage implements OnInit {
                 return actions.map(a => {
                     const data = a.payload.doc.data() as TimelineObject;
                     const id = a.payload.doc.id;
-                    console.log(id, 'ID'); // todo
                     return {id, ...data};
                 });
             })

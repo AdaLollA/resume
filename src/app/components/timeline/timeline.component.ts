@@ -5,6 +5,7 @@ export interface TimelineObject {
   title: string
   content: string
   date: Date | string
+  id?: string
 }
 
 @Component({

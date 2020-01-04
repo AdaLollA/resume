@@ -9,6 +9,7 @@ export interface ITeamMember {
     name: string
     profession: string
     index: number
+    id?: string
 }
 
 @Component({

@@ -9,6 +9,7 @@ export interface IProject {
   moreInfoUrl?: string
   sourceCodeUrl?: string
   date: Date
+  id?: string
 }
 
 @Component({
