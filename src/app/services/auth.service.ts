@@ -7,6 +7,7 @@ import {AngularFirestore, AngularFirestoreDocument} from '@angular/fire/firestor
 import {Observable, of} from 'rxjs';
 import {switchMap} from 'rxjs/operators';
 import {Router} from '@angular/router';
+import {TimelineObject} from '../components/timeline/timeline.component';
 
 interface User {
     uid: string;
@@ -67,6 +68,15 @@ export class AuthService {
     //      |----------------------------------------------------------------------------|
     //      |CRUD https://angular-templates.io/tutorials/about/angular-crud-with-firebase|
     //      |----------------------------------------------------------------------------|
+
+    createAward({title,content,date,year}: TimelineObject) {
+        return this.afs.collection('awards').add({
+            title,
+            content,
+            date,
+            year
+        });
+    }
 
     /*
     createUser(value, avatar) {

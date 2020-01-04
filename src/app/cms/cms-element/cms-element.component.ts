@@ -1,4 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {TimelineObject} from '../../components/timeline/timeline.component';
 
 @Component({
   selector: 'app-cms-element',

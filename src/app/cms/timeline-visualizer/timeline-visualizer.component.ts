@@ -10,7 +10,7 @@ export class TimelineVisualizerComponent implements OnInit {
 
   @Input() data: TimelineObject;
 
-  @Output() edit = new EventEmitter<boolean>();
+  @Output() edit = new EventEmitter<TimelineObject>();
 
   constructor() { }
 
