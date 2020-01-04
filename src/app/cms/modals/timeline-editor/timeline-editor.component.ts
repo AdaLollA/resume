@@ -30,9 +30,13 @@ export class TimelineEditorComponent implements OnInit {
             this.data = Object.assign({}, this.data);
 
             // fix date DB<>UI
-            let date: any = this.data.date;
-            console.log(date, 'DATE');
-            this.data.date = this.toDateTime(date.seconds).toISOString();
+            try {
+                let date: any = this.data.date;
+                console.log(date, 'DATE');
+                this.data.date = this.toDateTime(date.seconds).toISOString();
+            } catch (e) {
+                
+            }
 
             // clone modifiable data so we can react to changes
             this.modifiedData = Object.assign({}, this.data);
