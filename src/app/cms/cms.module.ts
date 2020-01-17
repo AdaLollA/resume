@@ -9,6 +9,7 @@ import { CmsPage } from './cms.page';
 import {CmsElementComponent} from './cms-element/cms-element.component';
 import {TimelineVisualizerComponent} from './timeline-visualizer/timeline-visualizer.component';
 import {TimelineEditorComponent} from './modals/timeline-editor/timeline-editor.component';
+import {TeamEditorComponent} from './modals/team-editor/team-editor.component';
 
 const routes: Routes = [
   {
@@ -19,7 +20,8 @@ const routes: Routes = [
 
 @NgModule({
   entryComponents:[
-    TimelineEditorComponent
+    TimelineEditorComponent,
+    TeamEditorComponent
   ],
   imports: [
     CommonModule,
@@ -27,6 +29,6 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [CmsPage, CmsElementComponent, TimelineVisualizerComponent, TimelineEditorComponent]
+  declarations: [CmsPage, CmsElementComponent, TimelineVisualizerComponent, TimelineEditorComponent, TeamEditorComponent]
 })
 export class CmsPageModule {}

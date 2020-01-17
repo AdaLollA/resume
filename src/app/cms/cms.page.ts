@@ -8,6 +8,7 @@ import {AlertController, ModalController} from '@ionic/angular';
 import {TimelineEditorComponent} from './modals/timeline-editor/timeline-editor.component';
 import {map} from 'rxjs/operators';
 import {Observable} from 'rxjs';
+import {TeamEditorComponent} from './modals/team-editor/team-editor.component';
 
 @Component({
     selector: 'app-cms',
@@ -144,6 +145,16 @@ export class CmsPage implements OnInit {
             componentProps: {
                 data,
                 type
+            }
+        });
+        return await modal.present();
+    }
+
+    async editTeamMemberObject(data: ITeamMember) {
+        const modal = await this.modalController.create({
+            component: TeamEditorComponent,
+            componentProps: {
+                data
             }
         });
         return await modal.present();
