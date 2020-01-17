@@ -59,7 +59,7 @@ export class TimelineEditorComponent implements OnInit {
     save() {
         if (this.data) {
             // update existing data set
-            this.auth.updateTimeLineObject(this.modifiedData, this.type).then(
+            this.auth.update(this.modifiedData, this.type).then(
                 (res) => {
                     // no errors
                 },
@@ -68,7 +68,7 @@ export class TimelineEditorComponent implements OnInit {
                 });
         } else {
             // create new data set
-            this.auth.createTimeLineObject(this.modifiedData, this.type);
+            this.auth.create(this.modifiedData, this.type);
         }
         this.dismiss();
     }
@@ -92,7 +92,7 @@ export class TimelineEditorComponent implements OnInit {
     }
 
     delete() {
-        this.auth.deleteTimeLineObject(this.data.id, this.type);
+        this.auth.delete(this.data.id, this.type);
         this.dismiss();
     }
 }

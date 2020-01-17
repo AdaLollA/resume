@@ -8,6 +8,8 @@ import {Observable, of} from 'rxjs';
 import {switchMap} from 'rxjs/operators';
 import {Router} from '@angular/router';
 import {ITimelineObject} from '../components/timeline/timeline.component';
+import {ITeamMember} from '../pages/team/team.page';
+import {IProject} from '../components/project-card/project-card.component';
 
 export enum CmsType {
     SOFT_SKILL = 'Soft Skill',
@@ -75,10 +77,6 @@ export class AuthService {
         return userRef.set(data, {merge: true});
     }
 
-    //      |----------------------------------------------------------------------------|
-    //      |CRUD https://angular-templates.io/tutorials/about/angular-crud-with-firebase|
-    //      |----------------------------------------------------------------------------|
-
     public typeToCollection(type: CmsType): string {
         switch (type) {
             case CmsType.EDUCATION: {
@@ -105,15 +103,17 @@ export class AuthService {
         }
     }
 
-    public createTimeLineObject(data: ITimelineObject, type: CmsType) {
+    // crud
+
+    public create(data: ITimelineObject | ITeamMember | IProject, type: CmsType) {
         return this.afs.collection(this.typeToCollection(type)).add(data);
     }
 
-    deleteTimeLineObject(id: string, type: CmsType) {
+    public delete(id: string, type: CmsType) {
         return this.afs.collection(this.typeToCollection(type)).doc(id).delete();
     }
 
-    updateTimeLineObject(data: ITimelineObject, type: CmsType) {
+    public update(data: ITimelineObject | ITeamMember | IProject, type: CmsType) {
         return this.afs.collection(this.typeToCollection(type)).doc(data.id).set(data);
     }
 }
