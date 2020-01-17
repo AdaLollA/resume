@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {TimelineObject} from '../../components/timeline/timeline.component';
+import {ITimelineObject} from '../../components/timeline/timeline.component';
 
 @Component({
   selector: 'app-timeline-visualizer',
@@ -8,9 +8,9 @@ import {TimelineObject} from '../../components/timeline/timeline.component';
 })
 export class TimelineVisualizerComponent implements OnInit {
 
-  @Input() data: TimelineObject;
+  @Input() data: ITimelineObject;
 
-  @Output() edit = new EventEmitter<TimelineObject>();
+  @Output() edit = new EventEmitter<ITimelineObject>();
 
   constructor() { }
 

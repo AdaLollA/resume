@@ -1,5 +1,5 @@
 import {Component, Input, OnInit, Output} from '@angular/core';
-import {TimelineObject} from '../../../components/timeline/timeline.component';
+import {ITimelineObject} from '../../../components/timeline/timeline.component';
 import {ModalController, NavParams} from '@ionic/angular';
 import {AuthService, CmsType} from '../../../services/auth.service';
 
@@ -10,8 +10,8 @@ import {AuthService, CmsType} from '../../../services/auth.service';
 })
 export class TimelineEditorComponent implements OnInit {
 
-    @Input() data: TimelineObject;
-    public modifiedData: TimelineObject;
+    @Input() data: ITimelineObject;
+    public modifiedData: ITimelineObject;
 
     @Input() type: CmsType;
 
@@ -59,7 +59,13 @@ export class TimelineEditorComponent implements OnInit {
     save() {
         if (this.data) {
             // update existing data set
-            this.auth.updateTimeLineObject(this.modifiedData, this.type);
+            this.auth.updateTimeLineObject(this.modifiedData, this.type).then(
+                (res) => {
+                    // no errors
+                },
+                (err) => {
+                    console.error(err);
+                });
         } else {
             // create new data set
             this.auth.createTimeLineObject(this.modifiedData, this.type);

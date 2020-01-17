@@ -7,7 +7,7 @@ import {AngularFirestore, AngularFirestoreDocument} from '@angular/fire/firestor
 import {Observable, of} from 'rxjs';
 import {switchMap} from 'rxjs/operators';
 import {Router} from '@angular/router';
-import {TimelineObject} from '../components/timeline/timeline.component';
+import {ITimelineObject} from '../components/timeline/timeline.component';
 
 export enum CmsType {
     SOFT_SKILL = 'Soft Skill',
@@ -79,7 +79,7 @@ export class AuthService {
     //      |CRUD https://angular-templates.io/tutorials/about/angular-crud-with-firebase|
     //      |----------------------------------------------------------------------------|
 
-    private typeToCollection(type: CmsType): string {
+    public typeToCollection(type: CmsType): string {
         switch (type) {
             case CmsType.EDUCATION: {
                 return 'education';
@@ -90,10 +90,22 @@ export class AuthService {
             case CmsType.AWARD: {
                 return 'awards';
             }
+            case CmsType.PORTFOLIO: {
+                return 'portfolio';
+            }
+            case CmsType.TEAM: {
+                return 'team';
+            }
+            case CmsType.SOFT_SKILL: {
+                return 'skills';
+            }
+            case CmsType.HARD_SKILL: {
+                return 'skills';
+            }
         }
     }
 
-    public createTimeLineObject(data: TimelineObject, type: CmsType) {
+    public createTimeLineObject(data: ITimelineObject, type: CmsType) {
         return this.afs.collection(this.typeToCollection(type)).add(data);
     }
 
@@ -101,7 +113,7 @@ export class AuthService {
         return this.afs.collection(this.typeToCollection(type)).doc(id).delete();
     }
 
-    updateTimeLineObject(data: TimelineObject, type: CmsType) {
+    updateTimeLineObject(data: ITimelineObject, type: CmsType) {
         return this.afs.collection(this.typeToCollection(type)).doc(data.id).set(data);
     }
 }

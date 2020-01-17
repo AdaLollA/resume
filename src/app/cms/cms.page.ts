@@ -1,13 +1,13 @@
 import {Component, OnInit} from '@angular/core';
 import {AngularFirestore, AngularFirestoreCollection} from '@angular/fire/firestore';
-import {TimelineObject} from '../components/timeline/timeline.component';
-import {Observable} from 'rxjs';
+import {ITimelineObject} from '../components/timeline/timeline.component';
 import {IProject} from '../components/project-card/project-card.component';
 import {ITeamMember} from '../pages/team/team.page';
 import {AuthService, CmsType} from '../services/auth.service';
 import {AlertController, ModalController} from '@ionic/angular';
 import {TimelineEditorComponent} from './modals/timeline-editor/timeline-editor.component';
 import {map} from 'rxjs/operators';
+import {Observable} from 'rxjs';
 
 @Component({
     selector: 'app-cms',
@@ -15,69 +15,64 @@ import {map} from 'rxjs/operators';
     styleUrls: ['./cms.page.scss'],
 })
 export class CmsPage implements OnInit {
-    public education: TimelineObject[] = [];
-    public experience: TimelineObject[] = [];
-    public awards: TimelineObject[] = [];
+    public education: ITimelineObject[] = [];
+    public experience: ITimelineObject[] = [];
+    public awards: ITimelineObject[] = [];
     public projects: IProject[];
     public team: ITeamMember[] = [];
     public skills;
 
-    private collectionListenerEducation: AngularFirestoreCollection<TimelineObject>;
-    private collectionListenerExperience: Observable<any[]>;
-    private collectionListenerAwards: Observable<any[]>;
-    private collectionListenerProjects: Observable<any[]>;
+    private readonly collectionListenerEducation: AngularFirestoreCollection<ITimelineObject>;
+    private readonly collectionListenerExperience: AngularFirestoreCollection<ITimelineObject>;
+    private readonly collectionListenerAwards: AngularFirestoreCollection<ITimelineObject>;
+    private collectionListenerProjects: AngularFirestoreCollection<IProject>;
     private collectionListenerSkills: Observable<any[]>;
-    private collectionListenerTeam: Observable<any[]>;
+    private collectionListenerTeam: AngularFirestoreCollection<any>;
 
-    public type = CmsType;
+    public cmsType = CmsType;
 
     constructor(public db: AngularFirestore,
                 public auth: AuthService,
                 public alertController: AlertController,
                 public modalController: ModalController) {
-        this.collectionListenerEducation = db.collection<TimelineObject>('education');
-        this.collectionListenerExperience = db.collection('experience').valueChanges();
-        this.collectionListenerAwards = db.collection('awards').valueChanges();
-        this.collectionListenerProjects = db.collection('portfolio').valueChanges();
+        this.collectionListenerEducation = db.collection<ITimelineObject>(auth.typeToCollection(CmsType.EDUCATION));
+        this.collectionListenerExperience = db.collection(auth.typeToCollection(CmsType.EXPERIENCE));
+        this.collectionListenerAwards = db.collection(auth.typeToCollection(CmsType.AWARD));
+        this.collectionListenerProjects = db.collection(auth.typeToCollection(CmsType.PORTFOLIO));
+        this.collectionListenerTeam = db.collection(auth.typeToCollection(CmsType.TEAM));
         this.collectionListenerSkills = db.collection('skills').valueChanges();
-        this.collectionListenerTeam = db.collection('team').valueChanges();
     }
 
-    ngOnInit(): void {
-        /*
-        this.collectionListenerEducation.subscribe(value => {
-            this.education = value;
-            this.education = this.education.sort((a, b) => {
-                return this.dateCompare(a, b);
-            });
-        });
-        */
-        this.collectionListenerEducation.snapshotChanges().pipe(
-            map(actions => {
+    getSnapShotData<T extends ITimelineObject | ITeamMember | IProject>(listener: AngularFirestoreCollection<T>, dataObject: T[], compareFn: (a, b) => number) {
+        listener.snapshotChanges().pipe(
+            map((actions) => {
                 return actions.map(a => {
-                    const data = a.payload.doc.data() as TimelineObject;
+                    const data = a.payload.doc.data() as T;
                     const id = a.payload.doc.id;
                     return {id, ...data};
                 });
             })
-        ).subscribe(value => {
-            this.education = value;
-            this.education = this.education.sort((a, b) => {
-                return this.dateCompare(a, b);
-            });
-        });;
-        this.collectionListenerExperience.subscribe(value => {
-            this.experience = value;
-            this.experience = this.experience.sort((a, b) => {
-                return this.dateCompare(a, b);
-            });
-        });
-        this.collectionListenerAwards.subscribe(value => {
-            this.awards = value;
-            this.awards = this.awards.sort((a, b) => {
-                return this.dateCompare(a, b);
+        ).subscribe((values) => {
+            // sort results
+            values = values.sort(compareFn);
+
+            // clear previous data
+            while(dataObject.length > 0) {
+                dataObject.pop();
+            }
+            // push new data
+            values.forEach(val => {
+                dataObject.push(val);
             });
         });
+    }
+
+    ngOnInit(): void {
+        this.getSnapShotData(this.collectionListenerEducation, this.education, this.compare);
+        this.getSnapShotData(this.collectionListenerExperience, this.experience, this.compare);
+        this.getSnapShotData(this.collectionListenerAwards, this.awards, this.compare);
+
+        /*
         this.collectionListenerProjects.subscribe(value => {
             this.projects = value;
             this.projects = this.projects.sort((a, b) => {
@@ -90,9 +85,22 @@ export class CmsPage implements OnInit {
                 }
             });
         });
-        this.collectionListenerSkills.subscribe(value => {
-            this.skills = value;
+        */
+
+        /*
+        this.collectionListenerProjects.subscribe(value => {
+            this.projects = value;
+            this.projects = this.projects.sort((a, b) => {
+                if (a.date < b.date) {
+                    return 1;
+                } else if (a.date > b.date) {
+                    return -1;
+                } else {
+                    return 0;
+                }
+            });
         });
+
         this.collectionListenerTeam.subscribe(value => {
             this.team = value;
             this.team = this.team.sort((a, b) => {
@@ -105,16 +113,30 @@ export class CmsPage implements OnInit {
                 }
             });
         });
+         */
+
+        this.collectionListenerSkills.subscribe(value => {
+            this.skills = value;
+        });
     }
 
-    dateCompare(a: TimelineObject, b: TimelineObject): number {
-        if (a.date < b.date) {
-            return 1;
-        } else if (a.date > b.date) {
-            return -1;
-        } else {
-            return 0;
+    compare(a: ITimelineObject | ITeamMember | IProject, b: ITimelineObject | ITeamMember | IProject): number {
+        if ((<ITimelineObject>a).year !== undefined) {
+            // comparison of ITimelineObjects
+            a = a as ITimelineObject;
+            b = b as ITimelineObject;
+            if (a.date < b.date) {
+                return 1;
+            } else if (a.date > b.date) {
+                return -1;
+            } else {
+                return 0;
+            }
         }
+    }
+
+    isTimelineObject(data: ITimelineObject | ITeamMember | IProject): data is ITimelineObject {
+        return (<ITimelineObject>data).title !== undefined;
     }
 
     async signOutConfirm() {
@@ -139,7 +161,7 @@ export class CmsPage implements OnInit {
         await alert.present();
     }
 
-    async editTimeLineObject(data: TimelineObject, type: CmsType) {
+    async editTimeLineObject(data: ITimelineObject, type: CmsType) {
         const modal = await this.modalController.create({
             component: TimelineEditorComponent,
             componentProps: {

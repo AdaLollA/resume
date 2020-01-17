@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 
-export interface TimelineObject {
+export interface ITimelineObject {
   year: string
   title: string
   content: string
@@ -15,7 +15,7 @@ export interface TimelineObject {
 })
 export class TimelineComponent implements OnInit {
   @Input('timeline-objects')
-  objects: TimelineObject[];
+  objects: ITimelineObject[];
 
   @Input('title')
   title: string;
