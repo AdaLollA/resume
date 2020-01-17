@@ -26,8 +26,8 @@ export class CmsPage implements OnInit {
     private readonly collectionListenerExperience: AngularFirestoreCollection<ITimelineObject>;
     private readonly collectionListenerAwards: AngularFirestoreCollection<ITimelineObject>;
     private readonly collectionListenerProjects: AngularFirestoreCollection<IProject>;
-    private collectionListenerSkills: Observable<any[]>;
-    private collectionListenerTeam: AngularFirestoreCollection<any>;
+    private readonly collectionListenerTeam: AngularFirestoreCollection<any>;
+    private readonly collectionListenerSkills: Observable<any[]>;
 
     public cmsType = CmsType;
 
@@ -148,5 +148,4 @@ export class CmsPage implements OnInit {
         });
         return await modal.present();
     }
-
 }
