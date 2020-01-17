@@ -18,7 +18,7 @@ export class CmsPage implements OnInit {
     public education: ITimelineObject[] = [];
     public experience: ITimelineObject[] = [];
     public awards: ITimelineObject[] = [];
-    public projects: IProject[];
+    public projects: IProject[] = [];
     public team: ITeamMember[] = [];
     public skills;
 
@@ -71,36 +71,9 @@ export class CmsPage implements OnInit {
         this.getSnapShotData(this.collectionListenerEducation, this.education, this.compare);
         this.getSnapShotData(this.collectionListenerExperience, this.experience, this.compare);
         this.getSnapShotData(this.collectionListenerAwards, this.awards, this.compare);
+        this.getSnapShotData(this.collectionListenerProjects, this.projects, this.compare);
 
         /*
-        this.collectionListenerProjects.subscribe(value => {
-            this.projects = value;
-            this.projects = this.projects.sort((a, b) => {
-                if (a.date < b.date) {
-                    return 1;
-                } else if (a.date > b.date) {
-                    return -1;
-                } else {
-                    return 0;
-                }
-            });
-        });
-        */
-
-        /*
-        this.collectionListenerProjects.subscribe(value => {
-            this.projects = value;
-            this.projects = this.projects.sort((a, b) => {
-                if (a.date < b.date) {
-                    return 1;
-                } else if (a.date > b.date) {
-                    return -1;
-                } else {
-                    return 0;
-                }
-            });
-        });
-
         this.collectionListenerTeam.subscribe(value => {
             this.team = value;
             this.team = this.team.sort((a, b) => {
@@ -125,6 +98,17 @@ export class CmsPage implements OnInit {
             // comparison of ITimelineObjects
             a = a as ITimelineObject;
             b = b as ITimelineObject;
+            if (a.date < b.date) {
+                return 1;
+            } else if (a.date > b.date) {
+                return -1;
+            } else {
+                return 0;
+            }
+        } else if ((<IProject>a).description !== undefined) {
+            // comparison of IProjects
+            a = a as IProject;
+            b = b as IProject;
             if (a.date < b.date) {
                 return 1;
             } else if (a.date > b.date) {
