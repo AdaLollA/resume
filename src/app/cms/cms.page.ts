@@ -25,7 +25,7 @@ export class CmsPage implements OnInit {
     private readonly collectionListenerEducation: AngularFirestoreCollection<ITimelineObject>;
     private readonly collectionListenerExperience: AngularFirestoreCollection<ITimelineObject>;
     private readonly collectionListenerAwards: AngularFirestoreCollection<ITimelineObject>;
-    private collectionListenerProjects: AngularFirestoreCollection<IProject>;
+    private readonly collectionListenerProjects: AngularFirestoreCollection<IProject>;
     private collectionListenerSkills: Observable<any[]>;
     private collectionListenerTeam: AngularFirestoreCollection<any>;
 
@@ -57,7 +57,7 @@ export class CmsPage implements OnInit {
             values = values.sort(compareFn);
 
             // clear previous data
-            while(dataObject.length > 0) {
+            while (dataObject.length > 0) {
                 dataObject.pop();
             }
             // push new data
@@ -72,21 +72,7 @@ export class CmsPage implements OnInit {
         this.getSnapShotData(this.collectionListenerExperience, this.experience, this.compare);
         this.getSnapShotData(this.collectionListenerAwards, this.awards, this.compare);
         this.getSnapShotData(this.collectionListenerProjects, this.projects, this.compare);
-
-        /*
-        this.collectionListenerTeam.subscribe(value => {
-            this.team = value;
-            this.team = this.team.sort((a, b) => {
-                if (a.index > b.index) {
-                    return 1;
-                } else if (a.index < b.index) {
-                    return -1;
-                } else {
-                    return 0;
-                }
-            });
-        });
-         */
+        this.getSnapShotData(this.collectionListenerTeam, this.team, this.compare);
 
         this.collectionListenerSkills.subscribe(value => {
             this.skills = value;
@@ -116,11 +102,18 @@ export class CmsPage implements OnInit {
             } else {
                 return 0;
             }
+        } else if ((<ITeamMember>a).name !== undefined) {
+            // comparison of ITeamMember
+            a = a as ITeamMember;
+            b = b as ITeamMember;
+            if (a.index > b.index) {
+                return 1;
+            } else if (a.index < b.index) {
+                return -1;
+            } else {
+                return 0;
+            }
         }
-    }
-
-    isTimelineObject(data: ITimelineObject | ITeamMember | IProject): data is ITimelineObject {
-        return (<ITimelineObject>data).title !== undefined;
     }
 
     async signOutConfirm() {
