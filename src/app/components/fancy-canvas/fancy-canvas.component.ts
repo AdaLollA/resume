@@ -19,6 +19,7 @@ export interface IFlyer {
 export class FancyCanvasComponent implements AfterViewInit {
     init: boolean = false;
     space: CanvasSpace;
+    opacity = 0;
 
     constructor(public menu: MenuStateService,
                 public eventManager: EventManager) {
@@ -99,6 +100,7 @@ export class FancyCanvasComponent implements AfterViewInit {
     ngAfterViewInit(): void {
         setTimeout(() => {
             this.magic();
-        }, 1000);
+            this.opacity = 100;
+        }, 500);
     }
 }
