@@ -29,7 +29,7 @@ export class SwipeScrollListenService {
     }
 
     private handleWheelEvent(event: WheelEvent) {
-        if (event.deltaY > 0) {
+        if (event.deltaY > 0 || event.detail > 0) {
             this.notify(SwipeScrollDirection.Up)
         } else {
             this.notify(SwipeScrollDirection.Down)
