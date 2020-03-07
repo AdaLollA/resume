@@ -20,6 +20,8 @@ export class ProjectCardComponent implements OnInit {
   @Input('project')
   public project: IProject;
 
+  public loading = true;
+
   constructor() { }
 
   ngOnInit() {
@@ -29,4 +31,8 @@ export class ProjectCardComponent implements OnInit {
     Object.assign(document.createElement('a'), { target: '_blank', href: url}).click();
   }
 
+  finishedLoading() {
+    this.loading = false;
+    console.log(this.project.title)
+  }
 }
