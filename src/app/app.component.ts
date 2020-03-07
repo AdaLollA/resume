@@ -99,29 +99,5 @@ export class AppComponent implements SwipeScrollListener {
         } else if (direction == SwipeScrollDirection.Down && this.introVisibility == 'hidden' && this.router.url == '/home') {
             this.showIntro();
         }
-        /*
-        todo bad user experience in portfolio page
-        // --- home page ---
-        else if (direction == SwipeScrollDirection.Up && this.introVisibility == 'hidden' && this.router.url == '/home') {
-            this.router.navigateByUrl('/skills');
-        }
-        // --- skills page ---
-        else if (direction == SwipeScrollDirection.Down && this.router.url == '/skills') {
-            this.router.navigateByUrl('/home');
-        } else if (direction == SwipeScrollDirection.Up && this.router.url == '/skills') {
-            this.router.navigateByUrl('/portfolio');
-        }
-        // --- portfolio page handles scrolling itself ---
-        // --- experience page ---
-        else if (direction == SwipeScrollDirection.Down && this.router.url == '/experience') {
-            this.router.navigateByUrl('/portfolio');
-        } else if (direction == SwipeScrollDirection.Up && this.router.url == '/experience') {
-            this.router.navigateByUrl('/team');
-        }
-        // --- team page ---
-        else if (direction == SwipeScrollDirection.Down && this.router.url == '/team') {
-            this.router.navigateByUrl('/experience');
-        }
-         */
     }
 }
