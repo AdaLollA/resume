@@ -78,6 +78,7 @@
     /** theming **/
     --ion-background-color: #252934;
     --color: red; // apparently used for selected items (e.g. menu)
+    --footer-icons: #989aa2;
   }
 
   /** light **/
@@ -86,4 +87,5 @@
   --ion-color-secondary: #fed136;
   --ion-color-secondary-shade: #e0b830;
   --ion-color-light-shade: #a2a3a5;
+  --footer-icons: #000000;
 }
