@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {Bound, CanvasSpace, Const, Line, Num, Pt, Tempo} from 'pts';
 import {$} from 'protractor';
 import {MenuStateService} from '../../services/menu-state.service';
@@ -16,7 +16,7 @@ export interface IFlyer {
     templateUrl: './fancy-canvas.component.html',
     styleUrls: ['./fancy-canvas.component.scss'],
 })
-export class FancyCanvasComponent implements OnInit {
+export class FancyCanvasComponent implements OnInit, AfterViewInit {
     init: boolean = false;
     menuOffset: number;
 
@@ -25,6 +25,10 @@ export class FancyCanvasComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        // this.magic()
+    }
+
+    magic() {
         // init
         this.menu.getMenuWidth().then((width) => {
             // resize initialize bug because of menu offset
@@ -39,6 +43,7 @@ export class FancyCanvasComponent implements OnInit {
                 this.menuOffset = 0;
             }
         });
+        console.log(this.menuOffset, 'using this as offset');
 
         // variables
         const angle: number = Const.two_pi - Const.quarter_pi * 3 / 2;
@@ -109,5 +114,11 @@ export class FancyCanvasComponent implements OnInit {
 
     private static numberBetween(min: number, max: number) {
         return Math.floor(Math.random() * max) + min;
+    }
+
+    ngAfterViewInit(): void {
+        setTimeout(() => {
+            this.magic();
+        }, 500);
     }
 }
