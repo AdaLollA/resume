@@ -19,10 +19,11 @@ import {environment} from '../environments/environment';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import {AngularFireAuthModule} from '@angular/fire/auth';
+import {EmbeddedWebViewComponent} from './components/embedded-web-view/embedded-web-view.component';
 
 @NgModule({
-    declarations: [AppComponent, PersonalInfoComponent, LinkFooterComponent, HackerConComponent, ScrollingMouseComponent],
-  entryComponents: [],
+    declarations: [AppComponent, PersonalInfoComponent, LinkFooterComponent, HackerConComponent, ScrollingMouseComponent, EmbeddedWebViewComponent],
+  entryComponents: [EmbeddedWebViewComponent],
     imports: [
         BrowserModule,
         AngularFireAuthModule,
