@@ -101,6 +101,6 @@ export class FancyCanvasComponent implements AfterViewInit {
         setTimeout(() => {
             this.magic();
             this.opacity = 100;
-        }, 500);
+        }, 1000);
     }
 }
