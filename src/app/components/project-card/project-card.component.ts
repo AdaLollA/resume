@@ -33,8 +33,8 @@ export class ProjectCardComponent {
      *
      * @param url The url that is to be loaded.
      */
-    openUrl(url: string) {
-        if (this.project.liveDemoInModal) {
+    openUrl(url: string, isDemo = false) {
+        if (this.project.liveDemoInModal && isDemo) {
             this.presentEmbedModal(url);
         } else {
             Object.assign(document.createElement('a'), {target: '_blank', href: url}).click();
