@@ -12,14 +12,11 @@ export class EmbeddedWebViewComponent implements OnInit {
 
     @ViewChild('embed') frame;
 
-    constructor(public sanitizer: DomSanitizer, public modalCtrl: ModalController) {
+    constructor(public modalCtrl: ModalController) {
     }
 
     ngOnInit(): void {
-        // todo iframe refreshes on mouse inputs (movement and click)
-        console.log(this.frame);
-        this.frame.nativeElement.onload = null;
-        this.frame.nativeElement.setAttribute('onload', '');
+        this.frame.nativeElement.src = this.url;
     }
 
     dismiss() {
