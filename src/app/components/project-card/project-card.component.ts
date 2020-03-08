@@ -25,7 +25,7 @@ export class ProjectCardComponent {
 
     public loading = true;
 
-    constructor(public modalController: ModalController) {
+    constructor(public modalCtrl: ModalController) {
     }
 
     /**
@@ -56,7 +56,7 @@ export class ProjectCardComponent {
      *  @param url The url that is to be loaded.
      */
     async presentEmbedModal(url: string) {
-        const modal = await this.modalController.create({
+        const modal = await this.modalCtrl.create({
             component: EmbeddedWebViewComponent,
             componentProps: {
                 'url': url
