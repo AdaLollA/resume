@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {DomSanitizer} from '@angular/platform-browser';
 
 @Component({
@@ -7,17 +7,9 @@ import {DomSanitizer} from '@angular/platform-browser';
   styleUrls: ['./embedded-web-view.component.scss'],
 })
 export class EmbeddedWebViewComponent {
-  url = 'https://dronify-5949c.firebaseapp.com/';
+  @Input() url: string;
 
-  constructor(public sanitizer: DomSanitizer) { }
-
-  /**
-   * Loads the provided url into the embedded web view.
-   *
-   * @param url The url that is to be loaded.
-   */
-  public load(url: string) {
-    this.url = url;
+  constructor(public sanitizer: DomSanitizer) {
   }
 
 }

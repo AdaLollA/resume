@@ -56,9 +56,11 @@ export class ProjectCardComponent {
      *  @param url The url that is to be loaded.
      */
     async presentEmbedModal(url: string) {
-      // todo use url
         const modal = await this.modalController.create({
-            component: EmbeddedWebViewComponent
+            component: EmbeddedWebViewComponent,
+            componentProps: {
+                'url': url
+            }
         });
         return await modal.present();
     }
