@@ -57,7 +57,6 @@ export class AppComponent implements SwipeScrollListener {
 
     initAnalytics() {
         this.router.events.subscribe(event => {
-                console.log(event, 'analytics event');
                 if (event instanceof NavigationEnd) {
                     gtag('config', 'UA-160165453-1',
                         {
