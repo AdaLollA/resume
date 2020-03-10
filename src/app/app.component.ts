@@ -3,8 +3,10 @@ import {Component, ViewChild} from '@angular/core';
 import {Platform} from '@ionic/angular';
 
 import {SwipeScrollDirection, SwipeScrollListener, SwipeScrollListenService} from './services/swipe-scroll-listen.service';
-import {Router} from '@angular/router';
+import {NavigationEnd, Router} from '@angular/router';
 import {ThemeService} from './services/theme.service';
+
+declare let gtag: Function;
 
 @Component({
     selector: 'app-root',
@@ -50,6 +52,20 @@ export class AppComponent implements SwipeScrollListener {
         public theme: ThemeService
     ) {
         this.initializeApp();
+    }
+
+    initAnalytics() {
+        this.router.events.subscribe(event => {
+                console.log(event, 'analytics event');
+                if (event instanceof NavigationEnd) {
+                    gtag('config', 'UA-160165453-1',
+                        {
+                            'page_path': event.urlAfterRedirects
+                        }
+                    );
+                }
+            }
+        );
     }
 
     private initializeApp() {

@@ -20,6 +20,7 @@ import {AngularFirestoreModule} from '@angular/fire/firestore';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import {EmbeddedWebViewComponent} from './components/embedded-web-view/embedded-web-view.component';
+import {GoogleAnalyticsService} from './services/google-analytics.service';
 
 @NgModule({
     declarations: [AppComponent, PersonalInfoComponent, LinkFooterComponent, HackerConComponent, ScrollingMouseComponent, EmbeddedWebViewComponent],
@@ -36,7 +37,8 @@ import {EmbeddedWebViewComponent} from './components/embedded-web-view/embedded-
         ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
     ],
   providers: [
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+      GoogleAnalyticsService
   ],
   bootstrap: [AppComponent]
 })
