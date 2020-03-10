@@ -51,6 +51,7 @@ export class AppComponent implements SwipeScrollListener {
         public router: Router,
         public theme: ThemeService
     ) {
+        this.initAnalytics();
         this.initializeApp();
     }
 
