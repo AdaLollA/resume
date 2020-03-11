@@ -1,9 +1,15 @@
-<ion-row class="full-size flex-center">
+<ion-row class="full-size flex-center"
+         ngxFileDropzone
+         accept="image/*"
+         (fileDrop)="modifiedData.img = $event.content">
     <ion-row class="flex-center full-width ion-margin-bottom">
         <h1>{{ type }}</h1>
     </ion-row>
     <ion-row>
-        <img class="team-member-image" [src]="modifiedData.img">
+        <img class="team-member-image" [src]="modifiedData.img"
+             ngxFilePicker
+             accept="image/*"
+             (filePick)="modifiedData.img = $event.content">
     </ion-row>
     <ion-row class="full-width ion-margin-bottom">
         <ion-item class="full-width input-margin">

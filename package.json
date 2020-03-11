@@ -35,6 +35,7 @@
     "core-js": "^2.5.4",
     "firebase": "^6.0.1",
     "ionic": "^5.2.1",
+    "ngx-file-helpers": "^3.0.1",
     "node-sass": "^4.12.0",
     "pts": "^0.8.1",
     "rxjs": "~6.3.3",
