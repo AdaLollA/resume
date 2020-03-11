@@ -12,6 +12,7 @@ import {TimelineEditorComponent} from './modals/timeline-editor/timeline-editor.
 import {TeamEditorComponent} from './modals/team-editor/team-editor.component';
 import {NgxFileHelpersModule} from 'ngx-file-helpers';
 import {ProjectEditorComponent} from './modals/project-editor/project-editor.component';
+import {MatButtonToggleModule} from '@angular/material';
 
 const routes: Routes = [
     {
@@ -31,7 +32,8 @@ const routes: Routes = [
         FormsModule,
         IonicModule,
         RouterModule.forChild(routes),
-        NgxFileHelpersModule
+        NgxFileHelpersModule,
+        MatButtonToggleModule
     ],
     declarations: [CmsPage, CmsElementComponent, TimelineVisualizerComponent, TimelineEditorComponent, TeamEditorComponent, ProjectEditorComponent]
 })

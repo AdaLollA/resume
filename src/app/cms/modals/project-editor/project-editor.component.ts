@@ -1,8 +1,9 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {ITeamMember} from '../../../pages/team/team.page';
 import {AuthService, CmsType} from '../../../services/auth.service';
 import {ModalController} from '@ionic/angular';
 import {IProject} from '../../../components/project-card/project-card.component';
+import {MatButtonToggleGroup} from '@angular/material';
 
 @Component({
     selector: 'app-project-editor',
@@ -14,9 +15,12 @@ export class ProjectEditorComponent implements OnInit {
     @Input() data: IProject;
     public modifiedData: IProject;
 
+    @ViewChild('techFilter')
+    private techFilter: MatButtonToggleGroup;
+
     public changes: boolean = false;
     public now: Date;
-    private type = CmsType.TEAM;
+    private type = CmsType.PORTFOLIO;
 
     constructor(public modalCtrl: ModalController, private auth: AuthService) {
     }
@@ -39,6 +43,7 @@ export class ProjectEditorComponent implements OnInit {
 
             // clone modifiable data so we can react to changes
             this.modifiedData = Object.assign({}, this.data);
+            this.techFilter.value = this.modifiedData.technologies;
         } else {
             // create new data set
             this.modifiedData = {
@@ -75,8 +80,9 @@ export class ProjectEditorComponent implements OnInit {
     }
 
     checkChanges() {
+        this.modifiedData.technologies = this.techFilter.value;
         if (this.modifiedData.image != 'assets/img/image_drop.png' && this.modifiedData.image != '' && this.modifiedData.title != ''
-            && this.modifiedData.description != '' && this.modifiedData.technologies.length > 0) {
+            && this.modifiedData.description != '' && this.modifiedData.technologies != undefined) {
             // all fields contain data
             if (this.modifiedData != this.data) {
                 // fields have changed from previous data
