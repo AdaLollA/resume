@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {TimelineObject} from '../../components/timeline/timeline.component';
+import {ITimelineObject} from '../../components/timeline/timeline.component';
 import {MenuStateService} from '../../services/menu-state.service';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {Observable} from 'rxjs';
@@ -10,9 +10,9 @@ import {Observable} from 'rxjs';
     styleUrls: ['./experience.page.scss'],
 })
 export class ExperiencePage implements OnInit {
-    public education: TimelineObject[] = [];
-    public experience: TimelineObject[] = [];
-    public awards: TimelineObject[] = [];
+    public education: ITimelineObject[] = [];
+    public experience: ITimelineObject[] = [];
+    public awards: ITimelineObject[] = [];
 
     private collectionListenerEducation: Observable<any[]>;
     private collectionListenerExperience: Observable<any[]>;
@@ -40,7 +40,7 @@ export class ExperiencePage implements OnInit {
         });
     }
 
-    dateCompare(a: TimelineObject, b: TimelineObject): number {
+    dateCompare(a: ITimelineObject, b: ITimelineObject): number {
         if (a.date < b.date) {
             return 1;
         } else if (a.date > b.date) {

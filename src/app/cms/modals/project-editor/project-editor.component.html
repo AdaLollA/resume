@@ -1,0 +1,88 @@
+<ion-row class="full-size flex-center scrollable"
+         ngxFileDropzone
+         accept="image/*"
+         (fileDrop)="modifiedData.image = $event.content; checkChanges()">
+    <ion-row class="flex-center full-width ion-margin-bottom">
+        <h1>{{ type }}</h1>
+    </ion-row>
+    <ion-row>
+        <img class="team-member-image" [src]="modifiedData.image"
+             ngxFilePicker
+             accept="image/*"
+             (filePick)="modifiedData.image = $event.content; checkChanges()">
+    </ion-row>
+    <ion-row class="full-width ion-margin-bottom">
+
+        <!-- title -->
+        <ion-item class="full-width input-margin">
+            <ion-label position="floating">Title</ion-label>
+            <ion-input [(ngModel)]="modifiedData.title" (ionChange)="checkChanges()"></ion-input>
+        </ion-item>
+
+        <!-- description -->
+        <ion-item class="full-width input-margin">
+            <ion-label position="floating">Description</ion-label>
+            <ion-input [(ngModel)]="modifiedData.description" (ionChange)="checkChanges()"></ion-input>
+        </ion-item>
+
+        <!-- live demo -->
+        <ion-item class="full-width input-margin">
+            <ion-label position="floating">Live Demo Link</ion-label>
+            <ion-input [(ngModel)]="modifiedData.liveDemoUrl" (ionChange)="checkChanges()"></ion-input>
+        </ion-item>
+
+        <!-- more info -->
+        <ion-item class="full-width input-margin">
+            <ion-label position="floating">More Info Link</ion-label>
+            <ion-input [(ngModel)]="modifiedData.moreInfoUrl" (ionChange)="checkChanges()"></ion-input>
+        </ion-item>
+
+        <!-- source code -->
+        <ion-item class="full-width input-margin">
+            <ion-label position="floating">Source Code Link</ion-label>
+            <ion-input [(ngModel)]="modifiedData.sourceCodeUrl" (ionChange)="checkChanges()"></ion-input>
+        </ion-item>
+
+        <!-- date -->
+        <ion-item class="full-width input-margin">
+            <ion-label position="floating">Date (sorting)</ion-label>
+            <ion-datetime displayFormat="DD.MM.YYYY" [max]="now.toISOString()" [(ngModel)]="modifiedData.date"
+                          (ionChange)="checkChanges()"></ion-datetime>
+        </ion-item>
+
+        <!-- tech header -->
+        <ion-item class="full-width input-margin" lines="none">
+            <p>Technologies</p>
+        </ion-item>
+
+        <!-- tech tags -->
+        <ion-row class="full-width flex-center">
+            <mat-button-toggle-group #techFilter="matButtonToggleGroup" multiple="true" class="button-group"
+                                     (change)="checkChanges()">
+                <mat-button-toggle value="mobile" class="tooltip">
+                    <ion-icon name="phone-portrait"></ion-icon>
+                    <span class="tooltiptext">mobile</span>
+                </mat-button-toggle>
+                <mat-button-toggle value="desktop" class="tooltip">
+                    <ion-icon name="desktop"></ion-icon>
+                    <span class="tooltiptext">desktop</span>
+                </mat-button-toggle>
+                <mat-button-toggle value="web" class="tooltip">
+                    <ion-icon name="globe"></ion-icon>
+                    <span class="tooltiptext">web</span>
+                </mat-button-toggle>
+                <mat-button-toggle value="hardware" class="tooltip">
+                    <ion-icon name="construct"></ion-icon>
+                    <span class="tooltiptext">hardware</span>
+                </mat-button-toggle>
+            </mat-button-toggle-group>
+        </ion-row>
+    </ion-row>
+
+    <!-- buttons -->
+    <ion-row class="full-width flex-center ion-margin-top">
+        <ion-button (click)="dismiss()">Cancel</ion-button>
+        <ion-button [disabled]="!changes" (click)="save()">{{ data ? 'Save' : 'Create' }}</ion-button>
+        <ion-button [disabled]="!data" (click)="delete()">Delete</ion-button>
+    </ion-row>
+</ion-row>

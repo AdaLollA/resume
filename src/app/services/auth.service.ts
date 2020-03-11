@@ -7,6 +7,19 @@ import {AngularFirestore, AngularFirestoreDocument} from '@angular/fire/firestor
 import {Observable, of} from 'rxjs';
 import {switchMap} from 'rxjs/operators';
 import {Router} from '@angular/router';
+import {ITimelineObject} from '../components/timeline/timeline.component';
+import {ITeamMember} from '../pages/team/team.page';
+import {IProject} from '../components/project-card/project-card.component';
+
+export enum CmsType {
+    SOFT_SKILL = 'Soft Skill',
+    HARD_SKILL = 'Hard Skill',
+    TEAM = 'Team',
+    EDUCATION = 'Education',
+    EXPERIENCE = 'Experience',
+    AWARD = 'Award',
+    PORTFOLIO = 'Portfolio'
+}
 
 interface User {
     uid: string;
@@ -14,8 +27,6 @@ interface User {
     photoURL?: string;
     displayName?: string;
 }
-
-// https://fireship.io/lessons/angularfire-google-oauth/
 
 @Injectable({
     providedIn: 'root'
@@ -41,12 +52,15 @@ export class AuthService {
 
     async googleSignIn() {
         const provider = new auth.GoogleAuthProvider();
+        console.log('BEFORE POPUP');
         const credential = await this.afAuth.auth.signInWithPopup(provider);
+        console.log('AFTER POPUP');
         return this.updateUserData(credential.user);
     }
 
     async signOut() {
         await this.afAuth.auth.signOut();
+        this.user$ = null;
         return this.router.navigate(['/']);
     }
 
@@ -61,5 +75,45 @@ export class AuthService {
         };
 
         return userRef.set(data, {merge: true});
+    }
+
+    public typeToCollection(type: CmsType): string {
+        switch (type) {
+            case CmsType.EDUCATION: {
+                return 'education';
+            }
+            case CmsType.EXPERIENCE: {
+                return 'experience';
+            }
+            case CmsType.AWARD: {
+                return 'awards';
+            }
+            case CmsType.PORTFOLIO: {
+                return 'portfolio';
+            }
+            case CmsType.TEAM: {
+                return 'team';
+            }
+            case CmsType.SOFT_SKILL: {
+                return 'skills';
+            }
+            case CmsType.HARD_SKILL: {
+                return 'skills';
+            }
+        }
+    }
+
+    // crud
+
+    public create(data: ITimelineObject | ITeamMember | IProject, type: CmsType) {
+        return this.afs.collection(this.typeToCollection(type)).add(data);
+    }
+
+    public delete(id: string, type: CmsType) {
+        return this.afs.collection(this.typeToCollection(type)).doc(id).delete();
+    }
+
+    public update(data: ITimelineObject | ITeamMember | IProject, type: CmsType) {
+        return this.afs.collection(this.typeToCollection(type)).doc(data.id).set(data);
     }
 }

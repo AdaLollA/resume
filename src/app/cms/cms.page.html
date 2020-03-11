@@ -1,19 +1,142 @@
 <ion-header>
     <ion-toolbar>
-        <ion-title>cms</ion-title>
+        <ion-title>Content Management System</ion-title>
+        <ion-buttons slot="primary">
+            <ion-button *ngIf="auth.user$ | async as user" (click)="signOutConfirm()">
+                <img [src]="user.photoURL" class="icon">
+                &nbsp;&nbsp;Sign Out
+            </ion-button>
+        </ion-buttons>
     </ion-toolbar>
 </ion-header>
 
 <ion-content>
+    <ion-row class="table-root" *ngIf="auth.user$ | async as user; else loading">
+        <ion-col size="4" class="table-col">
+            <ion-row class="third-height">
+                <app-cms-element class="full-size" title="Soft Skills">
+                    <ion-row *ngFor="let soft of skills[1].labels; let i = index">
+                        <ion-col size="4">
+                            <p>{{ soft }}</p>
+                        </ion-col>
+                        <ion-col size="8">
+                            <ion-item class="input-range">
+                                <ion-range class="input-range" min="0" max="10"
+                                           [value]="skills[1].data[i]"></ion-range>
+                            </ion-item>
+                        </ion-col>
+                    </ion-row>
+                </app-cms-element>
+            </ion-row>
+            <ion-row class="third-height">
+                <app-cms-element class="full-size" title="Hard Skills">
+                    <ion-row *ngFor="let soft of skills[0].labels; let i = index">
+                        <ion-col size="4">
+                            <p>{{ soft }}</p>
+                        </ion-col>
+                        <ion-col size="8">
+                            <ion-item class="input-range">
+                                <ion-range class="input-range" min="0" max="10"
+                                           [value]="skills[0].data[i]"></ion-range>
+                            </ion-item>
+                        </ion-col>
+                    </ion-row>
+                </app-cms-element>
+            </ion-row>
+            <ion-row class="third-height">
+                <app-cms-element class="full-size" title="Team" (add)="editTeamMemberObject(null)">
+                    <ion-row *ngFor="let member of team">
+                        <ion-col size="2" class="flex-center"><img class="team-member-image" [src]="member.img">
+                        </ion-col>
+                        <ion-col size="5" class="flex-center"><p class="ion-text-center">{{ member.name }}</p>
+                        </ion-col>
+                        <ion-col size="4" class="flex-center"><p class="ion-text-center">{{ member.profession }}</p>
+                        </ion-col>
+                        <ion-col size="1" class="flex-center">
+                            <ion-button fill="clear" size="small" (click)="editTeamMemberObject(member)">
+                                <ion-icon slot="icon-only" name="create" class="edit-icon"></ion-icon>
+                            </ion-button>
+                        </ion-col>
+                    </ion-row>
+                </app-cms-element>
+            </ion-row>
+        </ion-col>
+        <ion-col size="4" class="table-col middle-col">
+            <ion-row class="third-height">
+                <app-cms-element class="full-size" title="Education"
+                                 (add)="editTimeLineObject(null, cmsType.EDUCATION)">
+                    <ion-row *ngFor="let edu of education" class="full-width">
+                        <app-timeline-visualizer [data]="edu" class="full-width"
+                                                 (edit)="editTimeLineObject(edu, cmsType.EDUCATION)"></app-timeline-visualizer>
+                    </ion-row>
+                </app-cms-element>
+            </ion-row>
+            <ion-row class="third-height">
+                <app-cms-element class="full-size" title="Experience"
+                                 (add)="editTimeLineObject(null, cmsType.EXPERIENCE)">
+                    <ion-row *ngFor="let exp of experience">
+                        <app-timeline-visualizer [data]="exp" class="full-width"
+                                                 (edit)="editTimeLineObject(exp, cmsType.EXPERIENCE)"></app-timeline-visualizer>
+                    </ion-row>
+                </app-cms-element>
+            </ion-row>
+            <ion-row class="third-height">
+                <app-cms-element class="full-size" title="Awards" (add)="editTimeLineObject(null, cmsType.AWARD)">
+                    <ion-row *ngFor="let a of awards">
+                        <app-timeline-visualizer [data]="a" class="full-width"
+                                                 (edit)="editTimeLineObject(a, cmsType.AWARD)"></app-timeline-visualizer>
+                    </ion-row>
+                </app-cms-element>
+            </ion-row>
+        </ion-col>
+        <ion-col size="4" class="table-col full-size last-col">
+            <ion-row class="full-size">
+                <app-cms-element class="full-size" title="Portfolio" (add)="editPortfolioObject(null)">
+                    <ion-row *ngFor="let p of projects">
+                        <ion-row class="full-width">
+                            <ion-col size="3" class="flex-center">
+                                <ion-img [src]="p.image"></ion-img>
+                            </ion-col>
+                            <ion-col size="9">
+                                <ion-row><b>{{ p.title }}</b></ion-row>
+                                <ion-row>{{ p.description }}</ion-row>
+                            </ion-col>
+                        </ion-row>
+                        <ion-row class="ion-justify-content-center full-width">
+                            <p *ngFor="let tag of p.technologies" class="tag">{{ tag }}</p>
+                        </ion-row>
+                        <ion-row class="full-width ion-justify-content-center">
+                            <ion-button class="more-buttons" size="small" [disabled]="!p.moreInfoUrl"
+                                        (click)="openUrl(p.moreInfoUrl)">Info
+                            </ion-button>
+                            <ion-button class="more-buttons" color="secondary" size="small"
+                                        [disabled]="!p.sourceCodeUrl" (click)="openUrl(p.sourceCodeUrl)">Code
+                            </ion-button>
+                            <ion-button class="more-buttons" color="tertiary" size="small" [disabled]="!p.liveDemoUrl"
+                                        (click)="openUrl(p.liveDemoUrl)">
+                                Demo
+                            </ion-button>
+                        </ion-row>
+                        <ion-row class="full-width ion-justify-content-center">
+                            <ion-col size="1" class="flex-center">
+                                <ion-button fill="clear" size="small" (click)="editPortfolioObject(p)">
+                                    <ion-icon slot="icon-only" name="create" class="edit-icon"></ion-icon>
+                                </ion-button>
+                            </ion-col>
+                        </ion-row>
+                        <div class="divider"></div>
+                    </ion-row>
+                </app-cms-element>
+            </ion-row>
+        </ion-col>
+    </ion-row>
 
-    <div *ngIf="auth.user$ | async as user; else login">
-        {{ user | json }}
-        <hr>
-        <ion-button (click)="auth.signOut()">Sign Out</ion-button>
-    </div>
-
-    <ng-template #login>
-        <ion-button (click)="auth.googleSignIn()">Sign In</ion-button>
+    <ng-template #loading>
+        <ion-row class="full-size ion-align-items-center ion-justify-content-center loader-container">
+            <h5 class="loading-text">
+                Loading ...
+            </h5>
+            <ion-progress-bar type="indeterminate" class="loader"></ion-progress-bar>
+        </ion-row>
     </ng-template>
-
 </ion-content>

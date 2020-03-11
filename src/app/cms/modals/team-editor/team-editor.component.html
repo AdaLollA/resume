@@ -1,0 +1,36 @@
+<ion-row class="full-size flex-center"
+         ngxFileDropzone
+         accept="image/*"
+         (fileDrop)="modifiedData.img = $event.content; checkChanges()">
+    <ion-row class="flex-center full-width ion-margin-bottom">
+        <h1>{{ type }}</h1>
+    </ion-row>
+    <ion-row>
+        <img class="team-member-image" [src]="modifiedData.img"
+             ngxFilePicker
+             accept="image/*"
+             (filePick)="modifiedData.img = $event.content; checkChanges()">
+    </ion-row>
+    <ion-row class="ion-padding-end ion-padding-start">
+        <p text-center>Please make sure that the image has square dimensions to provide optimal circle-crop proportions.</p>
+    </ion-row>
+    <ion-row class="full-width ion-margin-bottom">
+        <ion-item class="full-width input-margin">
+            <ion-label position="floating">Name</ion-label>
+            <ion-input [(ngModel)]="modifiedData.name" (ionChange)="checkChanges()"></ion-input>
+        </ion-item>
+        <ion-item class="full-width input-margin">
+            <ion-label position="floating">Profession</ion-label>
+            <ion-input [(ngModel)]="modifiedData.profession" (ionChange)="checkChanges()"></ion-input>
+        </ion-item>
+        <ion-item class="full-width input-margin">
+            <ion-label position="floating">Index</ion-label>
+            <ion-input [(ngModel)]="modifiedData.index" type="number" (ionChange)="checkChanges()"></ion-input>
+        </ion-item>
+    </ion-row>
+    <ion-row class="full-width flex-center ion-margin-top">
+        <ion-button (click)="dismiss()">Cancel</ion-button>
+        <ion-button [disabled]="!changes" (click)="save()">{{ data ? 'Save' : 'Create' }}</ion-button>
+        <ion-button [disabled]="!data" (click)="delete()">Delete</ion-button>
+    </ion-row>
+</ion-row>

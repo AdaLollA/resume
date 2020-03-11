@@ -1,0 +1,30 @@
+.flex-center {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.edit-icon {
+  font-size: 20px;
+}
+
+.cms-content {
+  padding-bottom: 0;
+  margin-top: 45px;
+}
+
+.scroll-y {
+  overflow-y: scroll;
+}
+
+.no-padding-top-bot {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.sticky {
+  position: fixed;
+  width: calc(90%/3);
+  background: var(--ion-background-color);
+  z-index: 1;
+}

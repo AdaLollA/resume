@@ -1,0 +1,19 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>login</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div *ngIf="auth.user$ | async as user; else login">
+
+        {{ user | json }}
+        <hr>
+
+        <ion-button (click)="auth.signOut()">Sign Out</ion-button>
+    </div>
+
+    <ng-template #login>
+        <ion-button (click)="auth.googleSignIn()">Sign In</ion-button>
+    </ng-template>
+</ion-content>

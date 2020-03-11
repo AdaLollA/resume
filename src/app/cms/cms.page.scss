@@ -1,0 +1,87 @@
+.icon {
+  height: 28px;
+  width: 28px;
+  border-radius: 50%;
+}
+
+.table-root {
+  justify-content: space-around;
+  height: 96%;
+  width: 100%;
+}
+
+.table-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.loader {
+  width: 150px;
+}
+
+.loading-text {
+  width: 100%;
+  text-align: center;
+}
+
+.loader-container {
+  align-content: center;
+}
+
+.input-range {
+  height: 32px;
+  margin-top: -8px;
+  padding: 0 6px;
+}
+
+.team-member-image {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+}
+
+.flex-center {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.edit-icon {
+  font-size: 20px;
+}
+
+.middle-col {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.divider {
+  width: 70%;
+  background: var(--ion-color-light-shade);
+  height: 1px;
+  margin: auto;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.third-height {
+  height: calc(32vh - 56px/3);
+  width: 100%;
+  padding-bottom: 5px;
+}
+
+.last-col {
+  padding-right: 20px;
+  height: 101%;
+}
+
+.more-buttons {
+  padding: 3px 3px;
+}
+
+.tag {
+  font-size: 11px;
+  padding: 3px 3px;
+}
