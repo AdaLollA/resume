@@ -36,7 +36,10 @@ export class ProjectEditorComponent implements OnInit {
             // fix date DB<>UI
             try {
                 let date: any = this.data.date;
-                this.data.date = this.toDateTime(date.seconds).toISOString();
+                console.log(date, 'before conversion');
+                if (date.seconds) {
+                    this.data.date = this.toDateTime(date.seconds).toISOString();
+                }
             } catch (e) {
 
             }
@@ -44,6 +47,7 @@ export class ProjectEditorComponent implements OnInit {
             // clone modifiable data so we can react to changes
             this.modifiedData = Object.assign({}, this.data);
             this.techFilter.value = this.modifiedData.technologies;
+            console.log(this.modifiedData.date, 'after conversion')
         } else {
             // create new data set
             this.modifiedData = {
@@ -80,6 +84,7 @@ export class ProjectEditorComponent implements OnInit {
     }
 
     checkChanges() {
+        console.log(this.modifiedData.date);
         this.modifiedData.technologies = this.techFilter.value;
         if (this.modifiedData.image != 'assets/img/image_drop.png' && this.modifiedData.image != '' && this.modifiedData.title != ''
             && this.modifiedData.description != '' && this.modifiedData.technologies != undefined) {

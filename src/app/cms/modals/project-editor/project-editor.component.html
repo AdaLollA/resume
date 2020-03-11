@@ -29,27 +29,24 @@
         <ion-item class="full-width input-margin">
             <ion-label position="floating">Live Demo Link</ion-label>
             <ion-input [(ngModel)]="modifiedData.liveDemoUrl" (ionChange)="checkChanges()"></ion-input>
-            <!-- todo make this an editable list -->
         </ion-item>
 
         <!-- more info -->
         <ion-item class="full-width input-margin">
             <ion-label position="floating">More Info Link</ion-label>
             <ion-input [(ngModel)]="modifiedData.moreInfoUrl" (ionChange)="checkChanges()"></ion-input>
-            <!-- todo make this an editable list -->
         </ion-item>
 
         <!-- source code -->
         <ion-item class="full-width input-margin">
             <ion-label position="floating">Source Code Link</ion-label>
             <ion-input [(ngModel)]="modifiedData.sourceCodeUrl" (ionChange)="checkChanges()"></ion-input>
-            <!-- todo make this an editable list -->
         </ion-item>
 
         <!-- date -->
         <ion-item class="full-width input-margin">
-            <ion-label position="floating">Date MM/DD/YYYY (sorting)</ion-label>
-            <ion-datetime displayFormat="MM/DD/YYYY" [max]="now" [(ngModel)]="modifiedData.date"
+            <ion-label position="floating">Date (sorting)</ion-label>
+            <ion-datetime displayFormat="DD.MM.YYYY" [max]="now.toISOString()" [(ngModel)]="modifiedData.date"
                           (ionChange)="checkChanges()"></ion-datetime>
         </ion-item>
 
