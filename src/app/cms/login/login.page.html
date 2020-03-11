@@ -1,19 +1,48 @@
 <ion-header>
     <ion-toolbar>
-        <ion-title>login</ion-title>
+        <ion-title>Content Management System</ion-title>
     </ion-toolbar>
 </ion-header>
 
 <ion-content>
     <div *ngIf="auth.user$ | async as user; else login">
 
+        <!-- debug data -->
+        <!--
         {{ user | json }}
         <hr>
 
         <ion-button (click)="auth.signOut()">Sign Out</ion-button>
+        -->
     </div>
 
     <ng-template #login>
-        <ion-button (click)="auth.googleSignIn()">Sign In</ion-button>
+        <ion-row class="full-size flex-center">
+            <ion-card class="auth-card">
+                <ion-card-header>
+                    <ion-card-title>Authentication</ion-card-title>
+                </ion-card-header>
+                <ion-card-content>
+                    <p text-center>You may safely authenticate with your own google account to test the content
+                        management system.
+
+                        <br>
+                        <br>
+
+                        Changes made by you will, of course, not affect any server-side data since the code on the
+                        backend
+                        side requires my personal ruling, as well as authentication to perform changes.</p>
+
+                    <br>
+
+                    <ion-row class="full-width flex-center">
+                        <ion-button (click)="auth.googleSignIn()">
+                            <ion-icon slot="start" name="logo-google"></ion-icon>
+                            Sign In
+                        </ion-button>
+                    </ion-row>
+                </ion-card-content>
+            </ion-card>
+        </ion-row>
     </ng-template>
 </ion-content>
