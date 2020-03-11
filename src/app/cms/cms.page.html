@@ -63,23 +63,28 @@
         </ion-col>
         <ion-col size="4" class="table-col middle-col">
             <ion-row class="third-height">
-                <app-cms-element class="full-size" title="Education" (add)="editTimeLineObject(null, cmsType.EDUCATION)">
+                <app-cms-element class="full-size" title="Education"
+                                 (add)="editTimeLineObject(null, cmsType.EDUCATION)">
                     <ion-row *ngFor="let edu of education" class="full-width">
-                        <app-timeline-visualizer [data]="edu" class="full-width" (edit)="editTimeLineObject(edu, cmsType.EDUCATION)"></app-timeline-visualizer>
+                        <app-timeline-visualizer [data]="edu" class="full-width"
+                                                 (edit)="editTimeLineObject(edu, cmsType.EDUCATION)"></app-timeline-visualizer>
                     </ion-row>
                 </app-cms-element>
             </ion-row>
             <ion-row class="third-height">
-                <app-cms-element class="full-size" title="Experience" (add)="editTimeLineObject(null, cmsType.EXPERIENCE)">
+                <app-cms-element class="full-size" title="Experience"
+                                 (add)="editTimeLineObject(null, cmsType.EXPERIENCE)">
                     <ion-row *ngFor="let exp of experience">
-                        <app-timeline-visualizer [data]="exp" class="full-width" (edit)="editTimeLineObject(exp, cmsType.EXPERIENCE)"></app-timeline-visualizer>
+                        <app-timeline-visualizer [data]="exp" class="full-width"
+                                                 (edit)="editTimeLineObject(exp, cmsType.EXPERIENCE)"></app-timeline-visualizer>
                     </ion-row>
                 </app-cms-element>
             </ion-row>
             <ion-row class="third-height">
                 <app-cms-element class="full-size" title="Awards" (add)="editTimeLineObject(null, cmsType.AWARD)">
                     <ion-row *ngFor="let a of awards">
-                        <app-timeline-visualizer [data]="a" class="full-width" (edit)="editTimeLineObject(a, cmsType.AWARD)"></app-timeline-visualizer>
+                        <app-timeline-visualizer [data]="a" class="full-width"
+                                                 (edit)="editTimeLineObject(a, cmsType.AWARD)"></app-timeline-visualizer>
                     </ion-row>
                 </app-cms-element>
             </ion-row>
@@ -89,7 +94,9 @@
                 <app-cms-element class="full-size" title="Portfolio">
                     <ion-row *ngFor="let p of projects">
                         <ion-row class="full-width">
-                            <ion-col size="3" class="flex-center"><ion-img [src]="p.image"></ion-img></ion-col>
+                            <ion-col size="3" class="flex-center">
+                                <ion-img [src]="p.image"></ion-img>
+                            </ion-col>
                             <ion-col size="9">
                                 <ion-row><b>{{ p.title }}</b></ion-row>
                                 <ion-row>{{ p.description }}</ion-row>
@@ -99,11 +106,14 @@
                             <p *ngFor="let tag of p.technologies" class="tag">{{ tag }}</p>
                         </ion-row>
                         <ion-row class="full-width ion-justify-content-center">
-                            <ion-button class="more-buttons" size="small" [disabled]="!p.moreInfoUrl">Info</ion-button>
-                            <ion-button class="more-buttons" color="secondary" size="small"
-                                        [disabled]="!p.sourceCodeUrl">Code
+                            <ion-button class="more-buttons" size="small" [disabled]="!p.moreInfoUrl"
+                                        (click)="openUrl(p.moreInfoUrl)">Info
                             </ion-button>
-                            <ion-button class="more-buttons" color="tertiary" size="small" [disabled]="!p.liveDemoUrl">
+                            <ion-button class="more-buttons" color="secondary" size="small"
+                                        [disabled]="!p.sourceCodeUrl" (click)="openUrl(p.sourceCodeUrl)">Code
+                            </ion-button>
+                            <ion-button class="more-buttons" color="tertiary" size="small" [disabled]="!p.liveDemoUrl"
+                                        (click)="openUrl(p.liveDemoUrl)">
                                 Demo
                             </ion-button>
                         </ion-row>

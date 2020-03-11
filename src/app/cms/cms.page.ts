@@ -159,4 +159,8 @@ export class CmsPage implements OnInit {
         });
         return await modal.present();
     }
+
+    openUrl(url: string) {
+        Object.assign(document.createElement('a'), {target: '_blank', href: url}).click();
+    }
 }
