@@ -17,7 +17,7 @@ export class TeamEditorComponent implements OnInit {
 
     public changes: boolean = false;
     public now: Date;
-    private type = CmsType.TEAM;
+    public type = CmsType.TEAM;
 
     constructor(public modalCtrl: ModalController, private auth: AuthService) {
     }

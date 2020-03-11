@@ -19,7 +19,7 @@ export class ProjectEditorComponent implements OnInit {
 
     public changes: boolean = false;
     public now: Date;
-    private type = CmsType.PORTFOLIO;
+    public type = CmsType.PORTFOLIO;
 
     constructor(public modalCtrl: ModalController, private auth: AuthService) {
     }
