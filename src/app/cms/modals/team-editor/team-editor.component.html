@@ -11,6 +11,9 @@
              accept="image/*"
              (filePick)="modifiedData.img = $event.content">
     </ion-row>
+    <ion-row class="ion-padding-end ion-padding-start">
+        <p text-center>Please make sure that the image has square dimensions to provide optimal circle-crop proportions.</p>
+    </ion-row>
     <ion-row class="full-width ion-margin-bottom">
         <ion-item class="full-width input-margin">
             <ion-label position="floating">Name</ion-label>

@@ -30,7 +30,7 @@ export class TeamEditorComponent implements OnInit {
         } else {
             // create new data set
             this.modifiedData = {
-                img: '',
+                img: 'assets/img/image_drop.png',
                 name: '',
                 profession: '',
                 index: 0
