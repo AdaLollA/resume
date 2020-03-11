@@ -9,6 +9,7 @@ import {TimelineEditorComponent} from './modals/timeline-editor/timeline-editor.
 import {map} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 import {TeamEditorComponent} from './modals/team-editor/team-editor.component';
+import {ProjectEditorComponent} from './modals/project-editor/project-editor.component';
 
 @Component({
     selector: 'app-cms',
@@ -153,6 +154,16 @@ export class CmsPage implements OnInit {
     async editTeamMemberObject(data: ITeamMember) {
         const modal = await this.modalController.create({
             component: TeamEditorComponent,
+            componentProps: {
+                data
+            }
+        });
+        return await modal.present();
+    }
+
+    async editPortfolioObject(data: IProject) {
+        const modal = await this.modalController.create({
+            component: ProjectEditorComponent,
             componentProps: {
                 data
             }

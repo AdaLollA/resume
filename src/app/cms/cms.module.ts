@@ -11,6 +11,7 @@ import {TimelineVisualizerComponent} from './timeline-visualizer/timeline-visual
 import {TimelineEditorComponent} from './modals/timeline-editor/timeline-editor.component';
 import {TeamEditorComponent} from './modals/team-editor/team-editor.component';
 import {NgxFileHelpersModule} from 'ngx-file-helpers';
+import {ProjectEditorComponent} from './modals/project-editor/project-editor.component';
 
 const routes: Routes = [
     {
@@ -22,7 +23,8 @@ const routes: Routes = [
 @NgModule({
     entryComponents: [
         TimelineEditorComponent,
-        TeamEditorComponent
+        TeamEditorComponent,
+        ProjectEditorComponent
     ],
     imports: [
         CommonModule,
@@ -31,7 +33,7 @@ const routes: Routes = [
         RouterModule.forChild(routes),
         NgxFileHelpersModule
     ],
-    declarations: [CmsPage, CmsElementComponent, TimelineVisualizerComponent, TimelineEditorComponent, TeamEditorComponent]
+    declarations: [CmsPage, CmsElementComponent, TimelineVisualizerComponent, TimelineEditorComponent, TeamEditorComponent, ProjectEditorComponent]
 })
 export class CmsPageModule {
 }

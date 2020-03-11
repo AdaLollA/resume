@@ -91,7 +91,7 @@
         </ion-col>
         <ion-col size="4" class="table-col full-size last-col">
             <ion-row class="full-size">
-                <app-cms-element class="full-size" title="Portfolio">
+                <app-cms-element class="full-size" title="Portfolio" (add)="editPortfolioObject(null)">
                     <ion-row *ngFor="let p of projects">
                         <ion-row class="full-width">
                             <ion-col size="3" class="flex-center">
@@ -119,7 +119,7 @@
                         </ion-row>
                         <ion-row class="full-width ion-justify-content-center">
                             <ion-col size="1" class="flex-center">
-                                <ion-button fill="clear" size="small">
+                                <ion-button fill="clear" size="small" (click)="editPortfolioObject(p)">
                                     <ion-icon slot="icon-only" name="create" class="edit-icon"></ion-icon>
                                 </ion-button>
                             </ion-col>
