@@ -10,9 +10,9 @@ export interface IProject {
     liveDemoUrl?: string
     moreInfoUrl?: string
     sourceCodeUrl?: string
-  date: Date|string
-    liveDemoInModal: boolean
-  id?: string
+    date: Date | string
+    liveDemoInModal?: boolean
+    id?: string
 }
 
 @Component({

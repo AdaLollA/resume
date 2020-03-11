@@ -1,5 +1,4 @@
 import {Component, Input, OnInit, ViewChild} from '@angular/core';
-import {ITeamMember} from '../../../pages/team/team.page';
 import {AuthService, CmsType} from '../../../services/auth.service';
 import {ModalController} from '@ionic/angular';
 import {IProject} from '../../../components/project-card/project-card.component';
