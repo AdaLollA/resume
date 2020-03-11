@@ -1,7 +1,7 @@
 <ion-row class="full-size flex-center"
          ngxFileDropzone
          accept="image/*"
-         (fileDrop)="modifiedData.img = $event.content">
+         (fileDrop)="modifiedData.img = $event.content; checkChanges()">
     <ion-row class="flex-center full-width ion-margin-bottom">
         <h1>{{ type }}</h1>
     </ion-row>
@@ -9,7 +9,7 @@
         <img class="team-member-image" [src]="modifiedData.img"
              ngxFilePicker
              accept="image/*"
-             (filePick)="modifiedData.img = $event.content">
+             (filePick)="modifiedData.img = $event.content; checkChanges()">
     </ion-row>
     <ion-row class="ion-padding-end ion-padding-start">
         <p text-center>Please make sure that the image has square dimensions to provide optimal circle-crop proportions.</p>

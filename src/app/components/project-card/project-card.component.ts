@@ -8,7 +8,7 @@ export interface IProject {
   liveDemoUrl?: string
   moreInfoUrl?: string
   sourceCodeUrl?: string
-  date: Date
+  date: Date|string
   id?: string
 }
 

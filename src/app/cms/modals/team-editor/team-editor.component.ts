@@ -56,7 +56,7 @@ export class TeamEditorComponent implements OnInit {
     }
 
     checkChanges() {
-        if (this.modifiedData.img != '' && this.modifiedData.name != '' && this.modifiedData.profession != '' && this.modifiedData.index != undefined) {
+        if (this.modifiedData.img != 'assets/img/image_drop.png' && this.modifiedData.img != '' && this.modifiedData.name != '' && this.modifiedData.profession != '' && this.modifiedData.index != undefined) {
             // all fields contain data
             if (this.modifiedData != this.data) {
                 // fields have changed from previous data
