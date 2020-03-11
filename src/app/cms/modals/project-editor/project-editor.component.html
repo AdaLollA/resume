@@ -1,4 +1,4 @@
-<ion-row class="full-size flex-center"
+<ion-row class="full-size flex-center scrollable"
          ngxFileDropzone
          accept="image/*"
          (fileDrop)="modifiedData.image = $event.content; checkChanges()">
@@ -17,12 +17,28 @@
       <ion-input [(ngModel)]="modifiedData.title" (ionChange)="checkChanges()"></ion-input>
     </ion-item>
     <ion-item class="full-width input-margin">
-      <ion-label position="floating">Profession</ion-label>
-      <ion-input [(ngModel)]="modifiedData.profession" (ionChange)="checkChanges()"></ion-input>
+      <ion-label position="floating">Description</ion-label>
+      <ion-input [(ngModel)]="modifiedData.description" (ionChange)="checkChanges()"></ion-input>
     </ion-item>
     <ion-item class="full-width input-margin">
-      <ion-label position="floating">Index</ion-label>
-      <ion-input [(ngModel)]="modifiedData.index" type="number" (ionChange)="checkChanges()"></ion-input>
+      <ion-label position="floating">Technologies</ion-label>
+      <ion-input [(ngModel)]="modifiedData.technologies" (ionChange)="checkChanges()"></ion-input> <!-- todo make this an editable list -->
+    </ion-item>
+    <ion-item class="full-width input-margin">
+      <ion-label position="floating">Live Demo Link</ion-label>
+      <ion-input [(ngModel)]="modifiedData.liveDemoUrl" (ionChange)="checkChanges()"></ion-input> <!-- todo make this an editable list -->
+    </ion-item>
+    <ion-item class="full-width input-margin">
+      <ion-label position="floating">More Info Link</ion-label>
+      <ion-input [(ngModel)]="modifiedData.moreInfoUrl" (ionChange)="checkChanges()"></ion-input> <!-- todo make this an editable list -->
+    </ion-item>
+    <ion-item class="full-width input-margin">
+      <ion-label position="floating">Source Code Link</ion-label>
+      <ion-input [(ngModel)]="modifiedData.sourceCodeUrl" (ionChange)="checkChanges()"></ion-input> <!-- todo make this an editable list -->
+    </ion-item>
+    <ion-item class="full-width input-margin">
+      <ion-label position="floating">Date MM/DD/YYYY (sorting)</ion-label>
+      <ion-datetime displayFormat="MM/DD/YYYY" [max]="now" [(ngModel)]="modifiedData.date" (ionChange)="checkChanges()" ></ion-datetime>
     </ion-item>
   </ion-row>
   <ion-row class="full-width flex-center ion-margin-top">
