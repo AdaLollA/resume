@@ -75,7 +75,8 @@ export class ProjectEditorComponent implements OnInit {
     }
 
     checkChanges() {
-        if (this.modifiedData.image != 'assets/img/image_drop.png' && this.modifiedData.img != '' && this.modifiedData.title != '' && this.modifiedData.index != undefined) {
+        if (this.modifiedData.image != 'assets/img/image_drop.png' && this.modifiedData.image != '' && this.modifiedData.title != ''
+            && this.modifiedData.description != '' && this.modifiedData.technologies.length > 0) {
             // all fields contain data
             if (this.modifiedData != this.data) {
                 // fields have changed from previous data
