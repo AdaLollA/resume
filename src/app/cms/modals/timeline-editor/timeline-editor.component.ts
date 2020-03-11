@@ -32,7 +32,9 @@ export class TimelineEditorComponent implements OnInit {
             // fix date DB<>UI
             try {
                 let date: any = this.data.date;
-                this.data.date = this.toDateTime(date.seconds).toISOString();
+                if (date.seconds) {
+                    this.data.date = this.toDateTime(date.seconds).toISOString();
+                }
             } catch (e) {
 
             }

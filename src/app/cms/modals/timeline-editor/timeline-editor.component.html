@@ -17,7 +17,7 @@
     </ion-item>
     <ion-item class="full-width input-margin">
       <ion-label position="floating">Date MM/DD/YYYY (sorting)</ion-label>
-      <ion-datetime displayFormat="MM/DD/YYYY" [max]="now" [(ngModel)]="modifiedData.date" (ionChange)="checkChanges()" ></ion-datetime>
+      <ion-datetime displayFormat="MM/DD/YYYY" [max]="now.toISOString()" [(ngModel)]="modifiedData.date" (ionChange)="checkChanges()" ></ion-datetime>
     </ion-item>
   </ion-row>
   <ion-row class="full-width flex-center ion-margin-top">
