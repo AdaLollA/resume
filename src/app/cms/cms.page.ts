@@ -33,6 +33,8 @@ export class CmsPage implements OnInit {
 
     public cmsType = CmsType;
 
+    public mobile: boolean;
+
     constructor(public db: AngularFirestore,
                 public auth: AuthService,
                 public alertController: AlertController,
@@ -44,6 +46,7 @@ export class CmsPage implements OnInit {
         this.collectionListenerProjects = db.collection(auth.typeToCollection(CmsType.PORTFOLIO));
         this.collectionListenerTeam = db.collection(auth.typeToCollection(CmsType.TEAM));
         this.collectionListenerSkills = db.collection('skills').valueChanges();
+        this.mobile = this.platform.is('mobile');
     }
 
     getSnapShotData<T extends ITimelineObject | ITeamMember | IProject>(listener: AngularFirestoreCollection<T>, dataObject: T[], compareFn: (a, b) => number) {

@@ -18,7 +18,6 @@ export class CmsElementComponent implements OnInit {
 
   constructor(public platform: Platform) {
     this.mobile = this.platform.is('mobile');
-    console.log(this.mobile);
   }
 
   ngOnInit() {}
