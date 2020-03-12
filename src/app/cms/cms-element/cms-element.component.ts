@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {ITimelineObject} from '../../components/timeline/timeline.component';
+import {Platform} from '@ionic/angular';
 
 @Component({
   selector: 'app-cms-element',
@@ -13,7 +14,12 @@ export class CmsElementComponent implements OnInit {
 
   @Output() add = new EventEmitter<boolean>();
 
-  constructor() { }
+  public mobile: boolean;
+
+  constructor(public platform: Platform) {
+    this.mobile = this.platform.is('mobile');
+    console.log(this.mobile);
+  }
 
   ngOnInit() {}
 

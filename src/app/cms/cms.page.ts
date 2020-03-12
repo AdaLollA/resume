@@ -4,7 +4,7 @@ import {ITimelineObject} from '../components/timeline/timeline.component';
 import {IProject} from '../components/project-card/project-card.component';
 import {ITeamMember} from '../pages/team/team.page';
 import {AuthService, CmsType} from '../services/auth.service';
-import {AlertController, ModalController} from '@ionic/angular';
+import {AlertController, ModalController, Platform} from '@ionic/angular';
 import {TimelineEditorComponent} from './modals/timeline-editor/timeline-editor.component';
 import {map} from 'rxjs/operators';
 import {Observable} from 'rxjs';
@@ -36,7 +36,8 @@ export class CmsPage implements OnInit {
     constructor(public db: AngularFirestore,
                 public auth: AuthService,
                 public alertController: AlertController,
-                public modalController: ModalController) {
+                public modalController: ModalController,
+                public platform: Platform) {
         this.collectionListenerEducation = db.collection<ITimelineObject>(auth.typeToCollection(CmsType.EDUCATION));
         this.collectionListenerExperience = db.collection(auth.typeToCollection(CmsType.EXPERIENCE));
         this.collectionListenerAwards = db.collection(auth.typeToCollection(CmsType.AWARD));

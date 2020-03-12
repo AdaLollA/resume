@@ -1,5 +1,5 @@
-<ion-card class="full-size scroll-y">
-    <ion-card-header class="ion-text-center no-padding-top-bot sticky">
+<ion-card class="full-size" [class.scroll-y]="!mobile">
+    <ion-card-header class="ion-text-center no-padding-top-bot" [class.sticky]="!mobile">
         <ion-row>
             <ion-col size="2"></ion-col>
             <ion-col size="8" class="flex-center"><h5 class="ion-no-margin">{{ title }}</h5></ion-col>
@@ -10,7 +10,7 @@
             </ion-col>
         </ion-row>
     </ion-card-header>
-    <ion-card-content class="cms-content">
+    <ion-card-content class="cms-content" [class.top-sticky-offset]="!mobile">
         <ng-content></ng-content>
     </ion-card-content>
 </ion-card>
