@@ -94,6 +94,8 @@
         </ion-col>
         <ion-col size="12" size-lg="4" class="table-col full-size last-col">
             <ion-row class="full-size">
+                <!-- this breaks the entire user interface by shifting the portfolio over it -->
+                <!-- class="full-width" [class.full-size]="!mobile" -->
                 <app-cms-element class="full-size" title="Portfolio" (add)="editPortfolioObject(null)">
                     <ion-row *ngFor="let p of projects">
                         <ion-row class="full-width">
