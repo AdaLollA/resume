@@ -17,7 +17,9 @@ const routes: Routes = [
     {path: 'skills', loadChildren: './pages/skills/skills.module#SkillsPageModule'},
     {path: 'team', loadChildren: './pages/team/team.module#TeamPageModule'},
     {path: 'cms', loadChildren: './cms/cms.module#CmsPageModule', canActivate: [AuthGuardService]},
-    {path: 'login', loadChildren: './cms/login/login.module#LoginPageModule'}
+    {path: 'login', loadChildren: './cms/login/login.module#LoginPageModule'},
+    {path: 'music', loadChildren: './pages/music/music.module#MusicPageModule'}
+
 
 ];
 
