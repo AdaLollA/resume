@@ -10,51 +10,76 @@
 </ion-header>
 
 <ion-content>
-    <!-- Guitar -->
-    <ion-card>
-        <ion-card-content>
-            <h1 text-center class="ion-padding-bottom">Guitar</h1>
-            <ion-row class="full-width" justify-content-center>
-                <ion-button
-                        (click)="goToLink('https://drive.google.com/drive/folders/1HLulP5JFMXRKmJgmkr3w41wmkP0oHC6y?usp=sharing')">
-                    Up-To-Date* Song List
-                </ion-button>
-                <ion-button
-                        (click)="goToLink('ultimate-guitar.com/top/tabs')">
-                    Current Top 100 Guitar Songs
-                </ion-button>
+    <ion-row align-items-center>
+        <!-- Guitar -->
+        <ion-col size="12" size-md="6">
+            <ion-row align-items-center class="full-width">
+                <ion-card class="full-width">
+                    <ion-card-content>
+                        <h1 text-center class="ion-padding-bottom">Guitar</h1>
+                        <ion-row class="full-width" justify-content-center>
+                            <ion-button
+                                    (click)="goToLink('https://drive.google.com/drive/folders/1HLulP5JFMXRKmJgmkr3w41wmkP0oHC6y?usp=sharing')">
+                                Up-To-Date* Song List
+                            </ion-button>
+                            <ion-button
+                                    (click)="goToLink('ultimate-guitar.com/top/tabs')">
+                                Current Top 100 Guitar Songs
+                            </ion-button>
+                        </ion-row>
+                        <p padding-top text-center>*I am still working on songs listed as <b>wip</b>, these are not
+                            intended
+                            to be played as is.</p>
+                    </ion-card-content>
+                </ion-card>
             </ion-row>
-            <p padding-top text-center>*I am still working on songs listed as <b>wip</b>, these are not intended to be played as is.</p>
-        </ion-card-content>
-    </ion-card>
+        </ion-col>
 
-    <!-- Piano -->
-    <ion-card>
-        <ion-card-content>
-            <h1 text-center class="ion-padding-bottom">Piano</h1>
-            <p text-center="">coming soon™</p>
-        </ion-card-content>
-    </ion-card>
 
-    <!-- Ukulele -->
-    <ion-card>
-        <ion-card-content>
-            <h1 text-center class="ion-padding-bottom">Ukuleke</h1>
-            <p text-center="">coming soon™</p>
-        </ion-card-content>
-    </ion-card>
-
-    <!-- Tools -->
-    <ion-card>
-        <ion-card-content>
-            <h1 text-center class="ion-padding-bottom">Tools</h1>
-            <ion-row class="full-width" justify-content-center>
-                <ion-button (click)="goToLink('https://www.apronus.com/music/onlineguitar.htm')">Listen To Chords
-                </ion-button>
-                <ion-button (click)="goToLink('https://www.8notes.com/guitar_chord_chart/C.asp')">How to Play Chords
-                </ion-button>
-                <ion-button (click)="goToLink('https://chordify.net/channels/featured')">AI Chord Generator</ion-button>
+        <!-- Piano -->
+        <ion-col size="12" size-md="6">
+            <ion-row align-items-center class="full-width">
+                <ion-card class="full-width">
+                    <ion-card-content>
+                        <h1 text-center class="ion-padding-bottom">Piano</h1>
+                        <p text-center="">coming soon™</p>
+                    </ion-card-content>
+                </ion-card>
             </ion-row>
-        </ion-card-content>
-    </ion-card>
+        </ion-col>
+
+        <!-- Ukulele -->
+        <ion-col size="12" size-md="6">
+            <ion-row align-items-center class="full-width">
+                <ion-card class="full-width">
+                    <ion-card-content>
+                        <h1 text-center class="ion-padding-bottom">Ukuleke</h1>
+                        <p text-center="">coming soon™</p>
+                    </ion-card-content>
+                </ion-card>
+            </ion-row>
+        </ion-col>
+
+        <!-- Tools -->
+        <ion-col size="12" size-md="6">
+            <ion-row align-items-center class="full-width">
+                <ion-card class="full-width">
+                    <ion-card-content>
+                        <h1 text-center class="ion-padding-bottom">Tools</h1>
+                        <ion-row class="full-width" justify-content-center>
+                            <ion-button (click)="goToLink('https://www.apronus.com/music/onlineguitar.htm')">Listen To
+                                Chords
+                            </ion-button>
+                            <ion-button (click)="goToLink('https://www.8notes.com/guitar_chord_chart/C.asp')">How to
+                                Play
+                                Chords
+                            </ion-button>
+                            <ion-button (click)="goToLink('https://chordify.net/channels/featured')">AI Chord Generator
+                            </ion-button>
+                        </ion-row>
+                    </ion-card-content>
+                </ion-card>
+            </ion-row>
+        </ion-col>
+    </ion-row>
 </ion-content>
