@@ -19,12 +19,16 @@
                         <h1 text-center class="ion-padding-bottom">Guitar</h1>
                         <ion-row class="full-width" justify-content-center>
                             <ion-button
+                                    (click)="goToLink('https://open.spotify.com/playlist/6ymn60NuxYWD9jz5KO76dP?si=4qUJUlqVS9a7iRAHTGtHqg')">
+                                Playlist of my Song List
+                            </ion-button>
+                            <ion-button
                                     (click)="goToLink('https://drive.google.com/drive/folders/1HLulP5JFMXRKmJgmkr3w41wmkP0oHC6y?usp=sharing')">
                                 Up-To-Date* Song List
                             </ion-button>
                             <ion-button
                                     (click)="goToLink('ultimate-guitar.com/top/tabs')">
-                                Current Top 100 Guitar Songs
+                                Current Top 100 Song Chords
                             </ion-button>
                         </ion-row>
                         <p padding-top text-center>*I am still working on songs listed as <b>wip</b>, these are not
