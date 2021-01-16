@@ -8,6 +8,10 @@
     ],
     "rewrites": [
       {
+        "source": "/sitemap.xml",
+        "destination": "/sitemap.xml"
+      },
+      {
         "source": "/noscript/home.html",
         "destination": "/prerender/home.html"
       },
