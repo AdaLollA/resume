@@ -8,6 +8,34 @@
     ],
     "rewrites": [
       {
+        "source": "/noscript/home.html",
+        "destination": "/prerender/home.html"
+      },
+      {
+        "source": "/noscript/cms.html",
+        "destination": "/prerender/cms.html"
+      },
+      {
+        "source": "/noscript/experience.html",
+        "destination": "/prerender/experience.html"
+      },
+      {
+        "source": "/noscript/music.html",
+        "destination": "/prerender/music.html"
+      },
+      {
+        "source": "/noscript/portfolio.html",
+        "destination": "/prerender/portfolio.html"
+      },
+      {
+        "source": "/noscript/skills.html",
+        "destination": "/prerender/skills.html"
+      },
+      {
+        "source": "/noscript/team.html",
+        "destination": "/prerender/team.html"
+      },
+      {
         "source": "**",
         "destination": "/index.html"
       }
