@@ -49,6 +49,14 @@
 
     gtag('js', new Date());
   </script>
+
+  <!-- redirect to scripted page -->
+  <script>
+    const path = window.location.pathname;
+    if(path.includes('/noscript')) {
+      window.location.href = path.replace('/noscript/','/'); //relative to domain
+    }
+  </script>
 </head>
 
 <body>
