@@ -12,31 +12,31 @@
         "destination": "/sitemap.xml"
       },
       {
-        "source": "/noscript/home.html",
+        "source": "/noscript/home",
         "destination": "/prerender/home.html"
       },
       {
-        "source": "/noscript/cms.html",
+        "source": "/noscript/cms",
         "destination": "/prerender/cms.html"
       },
       {
-        "source": "/noscript/experience.html",
+        "source": "/noscript/experience",
         "destination": "/prerender/experience.html"
       },
       {
-        "source": "/noscript/music.html",
+        "source": "/noscript/music",
         "destination": "/prerender/music.html"
       },
       {
-        "source": "/noscript/portfolio.html",
+        "source": "/noscript/portfolio",
         "destination": "/prerender/portfolio.html"
       },
       {
-        "source": "/noscript/skills.html",
+        "source": "/noscript/skills",
         "destination": "/prerender/skills.html"
       },
       {
-        "source": "/noscript/team.html",
+        "source": "/noscript/team",
         "destination": "/prerender/team.html"
       },
       {
