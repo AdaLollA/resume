@@ -3,6 +3,7 @@ import {ITimelineObject} from '../../components/timeline/timeline.component';
 import {MenuStateService} from '../../services/menu-state.service';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {Observable} from 'rxjs';
+import {SeoService} from '../../services/seo.service';
 
 @Component({
     selector: 'app-experience',
@@ -19,10 +20,12 @@ export class ExperiencePage implements OnInit {
     private collectionListenerAwards: Observable<any[]>;
 
     constructor(public menu: MenuStateService,
-                public db: AngularFirestore) {
+                public db: AngularFirestore,
+                public seo: SeoService) {
         this.collectionListenerEducation = db.collection('education').valueChanges();
         this.collectionListenerExperience = db.collection('experience').valueChanges();
         this.collectionListenerAwards = db.collection('awards').valueChanges();
+        seo.update('Experience', 'Check out the knowledge I gathered over the multiple years of practical and educational experience.');
     }
 
     ngOnInit(): void {
