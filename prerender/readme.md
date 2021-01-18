@@ -7,3 +7,4 @@ store prerender data from https://prerender.io/ here so that crawlers can access
 5. on every build:
     - copy sitemap xml to www
     - copy prerender folder to www
+    - copy robots.txt to www
