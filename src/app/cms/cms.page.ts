@@ -10,6 +10,7 @@ import {map} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 import {TeamEditorComponent} from './modals/team-editor/team-editor.component';
 import {ProjectEditorComponent} from './modals/project-editor/project-editor.component';
+import {SeoService} from '../services/seo.service';
 
 @Component({
     selector: 'app-cms',
@@ -39,7 +40,8 @@ export class CmsPage implements OnInit {
                 public auth: AuthService,
                 public alertController: AlertController,
                 public modalController: ModalController,
-                public platform: Platform) {
+                public platform: Platform,
+                public seo: SeoService) {
         this.collectionListenerEducation = db.collection<ITimelineObject>(auth.typeToCollection(CmsType.EDUCATION));
         this.collectionListenerExperience = db.collection(auth.typeToCollection(CmsType.EXPERIENCE));
         this.collectionListenerAwards = db.collection(auth.typeToCollection(CmsType.AWARD));
@@ -47,6 +49,7 @@ export class CmsPage implements OnInit {
         this.collectionListenerTeam = db.collection(auth.typeToCollection(CmsType.TEAM));
         this.collectionListenerSkills = db.collection('skills').valueChanges();
         this.mobile = this.platform.is('mobile');
+        seo.update('CMS', 'Use this CMS (Content Management System) to view all the available bits and bobs that you can modify to adapt the page (you dont have write access of course).');
     }
 
     getSnapShotData<T extends ITimelineObject | ITeamMember | IProject>(listener: AngularFirestoreCollection<T>, dataObject: T[], compareFn: (a, b) => number) {

@@ -5,6 +5,7 @@ import {IProject} from '../../components/project-card/project-card.component';
 import {MatButtonToggleGroup} from '@angular/material';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {Observable} from 'rxjs';
+import {SeoService} from '../../services/seo.service';
 
 @Component({
     selector: 'app-portfolio',
@@ -30,9 +31,11 @@ export class PortfolioPage implements OnInit {
     constructor(
         public menu: MenuStateService,
         public router: Router,
-        public db: AngularFirestore
+        public db: AngularFirestore,
+        public seo: SeoService
     ) {
         this.collectionListener = db.collection('portfolio').valueChanges();
+        seo.update('Portfolio', 'Check out the many projects i have been working on over the years. They range from mobile, desktop, web to even hardware related topics.');
     }
 
     ngOnInit(): void {

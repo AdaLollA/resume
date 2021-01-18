@@ -3,6 +3,7 @@ import {MenuStateService} from '../../services/menu-state.service';
 import {Chart} from 'chart.js';
 import {Observable} from 'rxjs';
 import {AngularFirestore} from '@angular/fire/firestore';
+import {SeoService} from '../../services/seo.service';
 
 @Component({
     selector: 'app-skills',
@@ -17,8 +18,10 @@ export class SkillsPage implements OnInit {
     private collectionListener: Observable<any[]>;
 
     constructor(public menu: MenuStateService,
-                public db: AngularFirestore) {
+                public db: AngularFirestore,
+                public seo: SeoService) {
         this.collectionListener = db.collection('skills').valueChanges();
+        seo.update('Skills', 'See the skills i have learned over the many years of practical and educational experience.');
     }
 
     ngOnInit() {

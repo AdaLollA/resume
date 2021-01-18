@@ -3,6 +3,7 @@ import {MenuStateService} from '../../services/menu-state.service';
 import {Router} from '@angular/router';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {Observable} from 'rxjs';
+import {SeoService} from '../../services/seo.service';
 
 export interface ITeamMember {
     img: string
@@ -23,8 +24,10 @@ export class TeamPage implements OnInit {
     private collectionListener: Observable<any[]>;
 
     constructor(public menu: MenuStateService,
-                public db: AngularFirestore) {
+                public db: AngularFirestore,
+                public seo: SeoService) {
         this.collectionListener = db.collection('team').valueChanges();
+        seo.update('Team', 'Say hi to our team. This page is of course meant to be funny and not be taken seriously in any way.');
     }
 
     ngOnInit(): void {

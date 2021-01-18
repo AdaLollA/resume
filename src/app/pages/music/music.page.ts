@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {MenuStateService} from '../../services/menu-state.service';
+import {SeoService} from '../../services/seo.service';
 
 @Component({
     selector: 'app-music',
@@ -8,7 +9,9 @@ import {MenuStateService} from '../../services/menu-state.service';
 })
 export class MusicPage implements OnInit {
 
-    constructor(public menu: MenuStateService) {
+    constructor(public menu: MenuStateService,
+                public seo: SeoService) {
+        seo.update('Music', 'Find guitar chords for many easy to play classics and indie songs that your friends can sing along to.');
     }
 
     ngOnInit() {
