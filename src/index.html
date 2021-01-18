@@ -54,7 +54,7 @@
   <!-- noscript / script handling -->
   <script>
     const path = window.location.pathname;
-    if(path.includes('/noscript')) {
+    if(path.includes('/noscript/')) {
       // is a pre rendered noscript page
       window.location.href = path.replace('/noscript/','/'); //relative to domain
     } else {
