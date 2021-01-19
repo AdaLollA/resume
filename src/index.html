@@ -13,7 +13,6 @@
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Lorenz Graf resume" />
   <meta property="og:description" content="Lorenz Graf is a data scientist, developer and creative mind in the IT space. Check out my resume and find detailed information about the work i do." />
-  <meta property="og:url" content="https://lorenz.graf.com/" />
   <meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/resume-73460.appspot.com/o/seo%2Fme.png?alt=media&token=c92756e8-ed18-49bc-b9ee-daaf4e7231ac" />
   <meta property="og:site name" content="Lorenz Graf" />
 
@@ -59,10 +58,18 @@
       window.location.href = path.replace('/noscript/','/'); //relative to domain
     } else {
       // is a normal script-enabled site
+
+      // canonical link
       var cLink = document.createElement('link');
       cLink.rel = 'canonical';
-      cLink.href = '/noscript' + path;
+      cLink.href = 'https://lorenz-graf.com/noscript' + path;
       document.head.appendChild(cLink);
+
+      // canonical og link <meta property="og:url" content="https://lorenz.graf.com/" />
+      var ogLink = document.createElement('meta');
+      ogLink.setAttribute('property', 'og:url');
+      ogLink.content = 'https://lorenz-graf.com/noscript' + path;
+      document.head.appendChild(ogLink);
     }
   </script>
 </head>
