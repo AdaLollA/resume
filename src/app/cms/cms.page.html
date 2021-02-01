@@ -3,7 +3,7 @@
         <ion-buttons slot="start" *ngIf="mobile">
             <ion-menu-button></ion-menu-button>
         </ion-buttons>
-        <ion-title>{{ mobile ? 'CMS' : 'Content Management System'}}</ion-title>
+        <ion-title><h1>{{ mobile ? 'CMS' : 'Content Management System'}}</h1></ion-title>
         <ion-buttons slot="primary">
             <ion-button *ngIf="auth.user$ | async as user" (click)="signOutConfirm()">
                 <img [src]="user.photoURL" class="icon">

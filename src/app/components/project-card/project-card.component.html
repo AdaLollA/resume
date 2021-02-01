@@ -5,7 +5,7 @@
         <ion-card-subtitle>
             <ion-col *ngFor="let technology of project.technologies" no-padding>{{technology}}&nbsp;&nbsp;</ion-col>
         </ion-card-subtitle>
-        <ion-card-title>{{ project.title }}</ion-card-title>
+        <ion-card-title><h1 class="project-title">{{ project.title }}</h1></ion-card-title>
     </ion-card-header>
     <ion-card-content>
         <p>{{ project.description }}</p>
